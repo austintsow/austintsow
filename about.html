@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <title>about</title>
+        <link rel="stylesheet" href = "all.css">
+    </head>
+    <body>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#"><a href = "menu.html">back</a></a>
+          </div>
+          <div id="main">
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+          </div>
+          
+          <!-- ENTER  HTML  CODE HERE -->
+        <div id="text" class="text0">Around The World</div>
+        <div id="text" class="text1">Around The World</div>
+        <div id="text" class="text2">Around The World</div>
+        <div id="text" class="text3">Around The World</div>
+
+          <script>
+            function openNav() {
+              document.getElementById("mySidenav").style.width = "150px";
+              document.getElementById("main").style.marginLeft = "150px";
+            }
+            
+            function closeNav() {
+              document.getElementById("mySidenav").style.width = "0";
+              document.getElementById("main").style.marginLeft= "0";
+            }
+            </script>
+    </body>
+</html>
