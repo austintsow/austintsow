@@ -209,6 +209,8 @@ p {
     transition: 0.3s;
 }
 
+/*-------------------------------------------------*/
+
 #aboutText {
     color: #000000;
     font-size: 18px;
@@ -218,6 +220,38 @@ p {
 #aboutText:hover {
     color: #D3D3D3;
 }
+
+#aboutDiv {
+    float: right;
+    width: 80%;
+    white-space: nowrap;
+}
+
+#aboutMidDiv {
+    float: right;
+    width: 60%;
+    padding-right: 20%;
+    overflow-wrap: break-word;
+    hyphens: manual;
+}
+
+#aboutTextHead {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+}
+
+#aboutTextBio {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 20pt;
+}
+
+#aboutTextBelowBio {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+}
+
+/*-------------------------------------------------*/
 
 #educationText {
     color: #000000;
