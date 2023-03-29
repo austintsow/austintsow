@@ -325,6 +325,40 @@ p {
 }
 /*-------------------------------------------------*/
 
+#menuTextInPersonalInformation {
+    color:#000000;
+    font-size: 18px;
+    transition: 700ms ease;
+    font-variation-settings: "wght" 311;
+    margin-bottom: 0.8rem;
+    outline: none;
+}
+
+#menuTextInPersonalInformation:hover {
+    letter-spacing: 3px;
+    font-variation-settings: "wght" 582;
+}
+
+#personalInformationTextinPersonalInformationpage {
+    color: #000000;
+    font-size: 18px;
+    transition: 700ms ease;
+}
+
+#personalInformationTextinPersonalInformationpage:hover {
+    color: #D3D3D3;
+}
+
+#resumeText {
+    color: #000000;
+    font-size: 18px;
+    transition: 700ms ease;
+}
+
+#resumeText:hover {
+    color: #D3D3D3;
+}
+
 #personalInformation {
     float: right;
     width: 75%;
@@ -354,4 +388,28 @@ p {
     margin-top: 40px;
     margin-right: 35px;
     float: left;
+}
+
+#personalInformationBelowText {
+    color: #000000;
+    font-size: 18px;
+}
+
+#emailText {
+    color: #000000;
+    font-size: 18px;
+    transition: 600ms ease;
+}
+
+#emailText:hover {
+    color: #D3D3D3;
+}
+
+footer {
+    position: relative;
+    margin-top: auto;
+    margin-bottom: 3%;
+    text-align: center;
+    clear: both;
+    font-size: 16px;
 }
