@@ -271,6 +271,17 @@ p {
     color: #D3D3D3;
 }
 
+#spotifyExternal {
+    color: #1DB954;
+    font-size: 18px;
+    transition: 700ms ease;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#spotifyExternal:hover {
+    color:#D3D3D3;
+}
+
 /*-------------------------------------------------*/
 
 #educationText {
