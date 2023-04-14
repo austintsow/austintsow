@@ -73,33 +73,36 @@ html {
 .rw-words{
     display: inline-block;
 }
+
+/* previous coloe: #588157 */
+
 .rw-words-1 span{
 	max-width: 0;
 	display: inline-block;
     opacity: 0;
     overflow: hidden;
-    color: #588157;
+    color: #6284A6;
     animation: rotateWord 18s linear infinite 0s;
 }
 .rw-words-1 span:nth-child(2) {
     animation-delay: 3s;
-    color: #588157;
+    color: #6284A6;
 }
 .rw-words-1 span:nth-child(3) {
     animation-delay: 6s; 
-    color: #588157; 
+    color: #6284A6; 
 }
 .rw-words-1 span:nth-child(4) {
     animation-delay: 9s; 
-    color: #588157;
+    color: #6284A6;
 }
 .rw-words-1 span:nth-child(5) {
     animation-delay: 12s; 
-    color: #588157;
+    color: #6284A6;
 }
 .rw-words-1 span:nth-child(6) {
     animation-delay: 15s; 
-    color: #588157;
+    color: #6284A6;
 }
 @keyframes rotateWord {
     2% { opacity: 0; max-width: 0; transform: translateY(-30px); }
@@ -255,6 +258,17 @@ p {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     line-height: 20pt;
+}
+
+#aboutExternal {
+    color: #6284A6;
+    font-size: 18px;
+    transition: 700ms ease;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#aboutExternal:hover {
+    color: #D3D3D3;
 }
 
 /*-------------------------------------------------*/
