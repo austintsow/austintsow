@@ -17,6 +17,48 @@ html {
     grid-gap: 50px;
 }
 
+.column {
+    flex: 50%;
+    padding: 3px;
+}
+
+.column:last-child {
+    margin-right: 0;
+}
+
+.row {
+    display: flex;
+    margin: 0, -5px;
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+.caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  text-align: center;
+  font-family: serif;
+  font-size: 18px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s ease;
+}
+
+.image-container:hover .caption {
+  opacity: 1;
+  visibility: visible;
+}
+
 /*-------------------------------------------------*/
 .sidenav {
     height: 100%;
@@ -282,6 +324,60 @@ p {
     color:#D3D3D3;
 }
 
+.aboutIMG {
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.aboutIMG:hover {
+    opacity: 0.65;
+}
+
+.aboutUW {
+    color: #4b2e83;
+}
+
+.aboutSpheres {
+    color: #004900;
+}
+
+.blossom {
+    display: inline-block;
+}
+.spheres {
+    display: inline-block;
+}
+img {
+    vertical-align: middle;
+}
+
+.image-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.image-container img {
+    height: 100%;
+    object-fit: cover;
+    padding: 5px;
+}
+
+@media (max-width: 768px) {
+    .image-container{
+        flex-basis: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-container {
+        flex-basis: 100%;
+    }
+}
+
 /*-------------------------------------------------*/
 
 #educationText {
@@ -293,6 +389,8 @@ p {
 #educationText:hover {
     color: #D3D3D3;
 }
+
+/*-------------------------------------------------*/
 
 #projectsText {
     color: #000000;
