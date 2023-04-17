@@ -390,6 +390,80 @@ img {
     color: #D3D3D3;
 }
 
+#educationDiv {
+    float: right;
+    width: 80%;
+    white-space: nowrap;
+}
+
+#educationMidDiv {
+    float: right;
+    width: 60%;
+    padding-right: 20%;
+    overflow-wrap: break-word;
+    hyphens: manual;
+}
+
+.educationIMGandTextDiv {
+    width: 100%;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+}
+
+#educationTextHead {
+    font-family: serif;
+    font-size: 35px;
+}
+
+#educationBelowHead {
+    font-family: serif;
+    font-size: 25px;
+}
+
+.educationText {
+    font-family: serif;
+    font-family: 18px;
+    line-height: 25pt;
+}
+
+.educationBoldText {
+    font-weight: bold;
+}
+
+#educationDate {
+    font-family: serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000000;
+}
+
+.educationContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.educationIMG {
+    flex-wrap: wrap;
+}
+
+.educationIMGtext {
+    font-family: serif;
+    font-size: 18px;
+
+}
+
+.eduactionMajor {
+    font-style: italic;
+    font-weight: bold;
+    font-family: serif;
+    font-size: 18px;
+}
+
+.boat {
+    display: inline-block;
+}
+
 /*-------------------------------------------------*/
 
 #projectsText {
