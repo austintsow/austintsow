@@ -532,6 +532,70 @@ img {
     }
 }
 
+/* inside the projects page */
+
+.animate-charcter {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-transform: uppercase;
+    background-image: linear-gradient(
+        -225deg,
+        #ead1a8 0%,
+        #d3d3d3 29%,
+        #6284A6 67%,
+        #ead1a8 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  /*text-fill-color: transparent;*/
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 160px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+#projectDiv {
+    float: right;
+    width: 80%;
+    white-space: nowrap;
+}
+
+#projectTitle {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 35px;
+    background-image: linear-gradient(
+        -225deg,
+        #ead1a8 0%,
+        #d3d3d3 29%,
+        #6284A6 67%,
+        #ead1a8 100%
+        );
+        background-size: auto auto;
+        background-clip: border-box;
+        background-size: 200% auto;
+        color: #fff;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textclip 2s linear infinite;
+        display: inline-block;
+}
+
+#projectInsideText {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/*-------------------------------------------------*/
+
 #contactText {
     color: #000000;
     font-size: 18px;
