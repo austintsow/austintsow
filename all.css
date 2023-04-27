@@ -679,6 +679,36 @@ img {
     color: #0077b5;
 }
 
+#githubText {
+    color: #000000;
+    font-size: 18px;
+    transition: 700ms ease;
+}
+
+#githubText:hover {
+    color: #d3d3d3;
+}
+
+#instagramText {
+    color: #000000;
+    font-size: 18px;
+    transition: 700ms ease;
+}
+
+#instagramText:hover {
+    color: #833AB4;
+}
+
+#instagramText2 {
+    color: #000000;
+    font-size: 18px;
+    transition: 700ms ease;
+}
+
+#instagramText2:hover {
+    color: #FCAF45;
+}
+
 #personalInformationImage {
     width: 350px;
     margin-left: 50px;
