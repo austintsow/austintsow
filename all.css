@@ -518,7 +518,7 @@ img {
     -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
     0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
 
-    animation: glitch 2000ms infinite;
+    animation: glitch 1200ms infinite;
 }
 
 @keyframes projectsText {
