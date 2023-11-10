@@ -581,6 +581,11 @@ img {
     white-space: nowrap;
 }
 
+.projectLink {
+    font-family: JetBrains Mono, monospace;
+    font-size: 35px;
+}
+
 #projectTitle {
     font-family: JetBrains Mono, monospace;
     font-size: 35px;
