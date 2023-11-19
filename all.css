@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inter');
 
 html {
     background-color: #FAF9F6;
@@ -302,23 +303,23 @@ p {
 }
 
 #aboutTextHead {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 35px;
 }
 
 #aboutTextBio {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     line-height: 20pt;
 }
 
 #aboutTextBelowBio {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 28px;
 }
 
 #aboutExperience {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     line-height: 20pt;
 }
@@ -327,7 +328,7 @@ p {
     color: #6284A6;
     font-size: 18px;
     transition: 700ms ease;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 #aboutExternal:hover {
@@ -338,7 +339,7 @@ p {
     color: #1DB954;
     font-size: 18px;
     transition: 700ms ease;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 #spotifyExternal:hover {
