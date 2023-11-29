@@ -773,6 +773,7 @@ footer {
 
 #work-in-progress {
   font-family: 'Roboto Mono', monospace;
+  font-size: 18px;
   display: flex;
   justify-content: center;
   align-items: center; /* Vertically center */
