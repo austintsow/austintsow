@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;500&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Inter');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 html {
     background-color: #FAF9F6;
@@ -757,4 +758,22 @@ footer {
     text-align: center;
     clear: both;
     font-size: 16px;
+}
+
+/* for blog.html */
+#blogText {
+    color: #000000;
+    font-size: 18px;
+    transition: 700ms ease;
+}
+
+#blogText:hover {
+    color: #D3D3D3;
+}
+
+#work-in-progress {
+  font-family: 'Roboto Mono', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Vertically center */
 }
