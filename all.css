@@ -6,9 +6,6 @@ html {
     background-color: #FAF9F6;
 }
 
-p {
-    font-family: 'Inter', sans-serif;
-}
 /* for selection pages */
 .container {
     display: flex;
