@@ -1,1 +1,2 @@
-hello, I am austin tsow! welcome to my portfolio. feel free to look around
+#welcome to my portfolio
+* hello, i am austin tsow! feel free to click around.

@@ -1,3 +1,22 @@
+let navOpen = false;
+let navTimeout;
+
+function toggleNav() {
+  if (!navOpen) {
+    document.getElementById("mySidenav").style.width = "150px";
+    document.getElementById("main").style.marginLeft = "150px";
+    navOpen = true;
+
+    // time in milliseconds to close the nav
+    navTimeout = setTimeout(closeNav, 5000);
+  } else {
+    clearTimeout(navTimeout);
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    navOpen = false;
+  }
+}
+
 function openNav() {
   document.getElementById("mySidenav").style.width = "150px";
   document.getElementById("main").style.marginLeft = "150px";
