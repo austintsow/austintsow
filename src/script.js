@@ -8,7 +8,7 @@ function toggleNav() {
     navOpen = true;
 
     // time in milliseconds to close the nav
-    navTimeout = setTimeout(closeNav, 5000);
+    navTimeout = setTimeout(closeNav, 10000);
   } else {
     clearTimeout(navTimeout);
     document.getElementById("mySidenav").style.width = "0";
@@ -58,4 +58,20 @@ elements.forEach(element => {
   element.addEventListener('mouseover', () => {
     element.classList.remove('play');
   });
+});
+
+setTimeout(function() {
+  window.location.href = "src/menu.html";
+}, 18000);
+
+document.addEventListener('DOMContentLoaded', function() {
+  var container = document.querySelector('.container');
+  
+  container.style.opacity = '0';
+
+  container.style.transition = 'opacity 1s ease-in';
+
+  setTimeout(function() {
+      container.style.opacity = '1';
+  }, 100);
 });
