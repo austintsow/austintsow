@@ -59,11 +59,16 @@ elements.forEach(element => {
     element.classList.remove('play');
   });
 });
-
+/*
+setTimeout(function() {
+  document.getElementById('popup').style.display = 'block';
+}, 5000);
+*/
+/*
 setTimeout(function() {
   window.location.href = "src/menu.html";
 }, 18000);
-
+*/
 document.addEventListener('DOMContentLoaded', function() {
   var container = document.querySelector('.container');
   
