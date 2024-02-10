@@ -59,6 +59,7 @@ elements.forEach(element => {
     element.classList.remove('play');
   });
 });
+
 /*
 setTimeout(function() {
   document.getElementById('popup').style.display = 'block';
@@ -80,3 +81,16 @@ document.addEventListener('DOMContentLoaded', function() {
       container.style.opacity = '1';
   }, 100);
 });
+
+document.getElementById('homeText').addEventListener('click', function() {
+  document.getElementById('moving-text').style.animationPlayState = 'paused';
+});
+
+
+var myDiv = document.getElementById('moving-text');
+
+myDiv.style.display = 'none';
+
+setTimeout(function() {
+    myDiv.style.display = 'block';
+}, 8000);

@@ -6,6 +6,20 @@ html {
     background-color: #FAF9F6;
 }
 
+#moving-text {
+    position: absolute;
+    padding-top: 1%;
+    white-space: nowrap;
+    animation: move 20s linear infinite;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px;
+  }
+  
+  @keyframes move {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(1000%); }
+  }
+
 /* for selection pages */
 .container {
     display: flex;
