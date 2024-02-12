@@ -27,6 +27,12 @@ function closeNav() {
   document.getElementById("main").style.marginLeft= "0";
 }
 
+window.addEventListener('scroll', function() {
+  if (navOpen) {
+    closeNav();
+  }
+});
+
 let elements = document.querySelectorAll('.rolling-text');
 
 elements.forEach(element => {
@@ -94,3 +100,40 @@ myDiv.style.display = 'none';
 setTimeout(function() {
     myDiv.style.display = 'block';
 }, 8000);
+
+// attempted fade, but failed
+
+let options = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.1
+};
+
+let callback = (entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+    } else {
+      entry.target.style.opacity = '0';
+    }
+  });
+};
+
+let observer = new IntersectionObserver(callback, options);
+
+let targets = document.querySelectorAll('.fade');
+targets.forEach(target => {
+  observer.observe(target);
+});
+
+window.addEventListener('scroll', function() {
+  let scrollPosition = window.pageYOffset;
+  let windowHeight = window.innerHeight;
+
+  document.querySelectorAll('.fade').forEach(el => {
+    let elementPosition = el.getBoundingClientRect().top;
+    let opacity = 1 - elementPosition / windowHeight;
+
+    if (opacity > 0) el.style.opacity = opacity;
+  });
+});
