@@ -9,13 +9,19 @@
         <link rel="stylesheet" href="all.css">
     </head>
     <body>
-      <div id="mySidenav" class="sidenav">
-        <a href="#"><a href = "menu.html" class="navbartext">menu</a></a>
-      </div>
-      <div id="main">
-        <span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
-      </div>
-          <p id="work-in-progress">work in progress</p>
-        <script src="script.js"> </script>
+        <div id="mySidenav" class="sidenav">
+            <a href="menu.html" class="navbartext">menu</a>
+        </div>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="menu.html" id="go-back-to-menu">menu</a></li>  
+                    <li><a href="books.html" id="blog-text">books</a></li> 
+                    <li><a href="tech.html" id="blog-text">tech</a></li>
+                    <li><a href="hikes.html" id="blog-text">hikes</a></li>
+                </ul>
+            </nav>
+        </div>
+        <script src="script.js"></script>
     </body>
 </html>

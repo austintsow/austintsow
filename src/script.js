@@ -1,6 +1,16 @@
 let navOpen = false;
 let navTimeout;
 
+function openNav() {
+  document.getElementById("mySidenav").style.width = "150px";
+  document.getElementById("main").style.marginLeft = "150px";
+}
+  
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+
 function toggleNav() {
   if (!navOpen) {
     document.getElementById("mySidenav").style.width = "150px";
@@ -15,16 +25,6 @@ function toggleNav() {
     document.getElementById("main").style.marginLeft= "0";
     navOpen = false;
   }
-}
-
-function openNav() {
-  document.getElementById("mySidenav").style.width = "150px";
-  document.getElementById("main").style.marginLeft = "150px";
-}
-  
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
 }
 
 window.addEventListener('scroll', function() {
@@ -136,4 +136,33 @@ window.addEventListener('scroll', function() {
 
     if (opacity > 0) el.style.opacity = opacity;
   });
+});
+
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var fullName = document.getElementById('full-name').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var message = document.getElementById('message').value.trim();
+  
+  // verifies email type
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+  }
+
+  if (fullName === '' || email === '' || message === '') {
+      alert('Please fill in all fields.');
+      return;
+  }
+
+  var formData = {
+      fullName: fullName,
+      email: email,
+      message: message
+  };
+  // You can send formData to your server to handle the email sending process
+  // For example: fetch('your-server-url', { method: 'POST', body: JSON.stringify(formData) });
+  // For this example, let's just show an alert
+  alert('Form submitted successfully!');
 });

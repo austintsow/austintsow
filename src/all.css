@@ -183,28 +183,28 @@ hr.solid {
 	display: inline-block;
     opacity: 0;
     overflow: hidden;
-    color: #6284A6;
+    color: #E1AD01;
     animation: rotateWord 18s linear infinite 0s;
 }
 .rw-words-1 span:nth-child(2) {
     animation-delay: 3s;
-    color: #6284A6;
+    color: #E1AD01;
 }
 .rw-words-1 span:nth-child(3) {
     animation-delay: 6s; 
-    color: #6284A6; 
+    color: #E1AD01; 
 }
 .rw-words-1 span:nth-child(4) {
     animation-delay: 9s; 
-    color: #6284A6;
+    color: #E1AD01;
 }
 .rw-words-1 span:nth-child(5) {
     animation-delay: 12s; 
-    color: #6284A6;
+    color: #E1AD01;
 }
 .rw-words-1 span:nth-child(6) {
     animation-delay: 15s; 
-    color: #6284A6;
+    color: #E1AD01;
 }
 @keyframes rotateWord {
     2% { opacity: 0; max-width: 0; transform: translateY(-10px); }
@@ -395,7 +395,7 @@ p {
 }
 
 #aboutExternal {
-    color: #6284A6;
+    color: #E1AD01;
     font-size: 18px;
     transition: 700ms ease;
     font-family: 'Inter', sans-serif;
@@ -579,7 +579,7 @@ img {
 }
 /*-------------------------------------------------*/
 
-#projectsText {
+#projects-text {
     color: #000000;
     font-size: 18px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -589,7 +589,7 @@ img {
     -moz-osx-font-smoothing: grayscale;
 }
 
-#projectsText:hover {
+#projects-text:hover {
     text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
     -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
     0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
@@ -705,7 +705,7 @@ img {
 }
 
 /*-------------------------------------------------*/
-#ReturnHomeText {
+#return-home {
     color:#000000;
     font-size: 18px;
     transition: 700ms ease;
@@ -719,13 +719,13 @@ img {
     -moz-osx-font-smoothing: grayscale;
 }
 
-#ReturnHomeText:hover {
+#return-home:hover {
     letter-spacing: 3px;
     font-variation-settings: "wght" 582;
 }
 /*-------------------------------------------------*/
 
-#menuTextInPersonalInformation {
+#go-back-to-menu {
     color:#000000;
     font-size: 18px;
     transition: 700ms ease;
@@ -739,12 +739,12 @@ img {
     -moz-osx-font-smoothing: grayscale;
 }
 
-#menuTextInPersonalInformation:hover {
+#go-back-to-menu:hover {
     letter-spacing: 3px;
     font-variation-settings: "wght" 582;
 }
 
-#personalInformationTextinPersonalInformationpage {
+#personal-option {
     color: #000000;
     font-size: 18px;
     transition: 700ms ease;
@@ -755,11 +755,11 @@ img {
     -moz-osx-font-smoothing: grayscale;
 }
 
-#personalInformationTextinPersonalInformationpage:hover {
+#personal-option:hover {
     color: #D3D3D3;
 }
 
-#resumeText {
+#resume-text {
     color: #000000;
     font-size: 18px;
     transition: 700ms ease;
@@ -770,7 +770,7 @@ img {
     -moz-osx-font-smoothing: grayscale;
 }
 
-#resumeText:hover {
+#resume-text:hover {
     color: #D3D3D3;
 }
 
@@ -807,23 +807,23 @@ img {
     color: #d3d3d3;
 }
 
-#instagramText {
+#instagram {
     color: #000000;
     font-size: 18px;
     transition: 700ms ease;
 }
 
-#instagramText:hover {
+#instagram:hover {
     color: #833AB4;
 }
 
-#instagramText2 {
+#instagram-2 {
     color: #000000;
     font-size: 18px;
     transition: 700ms ease;
 }
 
-#instagramText2:hover {
+#instagram-2:hover {
     color: #FCAF45;
 }
 
@@ -835,7 +835,7 @@ img {
     float: left;
 }
 
-#personalInformationBelowText {
+#links-below {
     color: #000000;
     font-size: 18px;
 }
@@ -882,3 +882,171 @@ footer {
   justify-content: center;
   align-items: center; /* Vertically center */
 }
+
+/*books gear text*/
+#blog-text {
+    color: #000000;
+    font-size: 18px;
+    transition: 700ms ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#blog-text:hover {
+    color: #D3D3D3;
+}
+
+#menu-text {
+    color: #000000;
+    font-size: 18px;
+    transition: 700ms ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#menu-text:hover {
+    color: #D3D3D3;
+}
+
+#about-menu-text {
+    color: #000000;
+    font-size: 18px;
+    transition: 700ms ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+}
+
+#about-menu-text:hover {
+    color: #E1AD01;
+}
+
+/* attempting box with shadow */
+.get-in-touch-box {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
+.get-in-touch-text {
+    text-align: center;
+    font-weight: 250;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%; /* Add this line */
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Add this line */
+}
+
+textarea {
+    width: 100%; /* Make the textarea extend from edge to edge horizontally */
+    min-height: 150px;
+    height: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.flex-container {
+    display: flex;
+    gap: 10px;
+}
+
+.flex-item {
+    flex: 1;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 25px; /* Increase the border-radius for a more rounded button */
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button[type="submit"]:hover {
+    background-color: #F2F3F4;
+}   
+
+#full-name {
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#email {
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#message {
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#submit-btn {
+    font-size: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#to-external {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    transition: 700ms ease;
+    line-height: 20pt;
+}
+
+#to-external:hover {
+    color: #D3D3D3;
+  }
