@@ -6,6 +6,14 @@ html {
     background-color: #FAF9F6;
 }
 
+.nav-list {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    line-height: 1.6;
+    white-space: nowrap;
+}
+
 #moving-text {
     position: absolute;
     padding-top: 1%;
