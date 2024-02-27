@@ -1,9 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;500&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Inter');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 html {
     background-color: #FAF9F6;
+}
+
+.lavender-image {
+    float: right;
+    width: 85%;
+    height: 45em; /* Set height to auto */
+    object-fit: cover; /* Maintain aspect ratio and fill container */
+    padding-left: 12%;
 }
 
 .nav-list {
@@ -80,7 +89,7 @@ figcaption {
   padding: 10px;
   text-align: center;
   font-family: serif;
-  font-size: 18px;
+  font-size: 1.125rem;
   opacity: 0;
   visibility: hidden;
   transition: 0.5s ease;
@@ -154,12 +163,12 @@ hr.solid {
   
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidenav a {font-size: 1.125rem;}
   }
 
 .navbartext {
     color: #FAF9F6;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -181,7 +190,7 @@ hr.solid {
 }
 .rw-words{
     display: inline-block;
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 /* previous coloe: #588157 */
@@ -222,7 +231,7 @@ hr.solid {
     80% { opacity: 0; max-width: 0; }
 }
 @media screen and (max-width: 768px){
-    .rw-sentence { font-size: 18px; }
+    .rw-sentence { font-size: 1.125rem; }
 }
 @media screen and (max-width: 320px){
     .rw-sentence { font-size: 9px; }
@@ -305,11 +314,11 @@ a {
 
 p {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 #homeText {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -319,7 +328,7 @@ p {
 
 #menuText {
     color:#000000;
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 #menuText:hover {
@@ -331,6 +340,17 @@ p {
 
 /*-------------------------------------------------*/
 
+.about-above-image {
+    float: left;
+    padding-left: 15%;
+    padding-right: 20%;
+    font-size: 3rem;
+    color: #000000;
+    margin-bottom: 7%;
+    margin-top: 5%;
+    font-family: 'Montserrat', sans-serif;
+}
+
 .fade {
     opacity: 0;
     transition: opacity 1s;
@@ -338,7 +358,7 @@ p {
 
 #aboutText {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -353,13 +373,13 @@ p {
 
 #aboutDiv {
     float: right;
-    width: 80%;
+    width: 77%;
     white-space: nowrap;
 }
 
 #aboutMidDiv {
     float: right;
-    width: 60%;
+    width: 57%;
     padding-right: 20%;
     overflow-wrap: break-word;
     hyphens: manual;
@@ -374,7 +394,7 @@ p {
 
 #aboutMidDivExperience {
     float: right;
-    width: 60%;
+    width: 57%;
     padding-right: 20%;
     overflow-wrap: break-word;
     hyphens: manual;
@@ -387,7 +407,7 @@ p {
 
 #aboutTextBio {
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: 1.125 rem;
     line-height: 20pt;
 }
 
@@ -398,13 +418,13 @@ p {
 
 #aboutExperience {
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: 1.125rem;
     line-height: 20pt;
 }
 
 #aboutExternal {
     color: #E1AD01;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
     font-family: 'Inter', sans-serif;
 }
@@ -415,7 +435,7 @@ p {
 
 #spotifyExternal {
     color: #1DB954;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
     font-family: 'Inter', sans-serif;
 }
@@ -482,7 +502,7 @@ img {
 
 #educationText {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
 }
 
@@ -522,7 +542,7 @@ img {
 
 .educationText {
     font-family: serif;
-    font-family: 18px;
+    font-family: 1.125rem;
     line-height: 25pt;
 }
 
@@ -532,7 +552,7 @@ img {
 
 #educationDate {
     font-family: serif;
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #000000;
 }
 
@@ -554,7 +574,7 @@ img {
 
 .educationIMGtext {
     font-family: serif;
-    font-size: 18px;
+    font-size: 1.125rem;
 
 }
 
@@ -562,7 +582,7 @@ img {
     font-style: italic;
     font-weight: bold;
     font-family: serif;
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 .boat {
@@ -589,7 +609,7 @@ img {
 
 #projects-text {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -699,7 +719,7 @@ img {
 
 #contactText {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -715,7 +735,7 @@ img {
 /*-------------------------------------------------*/
 #return-home {
     color:#000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
     font-variation-settings: "wght" 311;
     margin-bottom: 0.8rem;
@@ -735,7 +755,7 @@ img {
 
 #go-back-to-menu {
     color:#000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
     font-variation-settings: "wght" 311;
     margin-bottom: 0.8rem;
@@ -754,7 +774,7 @@ img {
 
 #personal-option {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -769,7 +789,7 @@ img {
 
 #resume-text {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -797,7 +817,7 @@ img {
 
 #linkedInText {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
 }
 
@@ -807,7 +827,7 @@ img {
 
 #githubText {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
 }
 
@@ -817,7 +837,7 @@ img {
 
 #instagram {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
 }
 
@@ -827,7 +847,7 @@ img {
 
 #instagram-2 {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
 }
 
@@ -845,12 +865,12 @@ img {
 
 #links-below {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 #emailText {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 600ms ease;
 }
 
@@ -870,7 +890,7 @@ footer {
 /* for blog.html */
 #blogText {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -885,7 +905,7 @@ footer {
 
 #work-in-progress {
   font-family: 'Roboto Mono', monospace;
-  font-size: 18px;
+  font-size: 1.125rem;
   display: flex;
   justify-content: center;
   align-items: center; /* Vertically center */
@@ -894,7 +914,7 @@ footer {
 /*books gear text*/
 #blog-text {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -909,7 +929,7 @@ footer {
 
 #menu-text {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -924,7 +944,7 @@ footer {
 
 #about-menu-text {
     color: #000000;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -1050,7 +1070,7 @@ button[type="submit"]:hover {
 
 #to-external {
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 700ms ease;
     line-height: 20pt;
 }
