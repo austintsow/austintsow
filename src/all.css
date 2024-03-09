@@ -7,6 +7,25 @@ html {
     background-color: #FAF9F6;
 }
 
+.name-box {
+    padding-top: 3%;
+    padding-left: 5%;
+    float: right;
+    padding-left: 82%;
+    position: fixed;
+}
+
+.inside-name-box {
+    color: #000000;
+    font-size: 1.125rem;
+    transition: 700ms ease;
+    font-family: Inter;
+}
+
+.inside-name-box:hover {
+    color: #E1AD01;
+}
+
 .lavender-image {
     float: right;
     width: 85%;
@@ -116,6 +135,7 @@ hr.solid {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    z-index: 1;
   }
   
   .sidenav a {
@@ -174,6 +194,10 @@ hr.solid {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+#mySidenav {
+    z-index: 1000;
 }
 /*-------------------------------------------------*/
 
@@ -344,10 +368,13 @@ p {
     float: left;
     padding-left: 15%;
     padding-right: 20%;
-    font-size: 3rem;
-    color: #000000;
     margin-bottom: 7%;
     margin-top: 5%;
+}
+
+.about-above-image-text {
+    font-size: 4rem;
+    color: #000000;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -963,7 +990,7 @@ footer {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #FAF9F6;
     border-radius: 10px;
     box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
@@ -992,7 +1019,7 @@ input[type="email"],
 textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #FAF9F6;
     border-radius: 5px;
     box-sizing: border-box; /* Add this line */
 }
@@ -1002,7 +1029,7 @@ textarea {
     min-height: 150px;
     height: auto;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #FAF9F6;
     border-radius: 5px;
     resize: vertical;
 }
@@ -1020,7 +1047,7 @@ button[type="submit"] {
     padding: 10px 20px;
     background-color: transparent;
     color: black;
-    border: 1px solid #ccc;
+    border: 1px solid #FAF9F6;
     border-radius: 25px; /* Increase the border-radius for a more rounded button */
     cursor: pointer;
     display: block;

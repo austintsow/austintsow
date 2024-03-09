@@ -78,13 +78,17 @@ setTimeout(function() {
 */
 document.addEventListener('DOMContentLoaded', function() {
   var container = document.querySelector('.container');
+  /*var nameBox = document.querySelector('.name-box');*/
   
   container.style.opacity = '0';
+  /*nameBox.style.opacity = '0';*/
 
   container.style.transition = 'opacity 1s ease-in';
+  /*nameBox.style.transition = 'opacity 1s ease-in';*/
 
   setTimeout(function() {
       container.style.opacity = '1';
+      /*nameBox.style.opacity = '1';*/
   }, 100);
 });
 
