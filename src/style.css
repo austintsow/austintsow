@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css?family=Inter');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+/* Add this at the end of your style.css */
+@keyframes verticalPopIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .text-pop-in {
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-name: verticalPopIn;
+    /* Duration and delay will be dynamically set by JavaScript, as before */
+  }
+  
+  
+
+html {
+    background-color: white;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: white;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 3vh 5vw; /* Adjust these values as needed */
+    position: fixed;
+    width: 90vw; /* Adjust based on your design */
+    z-index: 1000;
+}
+
+.name-box, .about {
+    position: fixed;
+    position: static;
+}
+
+.name-box {
+    padding-top: 3vh;
+    padding-left: 5vw;
+    float: left;
+    position: fixed;
+    z-index: 1000;
+}
+
+.inside-name-box {
+    font-family: Inter;
+    color: #000000;
+    font-size: 2.5vh;
+    transition: 700ms ease;
+    font-family: Inter;
+}
+
+.inside-name-box:hover {
+    color: #E1AD01;
+}
+
+.link-separator {
+    display: inline-block;
+    width: 20px;
+}
+
+.about-top-right {
+    font-family: Inter;
+    color: #000000;
+    font-size: 2.5vh;
+    transition: 700ms ease;
+    font-family: Inter;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-top-right:hover {
+    color: #d3d3d3;
+}
+
+.resume-top-right {
+    font-family: Inter;
+    color: #000000;
+    font-size: 2.5vh;
+    transition: 700ms ease;
+    font-family: Inter;
+    position: relative;
+    overflow: hidden;
+}
+
+.resume-top-right:hover {
+    color: #0A66C2;
+}
+
+.about {
+    padding-top: 3vh;
+    right: 5vw;
+    position: fixed;
+    z-index: 999;
+}
+/*
+.about span {
+    text-decoration: none;
+    color: #000000;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.about span:hover {
+    color: #000000;
+}
+*/
+
+.inside-about {
+    font-family: Inter;
+    color: #000000;
+    font-size: 2.5vh;
+    transition: 700ms ease;
+    font-family: Inter;
+    position: relative;
+    overflow: hidden;
+}
+
+/*
+.about span::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.about span:hover::before {
+    transform: scaleX(1);
+    visibility: visible;
+    transform-origin: left;
+    width: 100%;
+}
+*/
+
+.header-div {
+    padding-left: 5vw;
+    padding-top: 8vh;
+    padding-right: 20vw;
+    max-width: 1000px;
+    height: 100vh;
+}
+
+.header-text {
+    font-size: 7vh;
+    color: #000000;
+    font-family: Inter;
+}
+
+.hello {
+    color: #E1AD01;
+}
+
+.footer-div {
+    background-color: #1f1f1f;
+    display: flex;
+    padding-left: 6rem;
+    padding-top: 7rem;
+    width: 100%;
+    height: 100vh;
+    flex-wrap: wrap;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.about-header-div {
+    padding-left: 25vw;
+    padding-right: 20vw;
+    padding-top: 5vh;
+    padding-bottom: 2vh;
+    background-color: white;
+    max-width: 700px;
+}
+
+.about-header-text {
+    font-size: 4vh;
+    color: #000000;
+    font-family: Inter;
+}
+
+.about-text {
+    font-size: 2.25vh;
+    color: #000000;
+    font-family: Poppins;
+    font-weight: thin;
+    line-height: 3.25vh;
+}
+
+.lavender-div {
+    padding-left: 23vw;
+    padding-right: 15vw;
+    padding-bottom: 2vh;
+    justify-content: center;
+    max-width: 800px;
+}
+
+.lavender-image {
+    width: 100%;
+    height: 100%;
+}
+
+.education {
+    font-size: 4vh;
+    color: #000000;
+    font-family: Inter;
+}
+
+.sub-header-div {
+    padding-left: 25vw;
+    padding-right: 15vw;
+    padding-top: 1vh;
+    padding-bottom: 5vh;
+    background-color: white;
+    max-width: 800px;
+    justify-content: center;
+}
+
+.education-school {
+    font-size: 2.75vh;
+    color: #000000;
+    font-family: Inter;
+    line-height: 1vh;
+}
+
+.education-degree {
+    font-size: 2vh;
+    color: #000000;
+    font-family: Inter;
+    line-height: 2vh;
+}
+
+.education-specifics {
+    font-size: 1.8vh;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 0vh;
+}
+
+.education-date {
+    font-size: 1.8vh;
+    color: #A9A9A9;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1vh;
+}
+
+/*debugging, showing div spaces*/
+/*
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    outline: 1px solid red;
+}
+*/
+
+.animate-character {
+    font-family: Inter;
+    background-image: linear-gradient(
+        -225deg,
+        #ead1a8 0%,
+        #d3d3d3 29%,
+        #9db8d4 67%,
+        #ead1a8 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  /*text-fill-color: transparent;*/
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+    font-size: 7vh;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@media screen and (max-width: 700px) {
+    .inside-name-box, .resume-top-right, .about-top-right {
+        font-size: 4.5vw;
+    }
+    .inside-about {
+        font-size: 4.5vw;
+    }
+    .header-text {
+        font-size: 7vw;
+    }
+    .about-header-div {
+        margin: 0;
+        padding-left: 1vw;
+        padding-right: 1vw;
+    }
+    .about-header-text {
+        font-size: 6vw;
+    }
+    .about-text {
+        font-size: 4vw;
+    }
+    .lavender-div {
+        padding-left: 1vw;
+        padding-right: 1vw;
+    }
+    .sub-header-div {
+        padding-left: 1vw;
+        padding-right: 1vw;
+    }
+    .animate-character {
+        font-size: 7vw;
+    }
+}
