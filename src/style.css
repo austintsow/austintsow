@@ -64,10 +64,6 @@ body {
     overflow: hidden;
 }
 
-.about-top-right:hover {
-    color: #d3d3d3;
-}
-
 .resume-top-right {
     font-family: Inter;
     color: #000000;
@@ -76,10 +72,6 @@ body {
     font-family: Inter;
     position: relative;
     overflow: hidden;
-}
-
-.resume-top-right:hover {
-    color: #9CAF88;
 }
 
 .about {
@@ -402,7 +394,7 @@ a {
     }
     .email-text, .email-text2, .linkedin-text, .github-text {
         font-size: 5vw;
-        line-height: 3vh;
+        line-height: 5vh;
     }
 }
 

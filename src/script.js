@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
 function copyEmail() {
-  const emailElement = document.querySelector('.email-text1');
+  const emailElement = document.querySelector('.email-text');
   const email = emailElement.textContent || emailElement.innerText;
   navigator.clipboard.writeText(email).then(() => {
     emailElement.textContent = "email copied";
@@ -48,4 +48,25 @@ function copyEmail2() {
     console.error('failed to copy: ', err);
   });
 }
-  
+
+document.querySelector('.about-top-right').addEventListener('mouseenter', function() {
+  const hue = Math.floor(Math.random() * 360);
+  const saturation = Math.floor(Math.random() * 20) + 60;
+  const lightness = Math.floor(Math.random() * 20) + 70;
+  this.style.color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+});
+
+document.querySelector('.about-top-right').addEventListener('mouseleave', function() {
+  this.style.color = '';
+});
+
+document.querySelector('.resume-top-right').addEventListener('mouseenter', function() {
+  const hue = Math.floor(Math.random() * 360);
+  const saturation = Math.floor(Math.random() * 20) + 60;
+  const lightness = Math.floor(Math.random() * 20) + 70;
+  this.style.color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+});
+
+document.querySelector('.resume-top-right').addEventListener('mouseleave', function() {
+  this.style.color = '';
+});
