@@ -23,3 +23,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
+function copyEmail() {
+  const emailElement = document.querySelector('.email-text1');
+  const email = emailElement.textContent || emailElement.innerText;
+  navigator.clipboard.writeText(email).then(() => {
+    emailElement.textContent = "email copied";
+    setTimeout(() => {
+      emailElement.textContent = email;
+    }, 3000);
+  }, (err) => {
+    console.error('failed to copy: ', err);
+  });
+}
+
+function copyEmail2() {
+  const emailElement = document.querySelector('.email-text2');
+  const email = emailElement.textContent || emailElement.innerText;
+  navigator.clipboard.writeText(email).then(() => {
+    emailElement.textContent = "email copied";
+    setTimeout(() => {
+      emailElement.textContent = email;
+    }, 3000);
+  }, (err) => {
+    console.error('failed to copy: ', err);
+  });
+}
+  

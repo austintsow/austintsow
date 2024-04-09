@@ -1,27 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Inter');
 @import url('https://fonts.googleapis.com/css?family=Poppins');
-
-/* Add this at the end of your style.css */
-@keyframes verticalPopIn {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .text-pop-in {
-    opacity: 0;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
-    animation-name: verticalPopIn;
-    /* Duration and delay will be dynamically set by JavaScript, as before */
-  }
-  
-  
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 html {
     background-color: white;
@@ -100,7 +79,7 @@ body {
 }
 
 .resume-top-right:hover {
-    color: #0A66C2;
+    color: #9CAF88;
 }
 
 .about {
@@ -213,7 +192,8 @@ a {
 .lavender-div {
     padding-left: 23vw;
     padding-right: 15vw;
-    padding-bottom: 2vh;
+    padding-bottom: 0vh;
+    padding-top: 1.5vh;
     justify-content: center;
     max-width: 800px;
 }
@@ -223,10 +203,11 @@ a {
     height: 100%;
 }
 
-.education {
+.sub-sub-header {
+    padding-top: 1vh;
     font-size: 4vh;
     color: #000000;
-    font-family: Inter;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .sub-header-div {
@@ -260,13 +241,91 @@ a {
     line-height: 0vh;
 }
 
-.education-date {
+.small-gray-text {
     font-size: 1.8vh;
     color: #A9A9A9;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1vh;
+    font-weight: lighter !important;
 }
 
+.email-text {
+    font-size: 2.75vh;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 700ms ease;
+    line-height: 5vh;
+}
+
+.email-text:hover {
+    color: #E1AD01;
+}
+
+.email-text2 {
+    font-size: 4vh;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 700ms ease;
+    font-weight: bold;
+    line-height: 5vh;
+}
+
+.email-text2:hover {
+    color: #E1AD01;
+}
+
+.linkedin-text {
+    font-size: 2.75vh;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 700ms ease;
+    line-height: 5vh;
+}
+
+.linkedin-text:hover {
+    color: #0A66C2;
+}
+
+.github-text {
+    font-size: 2.75vh;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 700ms ease;
+    line-height: 5vh;
+}
+
+.github-text:hover {
+    color: #d3d3d3;
+}
+
+#email {
+    cursor: pointer;
+}
+
+.footer {
+    color: #000000;
+    font-size: 1vh;
+    font-family: Roboto Mono;
+    text-align: center;
+}
+
+.home-footer-text {
+    font-size: 2vh;
+    color: #1f1f1f;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1vh;
+}
+
+.footer-separator {
+    display: inline-block;
+    height: 10vh;
+}
+
+.footer-separator2 {
+    display: inline-block;
+    height: 5vh;
+}
+  
 /*debugging, showing div spaces*/
 /*
 *, *::before, *::after {
@@ -318,8 +377,8 @@ a {
     }
     .about-header-div {
         margin: 0;
-        padding-left: 1vw;
-        padding-right: 1vw;
+        padding-left: 2.75vw;
+        padding-right: 2.75vw;
     }
     .about-header-text {
         font-size: 6vw;
@@ -338,4 +397,30 @@ a {
     .animate-character {
         font-size: 7vw;
     }
+    .sub-sub-header {
+        font-size: 6vw;
+    }
+    .email-text, .email-text2, .linkedin-text, .github-text {
+        font-size: 5vw;
+        line-height: 3vh;
+    }
 }
+
+@keyframes verticalPopIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+  
+.text-pop-in {
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-name: verticalPopIn;
+}
+ 
