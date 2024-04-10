@@ -1,3 +1,4 @@
+//accordion
 var acc = document.getElementsByClassName("accordion");
 var i;
 
@@ -13,6 +14,7 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
+//animate text when loaded
 document.addEventListener('DOMContentLoaded', () => {
     const elements = document.querySelectorAll('.text-pop-in');
     elements.forEach((el, index) => {
@@ -22,7 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
       el.classList.add('animated');
     });
   });
-  
+
+//copy email 1
 function copyEmail() {
   const emailElement = document.querySelector('.email-text');
   const email = emailElement.textContent || emailElement.innerText;
@@ -36,6 +39,7 @@ function copyEmail() {
   });
 }
 
+//copy email 2
 function copyEmail2() {
   const emailElement = document.querySelector('.email-text2');
   const email = emailElement.textContent || emailElement.innerText;
@@ -49,6 +53,7 @@ function copyEmail2() {
   });
 }
 
+//random color on hover
 document.querySelector('.about-top-right').addEventListener('mouseenter', function() {
   const hue = Math.floor(Math.random() * 360);
   const saturation = Math.floor(Math.random() * 20) + 60;
@@ -70,3 +75,27 @@ document.querySelector('.resume-top-right').addEventListener('mouseenter', funct
 document.querySelector('.resume-top-right').addEventListener('mouseleave', function() {
   this.style.color = '';
 });
+
+//date
+function updateTime() {
+  let date = new Date();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let seconds = date.getSeconds();
+  let ampm = hours >= 12 ? 'PM' : 'AM';
+
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+  seconds = seconds < 10 ? '0' + seconds : seconds;
+  
+  const timezoneAbbreviation = 'PST';
+
+  let timeString = `${hours}:${minutes}:${seconds} ${ampm} ${timezoneAbbreviation}`;
+
+  document.getElementById('time-element').textContent = timeString;
+}
+
+setInterval(updateTime, 1000);
+updateTime();
