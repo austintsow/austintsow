@@ -304,11 +304,10 @@ a {
 
 
 .linkedin-text {
-    font-size: 2.75vh;
+    font-size: 2vh;
     color: #000000;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     transition: 700ms ease;
-    line-height: 5vh;
 }
 
 .linkedin-text:hover {
@@ -316,15 +315,25 @@ a {
 }
 
 .github-text {
-    font-size: 2.75vh;
+    font-size: 2vh;
     color: #000000;
     font-family: Arial, Helvetica, sans-serif;
     transition: 700ms ease;
-    line-height: 5vh;
 }
 
 .github-text:hover {
     color: #d3d3d3;
+}
+
+.instagram-text {
+    font-size: 2vh;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 700ms ease;
+}
+
+.instagram-text:hover {
+    color: #833AB4;
 }
 
 #email {
@@ -333,7 +342,7 @@ a {
 
 .footer {
     color: white;
-    font-size: 1.5vh;
+    font-size: 2vh;
     font-family: 'Open Sans', sans-serif;
     text-align: center;
     display: flex;
@@ -466,12 +475,19 @@ a {
     .home-footer-text {
         font-size: 3vw;
     }
-    .email-text, .email-text2, .linkedin-text, .github-text {
+    .email-text, .email-text2 {
         font-size: 5vw;
         line-height: 5vh;
     }
     .footer-separator2 {
         height: 1vh;
+    }
+    .footer-email-div {
+        padding-left: 1vw;
+        padding-right: 1vw;
+    }
+    .footer, .linkedin-text, .github-text, .instagram-text {
+        font-size: 1.95vw;
     }
 }
 
