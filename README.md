@@ -1,2 +1,2 @@
-# welcome to my portfolio
-* hello, i am austin tsow! feel free to click around.
+# hello, world! i'm austin tsow
+welcome to my digital sandbox, feel free to click around.
