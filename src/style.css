@@ -562,4 +562,13 @@ a {
     animation-timing-function: ease-out;
     animation-name: verticalPopIn;
 }
- 
+
+.cursor-style {
+    position: fixed;
+    z-index: 9999; /* high z-index to ensure visibility */
+    width: 30px; /* or your desired size */
+    height: 30px;
+    border-radius: 50%; /* circular cursor */
+    background-color: #BCE4F2; /* ensure this color is visible against your app's background */
+  }
+  
