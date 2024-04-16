@@ -137,6 +137,32 @@ requestAnimationFrame(animateCursor);
 
 cursor.style.background = '#E0E0E0';
 
+// blend mix
 document.getElementById('insideNameBox').style.color = '#FFFFFF';
 document.getElementById('aboutTopRight').style.color = '#FFFFFF';
 document.getElementById('resumeTopRight').style.color = '#FFFFFF';
+
+// name hover
+document.addEventListener('DOMContentLoaded', function() {
+  const nameLink = document.getElementById('insideNameBox');
+  
+  nameLink.addEventListener('mouseenter', function() {
+      fadeText(this, "austin tsow");
+  });
+  
+  nameLink.addEventListener('mouseleave', function() {
+      fadeText(this, "code by austin");
+  });
+
+  function fadeText(element, newText) {
+      element.classList.add('fade-out');
+      setTimeout(function() {
+          element.textContent = newText;
+          element.classList.remove('fade-out');
+          element.classList.add('fade-in');
+          setTimeout(function() {
+              element.classList.remove('fade-in');
+          }, 500);
+      }, 500);
+  }
+});

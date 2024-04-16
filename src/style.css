@@ -42,13 +42,25 @@ body {
 .inside-name-box {
     font-family: Inter;
     font-size: 2.5vh;
-    transition: 700ms ease;
-    font-family: Inter;
+    transition: opacity 0.5s ease; /* Transition for opacity */
+    display: inline-block; /* Ensure it can transition properly */
 }
 
-.inside-name-box:hover {
-    color: #E1AD01;
+/* Hide the text initially with opacity */
+.inside-name-box.fade-out,
+.inside-name-box.fade-in {
+    opacity: 0;
 }
+
+/* Show the text by setting opacity to 1 */
+.inside-name-box.fade-in {
+    opacity: 1;
+}
+
+
+/* .inside-name-box:hover {
+    transform: translateX(-100%);
+} */
 
 .link-separator {
     display: inline-block;
@@ -576,5 +588,5 @@ a {
     pointer-events: none;
     z-index: 9999;
     mix-blend-mode: difference;
-  }
+}
   
