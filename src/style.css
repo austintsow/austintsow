@@ -572,7 +572,6 @@ a {
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 9999;
-    transition: background 1s ease;
     mix-blend-mode: difference;
   }
   
