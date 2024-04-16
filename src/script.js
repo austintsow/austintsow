@@ -99,3 +99,40 @@ function updateTime() {
 
 setInterval(updateTime, 1000);
 updateTime();
+
+// cursor
+const cursor = document.getElementById('customCursor');
+let mouseX = 0;
+let mouseY = 0;
+let cursorX = 0;
+let cursorY = 0;
+const speed = 0.095; // smoothness of cursor (lower value is smoother)
+let isCursorInitialized = false;
+
+// initially hide the cursor
+cursor.style.display = 'none';
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+
+  if (!isCursorInitialized) {
+    // directly jump to the initial mouse position and reveal the cursor
+    cursorX = mouseX;
+    cursorY = mouseY;
+    cursor.style.transform = `translate3d(${cursorX - (cursor.clientWidth / 2)}px, ${cursorY - (cursor.clientHeight / 2)}px, 0)`;
+    cursor.style.display = 'block';
+    isCursorInitialized = true;
+  }
+});
+
+function animateCursor() {
+  cursorX += (mouseX - cursorX) * speed;
+  cursorY += (mouseY - cursorY) * speed;
+  cursor.style.transform = `translate3d(${cursorX - (cursor.clientWidth / 2)}px, ${cursorY - (cursor.clientHeight / 2)}px, 0)`;
+  requestAnimationFrame(animateCursor);
+}
+
+requestAnimationFrame(animateCursor);
+
+cursor.style.background = '#E0E0E0';

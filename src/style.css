@@ -14,6 +14,7 @@ body {
     color: white;
     max-width: 100vw;
     overflow-x: hidden;
+    /* cursor: none; */
 }
 
 .top-bar {
@@ -476,7 +477,7 @@ a {
         font-size: 3vw;
     }
     .email-text, .email-text2 {
-        font-size: 5vw;
+        font-size: 6vh;
         line-height: 5vh;
     }
     .footer-separator2 {
@@ -563,12 +564,15 @@ a {
     animation-name: verticalPopIn;
 }
 
-.cursor-style {
-    position: fixed;
-    z-index: 9999; /* high z-index to ensure visibility */
-    width: 30px; /* or your desired size */
+.custom-cursor {
+    width: 30px;
     height: 30px;
-    border-radius: 50%; /* circular cursor */
-    background-color: #BCE4F2; /* ensure this color is visible against your app's background */
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    transition: background 1s ease;
+    mix-blend-mode: difference;
   }
   
