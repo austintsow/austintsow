@@ -195,6 +195,13 @@ a {
     font-weight: thin;
 }
 
+.photos-js {
+    font-size: 1.75vh;
+    color: #7BAFD4;
+    font-family: Roboto Mono;
+    font-weight: thin;
+}
+
 .image-div {
     padding-left: 23vw;
     padding-right: 15vw;
