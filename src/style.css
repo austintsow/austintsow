@@ -195,6 +195,15 @@ a {
     font-weight: thin;
 }
 
+.ipcrx-link {
+    font-size: 2.25vh;
+    color: #000000;
+    font-family: Poppins;
+    font-weight: thin;
+    transition: 700ms ease;
+    line-height: 5vh;
+}
+
 .photos-js {
     font-size: 1.75vh;
     color: #7BAFD4;
