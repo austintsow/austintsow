@@ -1,0 +1,106 @@
+.home {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+    padding: 20px;
+}
+
+body.home-scroll-lock {
+    overflow: hidden; /* Disable scrolling for the body */
+    height: 100vh;    /* Lock body height to the viewport */
+}
+
+html {
+    height: 100%; /* Ensure the HTML element is restricted */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 5%;
+}
+  
+header .logo {
+    font-size: 1.25rem;
+    font-weight: 200;
+    margin: 0;
+    text-transform: lowercase;
+}
+  
+header ul {
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+  
+header li {
+    display: inline;
+    margin-left: 0;
+    font-size: 1.25rem;
+    font-weight: 200;
+}
+
+header li::after {
+    content: ",";
+    margin-right: 5px;
+}
+
+header li:last-child::after {
+    content: "";
+}
+  
+.main-text {
+    align-self: center;
+    justify-self: start;
+    margin-left: 10%;
+    margin-top: 16%;
+    /* transform: translateY(50%); */
+    font-size: 1rem;
+    line-height: 1.2;
+    text-align: left;
+}
+  
+.main-text .highlight {
+    color: orange;
+    font-weight: 500;
+}
+
+.main-text .hello {
+    font-weight: 200;
+}
+
+.redesign-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    font-size: 1rem;
+    font-weight: 300;
+    text-align: center;
+    text-transform: lowercase;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:5%;
+}
+
+footer .blog {
+    position: absolute;
+    font-size: 1rem;
+    font-weight: 200;
+    text-transform: lowercase;
+    bottom: 5%;
+}
+
+footer .clock {
+    position: absolute;
+    bottom: 5%;
+    right: 6.5%;
+    font-size: 1rem;
+    font-weight: 200;
+    text-transform: lowercase;
+}
