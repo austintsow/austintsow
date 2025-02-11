@@ -4,7 +4,14 @@ import "./Home.css";
 import Clock from "./Clock";
 
 function Home() {
-    const [dots, setDots] = useState("");
+    const [firstLine, setFirstLine] = useState("");
+    const [secondLine, setSecondLine] = useState("");
+    const [highlightedName, setHighlightedName] = useState("");
+    const [showCaret, setShowCaret] = useState(true);
+
+    const firstPart = "hi, my";
+    const secondPart = "name is ";
+    const thirdPart = "austin"; // This will be typed in highlight color
 
     useEffect(() => {
         document.body.classList.add("home-scroll-lock");
@@ -14,17 +21,47 @@ function Home() {
         };
     }, []);
 
-    // Loading animation for status: updating...
     useEffect(() => {
-        const dotCycle = ["", ".", "..", "..."];
         let index = 0;
 
-        const interval = setInterval(() => {
-            setDots(dotCycle[index]);
-            index = (index + 1) % dotCycle.length;
-        }, 500); // Change every 500ms
+        const typingInterval = setInterval(() => {
+            if (index < firstPart.length) {
+                setFirstLine(firstPart.substring(0, index + 1));
+                index++;
+            } else {
+                clearInterval(typingInterval);
 
-        return () => clearInterval(interval);
+                // Start typing the second line after a short delay
+                setTimeout(() => {
+                    let secondIndex = 0;
+                    const secondTypingInterval = setInterval(() => {
+                        if (secondIndex < secondPart.length) {
+                            setSecondLine(secondPart.substring(0, secondIndex + 1));
+                            secondIndex++;
+                        } else {
+                            clearInterval(secondTypingInterval);
+
+                            // Start typing "austin" in highlight color
+                            setTimeout(() => {
+                                let thirdIndex = 0;
+                                const thirdTypingInterval = setInterval(() => {
+                                    if (thirdIndex < thirdPart.length) {
+                                        setHighlightedName(thirdPart.substring(0, thirdIndex + 1));
+                                        thirdIndex++;
+                                    } else {
+                                        clearInterval(thirdTypingInterval);
+                                        // Keep caret blinking for 2 seconds after full animation
+                                        setTimeout(() => setShowCaret(false), 2500);
+                                    }
+                                }, 150); // Typing speed for "austin"
+                            }, 300); // Slight pause before typing "austin"
+                        }
+                    }, 150); // Typing speed for "name is"
+                }, 500); // Pause before second line starts
+            }
+        }, 150); // Typing speed for first line
+
+        return () => clearInterval(typingInterval);
     }, []);
 
     return (
@@ -48,15 +85,19 @@ function Home() {
             <main>
                 <div className="main-text">
                     <h1 className="hello">
-                        hi, my <br /> name is <span className="highlight">austin</span>
+                        {firstLine}
+                        {firstLine.length === firstPart.length && <br />}
+                        {secondLine}
+                        <span className="highlight">{highlightedName}</span>
+                        {showCaret && <span className="caret">|</span>}
                     </h1>
                 </div>
-                <div className="redesign-text">
-                    [status: updating{dots}]
+                <div className="center-text">
+                    [feel free to click or tap around]
                 </div>
             </main>
             <footer>
-                <div className="blog">blog</div>
+                <div className="buddy">buddy</div>
                 <Clock />
             </footer>
         </div>

@@ -52,7 +52,7 @@ function About() {
                 <motion.section 
                     className="about-text"
                     initial={{ opacity: 0, color: "rgba(128, 128, 128, 0)" }} 
-                    animate={{ opacity: 1, color: "rgba(128, 128, 128, 1)" }} 
+                    animate={{ opacity: 1, color: "rgba(195, 195, 195)" }} 
                     transition={{ duration: 1.5 }}
                 >
                     {text.map((paragraph, pIndex) => {
