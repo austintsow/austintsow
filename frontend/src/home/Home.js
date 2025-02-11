@@ -1,27 +1,47 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Home.css";
 import Clock from "./Clock";
 
 function Home() {
+    const [dots, setDots] = useState("");
+
     useEffect(() => {
-        // Add class to lock scrolling when Home is mounted
         document.body.classList.add("home-scroll-lock");
 
-        // Remove the class when Home is unmounted
         return () => {
             document.body.classList.remove("home-scroll-lock");
         };
     }, []);
 
+    // Loading animation for status: updating...
+    useEffect(() => {
+        const dotCycle = ["", ".", "..", "..."];
+        let index = 0;
+
+        const interval = setInterval(() => {
+            setDots(dotCycle[index]);
+            index = (index + 1) % dotCycle.length;
+        }, 500); // Change every 500ms
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <div className="home">
             <header>
-                <div className="logo">austin tsow</div>
+                <div className="logo">
+                    <Link to="/">austin tsow</Link>
+                </div>
                 <nav>
                     <ul>
-                        <li>projects</li>
-                        <li>about</li>
-                        <li>contact</li>
+                        <li>
+                            <a href="/AustinTsow2025.pdf" target="_blank" rel="noopener noreferrer">
+                                resume
+                            </a>
+                        </li>
+                        <li><Link to="/about">about</Link></li>
+                        <li><Link to="/contact">contact</Link></li>
                     </ul>
                 </nav>
             </header>
@@ -32,7 +52,7 @@ function Home() {
                     </h1>
                 </div>
                 <div className="redesign-text">
-                    [status: redesign process]
+                    [status: updating{dots}]
                 </div>
             </main>
             <footer>

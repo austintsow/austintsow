@@ -1,0 +1,82 @@
+.about {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+    padding: 20px;
+    background-color: white;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-left: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 5%;
+}
+
+header .logo {
+    font-size: 1.25rem;
+    font-weight: 200;
+    text-transform: lowercase;
+}
+
+header ul {
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+header li {
+    display: inline;
+    margin-left: 0;
+    font-size: 1.25rem;
+    font-weight: 200;
+}
+
+header li::after {
+    content: ",";
+    margin-right: 5px;
+}
+
+header li:last-child::after {
+    content: "";
+}
+
+.about-text {
+    width: 50%;
+    margin-left: 10%;
+    margin-top: 5%;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .about-text {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.about-text p {
+    margin-bottom: 20px;
+}
+
+.about-text strong {
+    font-weight: bold;
+}

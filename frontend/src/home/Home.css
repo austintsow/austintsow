@@ -5,6 +5,26 @@
     padding: 20px;
 }
 
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-left: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
 body.home-scroll-lock {
     overflow: hidden; /* Disable scrolling for the body */
     height: 100vh;    /* Lock body height to the viewport */
@@ -90,7 +110,7 @@ footer {
 
 footer .blog {
     position: absolute;
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: 200;
     text-transform: lowercase;
     bottom: 5%;
@@ -100,7 +120,7 @@ footer .clock {
     position: absolute;
     bottom: 5%;
     right: 6.5%;
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: 200;
     text-transform: lowercase;
 }
