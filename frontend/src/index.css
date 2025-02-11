@@ -18,3 +18,11 @@ code {
 html {
   height: 100%;
 }
+
+body {
+  cursor: crosshair;
+}
+
+nav ul li a {
+  cursor: pointer;
+}
