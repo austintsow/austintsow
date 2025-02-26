@@ -10,6 +10,7 @@ function Home() {
     const [showCaret, setShowCaret] = useState(true);
     const [welcomeIndex, setWelcomeIndex] = useState(0);
     const [animationComplete, setAnimationComplete] = useState(false);
+    const [mainTextVisible, setMainTextVisible] = useState(false);
 
     const firstPart = "hi, my";
     const secondPart = "name is ";
@@ -32,7 +33,36 @@ function Home() {
         };
     }, []);
 
+    // Control welcome animation
     useEffect(() => {
+        // Skip the animation if we've already completed it
+        if (animationComplete) return;
+        
+        const welcomeInterval = setInterval(() => {
+            setWelcomeIndex((prevIndex) => {
+                // If we've cycled through all messages, set animation complete
+                if (prevIndex === welcomeMessages.length - 1) {
+                    clearInterval(welcomeInterval);
+                    setAnimationComplete(true);
+                    
+                    // After welcome animation completes and "welcome." is displayed,
+                    // trigger main text to appear after a delay
+                    setTimeout(() => {
+                        setMainTextVisible(true);
+                        startTypingAnimation();
+                    }, 1000);
+                    
+                    return prevIndex;
+                }
+                return prevIndex + 1;
+            });
+        }, 1000); // Change language every 1 second
+
+        return () => clearInterval(welcomeInterval);
+    }, [animationComplete, welcomeMessages.length]);
+
+    // Function to handle typing animation
+    const startTypingAnimation = () => {
         let index = 0;
 
         const typingInterval = setInterval(() => {
@@ -71,32 +101,11 @@ function Home() {
                 }, 500); // Pause before second line starts
             }
         }, 150); // Typing speed for first line
-
-        return () => clearInterval(typingInterval);
-    }, []);
-
-    useEffect(() => {
-        // Skip the animation if we've already completed it
-        if (animationComplete) return;
-        
-        const welcomeInterval = setInterval(() => {
-            setWelcomeIndex((prevIndex) => {
-                // If we've cycled through all messages, set animation complete
-                if (prevIndex === welcomeMessages.length - 1) {
-                    clearInterval(welcomeInterval);
-                    setAnimationComplete(true);
-                    return prevIndex;
-                }
-                return prevIndex + 1;
-            });
-        }, 2000); // Change language every 2 seconds
-
-        return () => clearInterval(welcomeInterval);
-    }, [animationComplete, welcomeMessages.length]);
+    };
 
     return (
         <div className="home">
-            <header>
+            <header className={mainTextVisible ? "fade-in visible" : "fade-in"}>
                 <div className="logo">
                     <Link to="/">austin tsow</Link>
                 </div>
@@ -113,7 +122,7 @@ function Home() {
                 </nav>
             </header>
             <main>
-                <div className="main-text">
+                <div className={mainTextVisible ? "main-text fade-in visible" : "main-text fade-in"}>
                     <h1 className="hello">
                         {firstLine}
                         {firstLine.length === firstPart.length && <br />}
@@ -128,8 +137,10 @@ function Home() {
                     </div>
                 </div>
             </main>
-            <footer>
-                <div className="blog">blog</div>
+            <footer className={mainTextVisible ? "fade-in visible" : "fade-in"}>
+                <div className="applyied">
+                    <a href="http://applyied.com" target="_blank" rel="noopener noreferrer">applyied</a>
+                </div>
                 <Clock />
             </footer>
         </div>
