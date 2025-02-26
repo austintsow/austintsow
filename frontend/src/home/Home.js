@@ -8,10 +8,21 @@ function Home() {
     const [secondLine, setSecondLine] = useState("");
     const [highlightedName, setHighlightedName] = useState("");
     const [showCaret, setShowCaret] = useState(true);
+    const [welcomeIndex, setWelcomeIndex] = useState(0);
+    const [animationComplete, setAnimationComplete] = useState(false);
 
     const firstPart = "hi, my";
     const secondPart = "name is ";
-    const thirdPart = "austin"; // This will be typed in highlight color
+    const thirdPart = "austin";
+    
+    // Welcome messages in different languages
+    const welcomeMessages = [
+        "Welcome", // English
+        "欢迎", // Mandarin
+        "Bienvenue", // French
+        "Bienvenido", // Spanish
+        "환영합니다" // Korean
+    ];
 
     useEffect(() => {
         document.body.classList.add("home-scroll-lock");
@@ -64,6 +75,25 @@ function Home() {
         return () => clearInterval(typingInterval);
     }, []);
 
+    useEffect(() => {
+        // Skip the animation if we've already completed it
+        if (animationComplete) return;
+        
+        const welcomeInterval = setInterval(() => {
+            setWelcomeIndex((prevIndex) => {
+                // If we've cycled through all messages, set animation complete
+                if (prevIndex === welcomeMessages.length - 1) {
+                    clearInterval(welcomeInterval);
+                    setAnimationComplete(true);
+                    return prevIndex;
+                }
+                return prevIndex + 1;
+            });
+        }, 2000); // Change language every 2 seconds
+
+        return () => clearInterval(welcomeInterval);
+    }, [animationComplete, welcomeMessages.length]);
+
     return (
         <div className="home">
             <header>
@@ -93,7 +123,9 @@ function Home() {
                     </h1>
                 </div>
                 <div className="center-text">
-                    [feel free to click or tap around]
+                    <div className={animationComplete ? "welcome-static" : "welcome-animation"}>
+                        {animationComplete ? "welcome." : welcomeMessages[welcomeIndex]}
+                    </div>
                 </div>
             </main>
             <footer>

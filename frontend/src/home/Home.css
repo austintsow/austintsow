@@ -101,6 +101,43 @@ header li:last-child::after {
     text-transform: lowercase;
 }
 
+/* Welcome animation styles */
+.welcome-animation {
+    min-height: 1.5em;
+    min-width: 100px;
+    opacity: 1;
+    animation: fadeInOut 2s infinite;
+    font-weight: 300;
+    text-transform: lowercase;
+}
+
+.welcome-static {
+    min-height: 1.5em;
+    min-width: 100px;
+    font-weight: 300;
+    text-transform: lowercase;
+    opacity: 1;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
 footer {
     display: flex;
     justify-content: space-between;
