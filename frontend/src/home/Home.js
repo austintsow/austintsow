@@ -97,7 +97,7 @@ function Home() {
                 </div>
             </main>
             <footer>
-                <div className="buddy">buddy</div>
+                <div className="blog">blog</div>
                 <Clock />
             </footer>
         </div>
