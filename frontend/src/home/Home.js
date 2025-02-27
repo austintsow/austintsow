@@ -162,7 +162,7 @@ function Home() {
                             </a>
                         </li>
                         <li><Link to="/about">about</Link></li>
-                        <li><Link to="/contact">contact</Link></li>
+                        <li><a href="mailto:atsow@icloud.com">contact</a></li>
                     </ul>
                 </nav>
             </header>

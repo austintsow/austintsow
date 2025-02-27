@@ -33,50 +33,59 @@ function About() {
 
     // Memoized full & condensed code to avoid re-creation on every render
     const fullCode = useMemo(() => `
-def my_favorite_projects():
-    """ top 3 projects i've worked on. """
-
 def applyied():
-    """ ai platform optimizing job applications. 
+    """ 
+    - ai platform optimizing job applications. 
     - uses ml to tailor resumes & boost ats visibility
     - automates job aggregation & application tracking
     """
     pass
 
 def ai_recipe_app():
-    """ ai-driven recipe generator for college students.
+    """ 
+    - ai-driven recipe generator for college students.
     - uses gpt-3.5 to suggest meals based on ingredients
     - supports dietary preferences & budget-friendly planning
     """
     pass
 
 def gonzaga_voice_assistant():
-    """ nlp-powered voice assistant for gonzaga.edu.
+    """ 
+    - nlp-powered voice assistant for gonzaga.edu.
     - answers student queries using web scraping & nlp
     - integrates real-time data on courses & campus info
     """
     pass
 
-def projects():
+def showcase_projects():
+    """ a quick highlight of my top ai-driven projects. """
     applyied()
     ai_recipe_app()
     gonzaga_voice_assistant()
 
-projects()
+showcase_projects()
     `, []);
 
     const condensedCode = useMemo(() => `
-def projects():
-    """ my favorite projects """
-
 def applyied():
     """ ai job platform """
+    pass
+
 def ai_recipe_app():
     """ ai recipe generator """
+    pass
+
 def gonzaga_voice_assistant():
     """ nlp voice assistant """
+    pass
 
-projects()
+def showcase_projects():
+    """ my top ai-driven builds """
+    applyied()
+    ai_recipe_app()
+    gonzaga_voice_assistant()
+
+showcase_projects()
     `, []);
 
     // Detect screen size and update code content
@@ -121,7 +130,7 @@ projects()
                             </a>
                         </li>
                         <li><Link to="/about">about</Link></li>
-                        <li><Link to="/contact">contact</Link></li>
+                        <li><a href="mailto:atsow@icloud.com">contact</a></li>
                     </ul>
                 </nav>
             </header>

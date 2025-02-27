@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./home/Home";
 import About from "./about/About";
-import Contact from "./contact/Contact";
+// Remove: import Contact from "./contact/Contact";
 
 function App() {
     return (
@@ -10,8 +10,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/" element={<Home />} />
-                <Route path="/contact" element={<Contact />} />
+                {/* Remove this: <Route path="/contact" element={<Contact />} /> */}
             </Routes>
         </Router>
     );

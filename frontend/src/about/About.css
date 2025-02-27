@@ -4,6 +4,7 @@
     height: 100vh;
     padding: 20px;
     background-color: white;
+    user-select: none; /* Prevent text selection in the entire about page */
 }
 
 nav ul {
@@ -19,6 +20,7 @@ nav li {
 nav a {
     text-decoration: none;
     color: inherit;
+    user-select: text;
 }
 
 header {
@@ -26,12 +28,14 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1% 5%;
+    user-select: text;
 }
 
 header .logo {
     font-size: 1.25rem;
     font-weight: 200;
     text-transform: lowercase;
+    user-select: text;
 }
 
 header ul {
@@ -45,6 +49,7 @@ header li {
     margin-left: 0;
     font-size: 1.25rem;
     font-weight: 200;
+    user-select: text;
 }
 
 header li::after {
@@ -56,6 +61,14 @@ header li:last-child::after {
     content: "";
 }
 
+nav {
+    user-select: text;
+}
+
+a {
+    user-select: text; /* Make all links selectable */
+}
+
 .about-content {
     display: flex;
     justify-content: space-between;
@@ -63,6 +76,7 @@ header li:last-child::after {
     width: 85%;
     margin: auto;
     margin-top: 5%;
+    user-select: none;
 }
 
 .about-text {
