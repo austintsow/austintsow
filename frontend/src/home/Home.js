@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import Clock from "./Clock";
@@ -11,6 +11,7 @@ function Home() {
     const [welcomeIndex, setWelcomeIndex] = useState(0);
     const [animationComplete, setAnimationComplete] = useState(false);
     const [mainTextVisible, setMainTextVisible] = useState(false);
+    const welcomeIntervalRef = useRef(null);
 
     const firstPart = "hi, my";
     const secondPart = "name is ";
@@ -20,7 +21,7 @@ function Home() {
     const welcomeMessages = [
         "Welcome", // English
         "欢迎", // Mandarin
-        "Bienvenue", // French
+        "ようこそ", // French
         "Bienvenido", // Spanish
         "환영합니다" // Korean
     ];
@@ -38,27 +39,71 @@ function Home() {
         // Skip the animation if we've already completed it
         if (animationComplete) return;
         
-        const welcomeInterval = setInterval(() => {
-            setWelcomeIndex((prevIndex) => {
-                // If we've cycled through all messages, set animation complete
-                if (prevIndex === welcomeMessages.length - 1) {
-                    clearInterval(welcomeInterval);
-                    setAnimationComplete(true);
-                    
-                    // After welcome animation completes and "welcome." is displayed,
-                    // trigger main text to appear after a delay
-                    setTimeout(() => {
-                        setMainTextVisible(true);
-                        startTypingAnimation();
-                    }, 1000);
-                    
-                    return prevIndex;
+        // Clear any existing interval
+        if (welcomeIntervalRef.current) {
+            clearInterval(welcomeIntervalRef.current);
+        }
+        
+        // Instead of changing text and animation at the same time, 
+        // we'll use CSS animation events to coordinate the changes
+        const welcomeElement = document.querySelector('.welcome-animation');
+        if (welcomeElement) {
+            // Add event listener for animation end
+            const handleAnimationIteration = () => {
+                setWelcomeIndex(prevIndex => {
+                    // If we've cycled through all messages, set animation complete
+                    if (prevIndex === welcomeMessages.length - 1) {
+                        // Remove the event listener
+                        welcomeElement.removeEventListener('animationiteration', handleAnimationIteration);
+                        setAnimationComplete(true);
+                        
+                        // After welcome animation completes and "welcome." is displayed,
+                        // trigger main text to appear after a delay
+                        setTimeout(() => {
+                            setMainTextVisible(true);
+                            startTypingAnimation();
+                        }, 1000);
+                        
+                        return prevIndex;
+                    }
+                    return prevIndex + 1;
+                });
+            };
+            
+            // Listen for each animation iteration
+            welcomeElement.addEventListener('animationiteration', handleAnimationIteration);
+            
+            // Clean up function
+            return () => {
+                if (welcomeElement) {
+                    welcomeElement.removeEventListener('animationiteration', handleAnimationIteration);
                 }
-                return prevIndex + 1;
-            });
-        }, 1000); // Change language every 1 second
-
-        return () => clearInterval(welcomeInterval);
+            };
+        } else {
+            // Fallback to the timer-based approach if the element isn't available yet
+            welcomeIntervalRef.current = setInterval(() => {
+                setWelcomeIndex(prevIndex => {
+                    if (prevIndex === welcomeMessages.length - 1) {
+                        clearInterval(welcomeIntervalRef.current);
+                        setAnimationComplete(true);
+                        
+                        setTimeout(() => {
+                            setMainTextVisible(true);
+                            startTypingAnimation();
+                        }, 1000);
+                        
+                        return prevIndex;
+                    }
+                    return prevIndex + 1;
+                });
+            }, 1000);
+            
+            return () => {
+                if (welcomeIntervalRef.current) {
+                    clearInterval(welcomeIntervalRef.current);
+                }
+            };
+        }
     }, [animationComplete, welcomeMessages.length]);
 
     // Function to handle typing animation

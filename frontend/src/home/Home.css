@@ -118,9 +118,16 @@ header li:last-child::after {
     min-height: 1.5em;
     min-width: 100px;
     opacity: 1;
-    animation: fadeInOut 1s infinite;
+    -webkit-animation: fadeInOut 1s ease-in-out forwards;
+    animation: fadeInOut 1s ease-in-out forwards;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
     font-weight: 300;
     text-transform: lowercase;
+    will-change: opacity, transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
 .welcome-static {
@@ -129,6 +136,30 @@ header li:last-child::after {
     font-weight: 300;
     text-transform: lowercase;
     opacity: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+@-webkit-keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(10px);
+        transform: translateY(10px);
+    }
+    20% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    80% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
 }
 
 @keyframes fadeInOut {
