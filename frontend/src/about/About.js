@@ -130,7 +130,7 @@ showcase_projects()
                             </a>
                         </li>
                         <li><Link to="/about">about</Link></li>
-                        <li><a href="mailto:atsow@icloud.com">contact</a></li>
+                        <li><Link to="/contact">contact</Link></li>
                     </ul>
                 </nav>
             </header>

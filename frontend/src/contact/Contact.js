@@ -1,21 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./Contact.css";
 
 function Contact() {
-    const [statusText, setStatusText] = useState("[status: working]");
-
-    useEffect(() => {
-        const dots = ["", ".", "..", "..."];
-        let index = 0;
-        const interval = setInterval(() => {
-            setStatusText(`[status: working${dots[index]}]`);
-            index = (index + 1) % dots.length;
-        }, 500);
-
-        return () => clearInterval(interval);
-    }, []);
-
     return (
         <div className="contact">
             <header>
@@ -31,7 +18,20 @@ function Contact() {
                 </nav>
             </header>
             <main className="contact-content">
-                <div className="center-text">{statusText}</div>
+                <div className="contact-info">
+                    <div className="contact-item">
+                        <h2>Email</h2>
+                        <p>atsow@icloud.com</p>
+                    </div>
+                    <div className="contact-item">
+                        <h2>GitHub</h2>
+                        <p>austintsow</p>
+                    </div>
+                    <div className="contact-item">
+                        <h2>LinkedIn</h2>
+                        <p>tsow</p>
+                    </div>
+                </div>
             </main>
         </div>
     );
