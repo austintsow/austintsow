@@ -1,10 +1,11 @@
 .about {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     padding: 20px;
     background-color: white;
     user-select: none; /* Prevent text selection in the entire about page */
+    position: relative;
 }
 
 nav ul {
@@ -77,6 +78,7 @@ a {
     margin: auto;
     margin-top: 5%;
     user-select: none;
+    flex: 1;
 }
 
 .about-text {
@@ -90,7 +92,7 @@ a {
 .ide-container {
     width: 50%;
     background: #282c34;
-    padding: 15px;
+    padding: 10px;
     border-radius: 8px;
     color: white;
     font-size: 14px;
@@ -98,6 +100,7 @@ a {
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
     transition: opacity 1s ease-in-out;
     border: none;
+    margin-bottom: 40px; /* Ensure space for footer */
 }
 
 @media (max-width: 768px) {
@@ -117,4 +120,26 @@ a {
         max-width: 600px;
         margin-top: 20px;
     }
+}
+
+/* Footer styling */
+.contact-footer {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1% 5%;
+    width: 90%;
+    height: 30px; /* Fixed height for footer */
+    margin-top: auto; /* Push to bottom when content is short */
+    position: relative;
+    bottom: 10px;
+}
+
+.copyright {
+    font-size: 0.75rem;
+    font-weight: 200;
+    color: black;
+    text-transform: lowercase;
+    animation: fadeIn 1s ease-in-out;
+    animation-delay: 1s;
+    animation-fill-mode: both;
 }

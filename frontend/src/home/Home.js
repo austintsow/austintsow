@@ -21,7 +21,7 @@ function Home() {
     const welcomeMessages = [
         "Welcome", // English
         "欢迎", // Mandarin
-        "ようこそ", // French
+        "ようこそ", // Japanese
         "Bienvenido", // Spanish
         "환영합니다" // Korean
     ];

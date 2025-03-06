@@ -1,8 +1,15 @@
+/* Prevent scrolling */
+.contact-scroll-lock {
+    overflow: hidden;
+}
+
 .contact {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
     padding: 20px;
+    overflow: hidden;
 }
 
 nav ul {
@@ -64,7 +71,8 @@ header li:last-child::after {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: calc(100% - 60px); /* Ensure there's room for the footer */
+    margin-top: -3%;
 }
 
 .contact-info {
@@ -96,6 +104,10 @@ header li:last-child::after {
     animation-delay: 0.5s;
 }
 
+.contact-item:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
 .contact-item h2 {
     font-size: 1.25rem;
     font-weight: 300;
@@ -108,6 +120,28 @@ header li:last-child::after {
     font-weight: 200;
     margin: 0;
     color: #555;
+}
+
+.contact-item p a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+.contact-item:nth-child(1) p a:hover {
+    color: #FFB347;
+}
+
+.contact-item:nth-child(2) p a:hover {
+    color: #0077b5;
+}
+
+.contact-item:nth-child(3) p a:hover {
+    color: #333333;
+}
+
+.contact-item:nth-child(4) p a:hover {
+    color: #01796F;
 }
 
 @keyframes fadeIn {
@@ -124,4 +158,27 @@ header li:last-child::after {
         opacity: 1; 
         transform: translateY(0); 
     }
+}
+
+/* Footer styling */
+.contact-footer {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1% 5%;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 90%;
+    height: 30px; /* Fixed height for footer */
+    z-index: 10; /* Ensure it's always on top */
+}
+
+.copyright {
+    font-size: 0.75rem;
+    font-weight: 200;
+    color: black;
+    text-transform: lowercase;
+    animation: fadeIn 1s ease-in-out;
+    animation-delay: 1s;
+    animation-fill-mode: both;
 }
