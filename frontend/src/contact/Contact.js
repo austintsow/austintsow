@@ -15,7 +15,7 @@ function Contact() {
         <div className="contact">
             <header>
                 <div className="logo">
-                    <Link to="/">austin tsow</Link>
+                    <Link to="/home-loaded">austin tsow</Link>
                 </div>
                 <nav>
                     <ul>
@@ -47,7 +47,7 @@ function Contact() {
             </main>
             <footer className="contact-footer">
                 <div className="copyright">
-                    © 2025 Austin Tsow
+                    2025 Austin Tsow
                 </div>
             </footer>
         </div>

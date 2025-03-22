@@ -120,7 +120,7 @@ showcase_projects()
         <div className="about">
             <header>
                 <div className="logo">
-                    <Link to="/">austin tsow</Link>
+                    <Link to="/home-loaded">austin tsow</Link>
                 </div>
                 <nav>
                     <ul>
