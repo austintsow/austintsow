@@ -47,7 +47,7 @@ function Contact() {
             </main>
             <footer className="contact-footer">
                 <div className="copyright">
-                    2025 Austin Tsow
+                © 2025 Austin Tsow
                 </div>
             </footer>
         </div>
