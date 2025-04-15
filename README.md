@@ -1,2 +1,2 @@
-# hello, world! i'm austin tsow
-welcome to my digital sandbox, feel free to click around.
+# hi, my name is austin
+i type on my keyboard until something works
