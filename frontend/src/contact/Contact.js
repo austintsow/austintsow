@@ -29,7 +29,7 @@ function Contact() {
                 <div className="contact-info">
                     <div className="contact-item">
                         <h2>Email</h2>
-                        <p><a href="mailto:atsow@icloud.com">atsow@icloud.com</a></p>
+                        <p><a href="mailto:austin@tsow.com">austin@tsow.com</a></p>
                     </div>
                     <div className="contact-item">
                     <h2>LinkedIn</h2>
