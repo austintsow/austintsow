@@ -1,16 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./Contact.css";
 
 function Contact() {
-    useEffect(() => {
-        document.body.classList.add("contact-scroll-lock");
-
-        return () => {
-            document.body.classList.remove("contact-scroll-lock");
-        };
-    }, []);
-
     return (
         <div className="contact">
             <header>
@@ -41,13 +33,13 @@ function Contact() {
                     </div>
                     <div className="contact-item">
                         <h2>Beli</h2>
-                        <p><a href="https://beliapp.co/app/unsatisfied" target="_blank" rel="noopener noreferrer">unsatisfied</a></p>
+                        <p><a href="https://beliapp.co/app/tsow" target="_blank" rel="noopener noreferrer">tsow</a></p>
                     </div>
                 </div>
             </main>
             <footer className="contact-footer">
                 <div className="copyright">
-                © 2025 Austin Tsow
+                2025 Austin Tsow
                 </div>
             </footer>
         </div>

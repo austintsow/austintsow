@@ -1,6 +1,7 @@
-/* Prevent scrolling */
+/* Prevent scrolling - applied to container instead of body */
 .contact-scroll-lock {
     overflow: hidden;
+    max-height: 100vh;
 }
 
 .contact {
@@ -10,6 +11,11 @@
     max-height: 100vh;
     padding: 20px;
     overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 nav ul {
@@ -25,11 +31,17 @@ nav li {
 nav a {
     text-decoration: none;
     color: inherit;
+    position: relative;
+    z-index: 1000;
+    pointer-events: auto;
 }
 
 .logo a {
     text-decoration: none;
     color: inherit;
+    position: relative;
+    z-index: 1000;
+    pointer-events: auto;
 }
 
 header {
@@ -37,6 +49,9 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1% 5%;
+    position: relative;
+    z-index: 1000;
+    pointer-events: auto;
 }
 
 header .logo {
