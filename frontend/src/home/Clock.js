@@ -12,7 +12,7 @@ function Clock() {
     return () => clearInterval(interval);
   }, []);
 
-  return <div className="clock">it's {time} pst</div>;
+  return <div className="clock"> {time} pst</div>;
 }
 
 export default Clock;
