@@ -56,7 +56,7 @@ function Home() {
             </main>
             <footer>
                 <div className={`applyied fade-in ${contentVisible ? 'visible' : ''}`}>
-                    <a href="http://applyied.com" target="_blank" rel="noopener noreferrer">applyied</a>
+                    <Link to="/gloria">for gloria</Link>
                 </div>
                 <div className={`fade-in ${contentVisible ? 'visible' : ''}`}>
                     <Clock />

@@ -1,0 +1,452 @@
+.gloria-page {
+    min-height: 100vh;
+    background: #ffffff;
+    color: #2d3748;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.gloria-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.gloria-header.fade-in {
+    opacity: 1;
+}
+
+.gloria-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.back-link {
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: #374151;
+}
+
+.gloria-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px 40px;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.gloria-content {
+    text-align: center;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.gloria-content.fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gloria-emoji {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.1); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.1); }
+    70% { transform: scale(1); }
+}
+
+.gloria-title {
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    color: #1a202c;
+    letter-spacing: -0.02em;
+}
+
+.gloria-title .emphasis {
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+    position: relative;
+}
+
+.gloria-subtitle {
+    font-size: 1.25rem;
+    color: #6b7280;
+    font-weight: 400;
+    margin-top: 1rem;
+}
+
+/* Date Options Styling */
+.date-options {
+    margin-top: 3rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.options-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.options-header h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #1a202c;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.options-header p {
+    font-size: 1rem;
+    color: #6b7280;
+    font-weight: 300;
+}
+
+.option-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.option-card {
+    background: #ffffff;
+    border: 2px solid #f3f4f6;
+    border-radius: 16px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.option-card:hover {
+    border-color: #ff6b6b;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.15);
+}
+
+.option-card:active {
+    transform: translateY(0);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.card-header h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #1a202c;
+    margin: 0;
+}
+
+.card-header .time {
+    font-size: 0.9rem;
+    color: #6b7280;
+    background: #f9fafb;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.card-description {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.card-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 500;
+    text-transform: lowercase;
+}
+
+/* Itinerary View Styling */
+.itinerary-view {
+    padding: 2rem 0.5rem;
+    align-items: flex-start;
+    min-height: auto;
+    overflow-y: auto;
+}
+
+.itinerary-content {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.itinerary-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.itinerary-header h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #1a202c;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.selected-restaurant {
+    font-size: 1.1rem;
+    color: #ff6b6b;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.back-to-options {
+    background: none;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.back-to-options:hover {
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+}
+
+.timeline {
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #ff6b6b, #ff8e8e);
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    top: 0.5rem;
+    width: 10px;
+    height: 10px;
+    background: #ff6b6b;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-time {
+    flex-shrink: 0;
+    width: 120px;
+    font-size: 0.9rem;
+    color: #6b7280;
+    font-weight: 500;
+    padding-top: 0.25rem;
+    text-align: right;
+    padding-right: 2rem;
+}
+
+.timeline-content {
+    flex: 1;
+    padding-left: 1rem;
+}
+
+.timeline-content h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #1a202c;
+    margin: 0 0 0.5rem 0;
+}
+
+.timeline-content p {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.itinerary-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #f3f4f6;
+}
+
+.itinerary-footer p {
+    font-size: 1.1rem;
+    color: #6b7280;
+    font-style: italic;
+}
+
+/* Mobile/Desktop Toggle Classes */
+.mobile-time-activity {
+    display: none;
+}
+
+.desktop-activity {
+    display: inline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .gloria-main {
+        padding: 2rem 1rem;
+    }
+    
+    .gloria-title {
+        font-size: 2.5rem;
+    }
+    
+    .gloria-emoji {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .gloria-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .options-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .option-card {
+        padding: 1.25rem;
+    }
+    
+    .card-header h3 {
+        font-size: 1.3rem;
+    }
+    
+    .itinerary-header h1 {
+        font-size: 2rem;
+    }
+    
+    .timeline-time {
+        display: none;
+    }
+    
+    .mobile-time-activity {
+        display: inline;
+    }
+    
+    .desktop-activity {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .gloria-title {
+        font-size: 2rem;
+    }
+    
+    .gloria-emoji {
+        font-size: 2.5rem;
+    }
+    
+    .gloria-subtitle {
+        font-size: 1rem;
+    }
+    
+    .options-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .option-card {
+        padding: 1rem;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .itinerary-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .timeline {
+        margin-left: 0;
+    }
+    
+    .timeline::before {
+        display: none;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+        margin-left: 1.5rem;
+        margin-right: 1rem;
+        padding: 1.25rem;
+        background: #f9fafb;
+        border-radius: 12px;
+        border-left: 4px solid #ff6b6b;
+    }
+    
+    .timeline-item::before {
+        display: none;
+    }
+    
+    .timeline-time {
+        width: 100%;
+        padding-right: 0;
+        text-align: left;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #ff6b6b;
+        margin-bottom: 0.5rem;
+    }
+    
+    .timeline-content {
+        padding-left: 0;
+    }
+}

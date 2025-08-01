@@ -184,7 +184,7 @@ function Home() {
             </main>
             <footer className={mainTextVisible ? "fade-in visible" : "fade-in"}>
                 <div className="applyied">
-                    <a href="http://applyied.com" target="_blank" rel="noopener noreferrer">applyied</a>
+                    <Link to="/gloria">for gloria</Link>
                 </div>
                 <Clock />
             </footer>
