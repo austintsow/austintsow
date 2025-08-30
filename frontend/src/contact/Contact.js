@@ -11,7 +11,7 @@ function Contact() {
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="/AustinTsow2025.pdf" target="_blank" rel="noopener noreferrer">resume</a></li>
+                        <li><a href="/AustinTsow2026.pdf" target="_blank" rel="noopener noreferrer">resume</a></li>
                         <li><Link to="/about">about</Link></li>
                         <li><Link to="/contact">contact</Link></li>
                     </ul>
@@ -39,7 +39,7 @@ function Contact() {
             </main>
             <footer className="contact-footer">
                 <div className="copyright">
-                © 2025 Austin Tsow
+                © 2026 Austin Tsow
                 </div>
             </footer>
         </div>

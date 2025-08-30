@@ -157,7 +157,7 @@ function Home() {
                 <nav>
                     <ul>
                         <li>
-                            <a href="/AustinTsow2025.pdf" target="_blank" rel="noopener noreferrer">
+                            <a href="/AustinTsow2026.pdf" target="_blank" rel="noopener noreferrer">
                                 resume
                             </a>
                         </li>
@@ -184,7 +184,7 @@ function Home() {
             </main>
             <footer className={mainTextVisible ? "fade-in visible" : "fade-in"}>
                 <div className="applyied">
-                    <Link to="/gloria">for gloria</Link>
+                    <a href="http://applyied.com" target="_blank" rel="noopener noreferrer">applyied</a>
                 </div>
                 <Clock />
             </footer>
