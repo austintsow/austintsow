@@ -33,80 +33,55 @@ function About() {
 
     // Memoized full & condensed code to avoid re-creation on every render
     const fullCode = useMemo(() => `
-class Solution:
-    def build_projects(self) -> List[str]:
+class Projects:
+    def get_latest_work(self) -> List[str]:
         """
-        Given unlimited creativity and technical skills,
-        return a list of impactful software solutions.
-        
-        Time: O(innovation) | Space: O(impact)
+        A snapshot of my latest projects.
+        Time: O(passion) | Space: O(impact)
         """
-        projects = []
+        latest_work = []
         
-        # blockchain payment optimization
-        if self.research_zero_fee_transfers():
-            projects.append("solidity contracts + off-chain flows")
+        # AI-powered job application platform
+        if self.is_building_applyied():
+            latest_work.append("AI-driven resume optimization")
         
-        # ai-powered job platform  
-        ml_model = self.train_ats_optimizer()
-        if ml_model.accuracy > 0.85:
-            projects.append("resume tailoring + job aggregation")
+        # Zero-fee blockchain payment systems
+        if self.is_researching_web3_payments():
+            latest_work.append("zero-fee transfers via Solana")
             
-        # recipe generation for students
-        if self.has_recipe_resources():
-            projects.append("personalized meal planning")
-            
-        # campus voice assistant
-        knowledge_base = self.scrape_gonzaga_data()
-        nlp_engine = self.build_query_processor()
-        if knowledge_base and nlp_engine:
-            projects.append("real-time campus info assistant")
-            
-        return projects
+        return latest_work
     
-    def research_zero_fee_transfers(self) -> bool:
-        return True  # currently researching blockchain protocols
+    def is_building_applyied(self) -> bool:
+        return True  # Actively developing
         
-    def train_ats_optimizer(self):
-        return type('Model', (), {'accuracy': 0.92})()
-        
-    def has_recipe_resources(self) -> bool:
-        return True  # budget + dietary_prefs + gpt-3.5
+    def is_researching_web3_payments(self) -> bool:
+        return True  # Exploring solidity and off-chain flows
 
-# test solution
-austin = Solution()
-result = austin.build_projects()
-print(f"Successfully built {len(result)} projects") # Output: 4
+# See what I'm up to
+austin = Projects()
+work = austin.get_latest_work()
+print(f"Currently building: {work}")
     `, []);
 
     const condensedCode = useMemo(() => `
-class Solution:
-    def build_projects(self) -> List[str]:
-        """
-        Return impactful software solutions.
-        Time: O(innovation) | Space: O(impact)
-        """
-        projects = []
+class Projects:
+    def get_latest_work(self) -> List[str]:
+        """My latest projects."""
+        latest = []
         
-        # blockchain research
-        if self.research_zero_fee_transfers():
-            projects.append("solidity + off-chain")
+        # AI job platform
+        if self.is_building_applyied():
+            latest.append("resume optimization")
         
-        # ai job platform  
-        if self.train_ats_optimizer().accuracy > 0.85:
-            projects.append("resume optimization")
+        # Web3 payments research
+        if self.is_researching_web3_payments():
+            latest.append("zero-fee transfers")
             
-        # recipe ai + campus assistant
-        projects.extend(["meal planning", "nlp assistant"])
-        return projects
-    
-    def research_zero_fee_transfers(self) -> bool:
-        return True  # blockchain protocols research
+        return latest
 
-# test solution
-austin = Solution()
-result = austin.build_projects()
-print(f"Built {len(result)} projects") # Output: 4
+# See what I'm up to
+austin = Projects()
+print(austin.get_latest_work())
     `, []);
 
     // Detect screen size and update code content
@@ -192,6 +167,11 @@ print(f"Built {len(result)} projects") # Output: 4
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1.5 }}
                 >
+                    <div className="ide-header">
+                        <span className="ide-dot red"></span>
+                        <span className="ide-dot yellow"></span>
+                        <span className="ide-dot green"></span>
+                    </div>
                     <SyntaxHighlighter language="python" style={vscDarkPlus} className="ide-code">
                         {typedCode}
                     </SyntaxHighlighter>

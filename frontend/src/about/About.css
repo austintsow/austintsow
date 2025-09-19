@@ -92,7 +92,6 @@ a {
 .ide-container {
     width: 50%;
     background: #282c34;
-    padding: 10px;
     border-radius: 8px;
     color: white;
     font-size: 14px;
@@ -101,6 +100,37 @@ a {
     transition: opacity 1s ease-in-out;
     border: none;
     margin-bottom: 40px; /* Ensure space for footer */
+    overflow: hidden; /* To contain the border-radius of children */
+}
+
+.ide-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: #3c4049; /* A slightly lighter shade for the header */
+}
+
+.ide-dot {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.red {
+    background-color: #ff5f56;
+}
+
+.yellow {
+    background-color: #ffbd2e;
+}
+
+.green {
+    background-color: #27c93f;
+}
+
+.ide-code {
+    padding: 0px 10px 10px 10px; /* Adjust padding to align code */
 }
 
 @media (max-width: 768px) {
@@ -129,7 +159,7 @@ a {
     padding: 1% 5%;
     width: 90%;
     height: 30px; /* Fixed height for footer */
-    margin-top: auto; /* Push to bottom when content is short */
+    margin-top: 40px; /* Add space above the footer */
     position: relative;
     bottom: 10px;
 }
