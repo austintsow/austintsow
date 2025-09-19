@@ -7,9 +7,9 @@ import "./About.css";
 
 function About() {
     const text = [
-        "i'm a builder at heart, always drawn to the intersection of technology and problem-solving. my journey started in sammamish, just thirty minutes east from seattle, where i grew up surrounded by a mix of innovation and nature. now, i'm an undergraduate student at gonzaga university, studying computer science with a concentration in software security. i focus on ai-driven applications, blending machine learning to create intuitive, efficient solutions. outside of software, i'm deeply interested in web3, particularly in decentralized finance (defi) and solana's role in building a more scalable, permissionless financial ecosystem. the idea of rearchitecting trust and ownership on-chain is something i continue to explore.",
-        "when i'm not working on projects, you'll find me outside. i spend weekends hiking in the pacific northwest, exploring trails across washington, always chasing new views and elevation gains. running has become a constant, whether training for a race or just clearing my mind on a long stretch of road. i've also recently gotten into pickleball, enjoying the fast-paced, strategic nature of the game. movement keeps me grounded, a balance to the hours spent typing on my keyboard.",
-        "i also love cooking—experimenting with flavors, refining techniques, and bringing people together over food. it's a creative outlet, much like design and development, where precision meets intuition. whether it's perfecting a dish or fine-tuning a piece of code, i'm always iterating, always learning. beyond cooking, i enjoy exploring new restaurants, trying unique dishes, and experiencing different cuisines (find me on beli - on contact page). whether it's a hidden ramen spot, a local café, or an experimental tasting menu, i love discovering new flavors and the stories behind them."
+        "i'm a builder at heart, always drawn to the intersection of technology and problem-solving. my journey started in sammamish, just thirty minutes east from seattle, where i grew up surrounded by a mix of innovation and nature. now, i'm an undergraduate student at gonzaga university, studying computer science with a concentration in software security. my passion lies in building ai-driven applications that solve real problems—from optimizing job applications with machine learning to creating voice assistants that understand natural language. i'm currently researching zero-fee blockchain payment systems, exploring how we can bridge web3 wallets with traditional banking through solidity smart contracts and off-chain settlement flows. the potential to rearchitect financial infrastructure using decentralized protocols, especially on solana's high-throughput network, fascinates me daily.",
+        "when i'm not coding or researching blockchain protocols, you'll find me outside living an active life. i spend weekends hiking in the pacific northwest, exploring trails across washington, always chasing new views and elevation gains. running has become a constant, whether training for a race or just clearing my mind on a long stretch of road. but my newest obsession is pickleball—i've worked my way up to a 4.7 dupr rating, loving the strategic positioning and split-second decision making the game demands. there's something addictive about the perfect third shot drop or a well-executed kitchen rally. movement keeps me grounded, a balance to the hours spent deep in code and crypto whitepapers.",
+        "food is another passion that consumes my free time. i love cooking—experimenting with flavors, refining techniques, and bringing people together over shared meals. it's a creative outlet, much like software development, where precision meets intuition and every iteration teaches you something new. beyond cooking, i'm constantly exploring new restaurants, seeking out unique dishes, and experiencing different cuisines. you can actually follow my food journey on beli (check my contact page for the link)—i document everything from hidden ramen spots to experimental tasting menus. whether it's discovering a perfect bowl of taiwanese beef noodle soup, trying a new korean bbq joint, or diving into an omakase experience, i'm always chasing the next great meal and the stories behind them."
     ];
 
     const generateWordDelays = (words) => {
@@ -33,59 +33,80 @@ function About() {
 
     // Memoized full & condensed code to avoid re-creation on every render
     const fullCode = useMemo(() => `
-def applyied():
-    """ 
-    - ai platform optimizing job applications. 
-    - uses ml to tailor resumes & boost ats visibility
-    - automates job aggregation & application tracking
-    """
-    pass
+class Solution:
+    def build_projects(self) -> List[str]:
+        """
+        Given unlimited creativity and technical skills,
+        return a list of impactful software solutions.
+        
+        Time: O(innovation) | Space: O(impact)
+        """
+        projects = []
+        
+        # blockchain payment optimization
+        if self.research_zero_fee_transfers():
+            projects.append("solidity contracts + off-chain flows")
+        
+        # ai-powered job platform  
+        ml_model = self.train_ats_optimizer()
+        if ml_model.accuracy > 0.85:
+            projects.append("resume tailoring + job aggregation")
+            
+        # recipe generation for students
+        if self.has_recipe_resources():
+            projects.append("personalized meal planning")
+            
+        # campus voice assistant
+        knowledge_base = self.scrape_gonzaga_data()
+        nlp_engine = self.build_query_processor()
+        if knowledge_base and nlp_engine:
+            projects.append("real-time campus info assistant")
+            
+        return projects
+    
+    def research_zero_fee_transfers(self) -> bool:
+        return True  # currently researching blockchain protocols
+        
+    def train_ats_optimizer(self):
+        return type('Model', (), {'accuracy': 0.92})()
+        
+    def has_recipe_resources(self) -> bool:
+        return True  # budget + dietary_prefs + gpt-3.5
 
-def ai_recipe_app():
-    """ 
-    - ai-driven recipe generator for college students.
-    - uses gpt-3.5 to suggest meals based on ingredients
-    - supports dietary preferences & budget-friendly planning
-    """
-    pass
-
-def gonzaga_voice_assistant():
-    """ 
-    - nlp-powered voice assistant for gonzaga.edu.
-    - answers student queries using web scraping & nlp
-    - integrates real-time data on courses & campus info
-    """
-    pass
-
-def showcase_projects():
-    """ a quick highlight of my top ai-driven projects. """
-    applyied()
-    ai_recipe_app()
-    gonzaga_voice_assistant()
-
-showcase_projects()
+# test solution
+austin = Solution()
+result = austin.build_projects()
+print(f"Successfully built {len(result)} projects") # Output: 4
     `, []);
 
     const condensedCode = useMemo(() => `
-def applyied():
-    """ ai job platform """
-    pass
+class Solution:
+    def build_projects(self) -> List[str]:
+        """
+        Return impactful software solutions.
+        Time: O(innovation) | Space: O(impact)
+        """
+        projects = []
+        
+        # blockchain research
+        if self.research_zero_fee_transfers():
+            projects.append("solidity + off-chain")
+        
+        # ai job platform  
+        if self.train_ats_optimizer().accuracy > 0.85:
+            projects.append("resume optimization")
+            
+        # recipe ai + campus assistant
+        projects.extend(["meal planning", "nlp assistant"])
+        return projects
+    
+    def research_zero_fee_transfers(self) -> bool:
+        return True  # blockchain protocols research
 
-def ai_recipe_app():
-    """ ai recipe generator """
-    pass
-
-def gonzaga_voice_assistant():
-    """ nlp voice assistant """
-    pass
-
-def showcase_projects():
-    """ my top ai-driven builds """
-    applyied()
-    ai_recipe_app()
-    gonzaga_voice_assistant()
-
-showcase_projects()
+# test solution
+austin = Solution()
+result = austin.build_projects()
+print(f"Built {len(result)} projects") # Output: 4
     `, []);
 
     // Detect screen size and update code content
