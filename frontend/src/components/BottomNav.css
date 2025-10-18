@@ -1,0 +1,114 @@
+.glass-nav {
+    position: fixed;
+    bottom: 68px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.4rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: fit-content;
+    max-width: max-content;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.55rem;
+    text-decoration: none;
+    color: #666;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 14px;
+    position: relative;
+    white-space: nowrap;
+    min-width: auto;
+}
+
+.nav-button svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-button:hover {
+    color: #000;
+}
+
+.nav-button:hover svg {
+    transform: scale(1.1);
+}
+
+.nav-button.active {
+    background: rgba(0, 0, 0, 0.08);
+    color: #000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.nav-button span {
+    text-transform: lowercase;
+    font-weight: 500;
+    animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Enhanced glass effect for darker backgrounds */
+@media (prefers-color-scheme: dark) {
+    .glass-nav {
+        background: rgba(30, 30, 30, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-button {
+        color: #999;
+    }
+    
+    .nav-button:hover,
+    .nav-button.active {
+        color: #fff;
+    }
+    
+    .nav-button.active {
+        background: rgba(255, 255, 255, 0.15);
+    }
+}
+
+/* Smooth entrance animation */
+@keyframes navEntrance {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.glass-nav {
+    animation: navEntrance 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}

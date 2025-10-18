@@ -4,7 +4,7 @@ body {
     padding: 0;
 }
 
-.blog-page {
+.projects-page {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -12,7 +12,7 @@ body {
     position: relative;
 }
 
-.blog-page::before {
+.projects-page::before {
     content: '';
     position: absolute;
     top: 24px;
@@ -25,12 +25,12 @@ body {
     z-index: 0;
 }
 
-.blog-page > * {
+.projects-page > * {
     position: relative;
     z-index: 1;
 }
 
-.blog-page header {
+.projects-page header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,18 +40,18 @@ body {
     width: 100%;
 }
 
-.blog-page .logo {
+.projects-page .logo {
     font-size: 1.25rem;
     font-weight: 200;
     text-transform: lowercase;
 }
 
-.blog-page .logo a {
+.projects-page .logo a {
     text-decoration: none;
     color: inherit;
 }
 
-.blog-content {
+.projects-content {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -60,13 +60,13 @@ body {
     padding: 2rem;
 }
 
-.blog-content h1 {
+.projects-content h1 {
     font-size: 3rem;
     font-weight: 200;
     margin-bottom: 1rem;
 }
 
-.blog-content p {
+.projects-content p {
     font-size: 1.25rem;
     font-weight: 300;
     color: #666;

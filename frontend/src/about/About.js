@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./About.css";
+import BottomNav from "../components/BottomNav";
 
 function About() {
     const text = [
@@ -118,17 +119,6 @@ print(austin.get_latest_work())
                 <div className="logo">
                     <Link to="/home-loaded">austin tsow</Link>
                 </div>
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="/AustinTsow2026.pdf" target="_blank" rel="noopener noreferrer">
-                                resume
-                            </a>
-                        </li>
-                        <li><Link to="/about">about</Link></li>
-                        <li><Link to="/contact">contact</Link></li>
-                    </ul>
-                </nav>
             </header>
             <main className="about-content">
                 {/* Left: Fading Text Section */}
@@ -184,11 +174,7 @@ print(austin.get_latest_work())
                     </div>
                 </motion.div>
             </main>
-            <footer className="contact-footer">
-                <div className="copyright">
-                    © 2026 Austin Tsow
-                </div>
-            </footer>
+            <BottomNav />
         </div>
     );
 }

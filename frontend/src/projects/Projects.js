@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Blog.css";
+import "./Projects.css";
 import BottomNav from "../components/BottomNav";
 
-function Blog() {
+function Projects() {
     return (
-        <div className="blog-page">
+        <div className="projects-page">
             <header>
                 <div className="logo">
                     <Link to="/home-loaded">austin tsow</Link>
                 </div>
             </header>
-            <main className="blog-content">
-                <h1>Blog</h1>
+            <main className="projects-content">
+                <h1>Projects</h1>
                 <p>Coming soon...</p>
             </main>
             <BottomNav />
@@ -20,4 +20,4 @@ function Blog() {
     );
 }
 
-export default Blog;
+export default Projects;
