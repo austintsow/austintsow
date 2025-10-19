@@ -117,7 +117,7 @@ print(austin.get_latest_work())
         <div className="about">
             <header>
                 <div className="logo">
-                    <Link to="/home-loaded">austin tsow</Link>
+                    <Link to="/">austin tsow</Link>
                 </div>
             </header>
             <main className="about-content">

@@ -1,28 +1,101 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./BottomNav.css";
 
 function BottomNav() {
     const location = useLocation();
+    const navRef = useRef(null);
+    const [indicatorStyle, setIndicatorStyle] = useState({});
+    const [time, setTime] = useState("");
+    const [isClockHovered, setIsClockHovered] = useState(false);
+    const [showDetailedTime, setShowDetailedTime] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
     
     const isActive = (path) => {
-        if (path === "/home-loaded") {
-            return location.pathname === "/home-loaded" || location.pathname === "/";
+        if (path === "/") {
+            return location.pathname === "/";
         }
         return location.pathname === path;
     };
 
+    useEffect(() => {
+        if (navRef.current) {
+            const activeButton = navRef.current.querySelector('.nav-button.active');
+            if (activeButton) {
+                const navRect = navRef.current.getBoundingClientRect();
+                const buttonRect = activeButton.getBoundingClientRect();
+                setIndicatorStyle({
+                    width: buttonRect.width,
+                    transform: `translateX(${buttonRect.left - navRect.left}px) translateY(-50%)`
+                });
+            }
+        }
+    }, [location.pathname]);
+
+    useEffect(() => {
+        let hoverTimeout;
+        
+        if (isClockHovered && !isMobile) {
+            hoverTimeout = setTimeout(() => {
+                setShowDetailedTime(true);
+            }, 300);
+        } else {
+            setShowDetailedTime(false);
+        }
+        
+        return () => clearTimeout(hoverTimeout);
+    }, [isClockHovered, isMobile]);
+
+    useEffect(() => {
+        const updateTime = () => {
+            const current = new Date();
+            
+            if (showDetailedTime) {
+                const hours = current.getHours();
+                const minutes = String(current.getMinutes()).padStart(2, '0');
+                const seconds = String(current.getSeconds()).padStart(2, '0');
+                const milliseconds = String(current.getMilliseconds()).padStart(3, '0');
+                const ampm = hours >= 12 ? 'pm' : 'am';
+                const displayHours = hours % 12 || 12;
+                setTime(`${displayHours}:${minutes}:${seconds}.${milliseconds} ${ampm}`);
+            } else {
+                setTime(current.toLocaleTimeString("en-US", { 
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true 
+                }).toLowerCase());
+            }
+        };
+        
+        updateTime();
+        const interval = setInterval(updateTime, showDetailedTime ? 10 : 1000);
+        
+        return () => clearInterval(interval);
+    }, [showDetailedTime]);
+
     return (
-        <nav className="glass-nav">
+        <nav className="glass-nav" ref={navRef}>
+            <div className="nav-indicator" style={indicatorStyle}></div>
             <Link 
-                to="/home-loaded" 
-                className={`nav-button ${isActive("/home-loaded") ? "active" : ""}`}
+                to="/" 
+                className={`nav-button ${isActive("/") ? "active" : ""}`}
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
-                {isActive("/home-loaded") && <span>Home</span>}
+                {isActive("/") && <span>Home</span>}
             </Link>
             
             <Link 
@@ -73,6 +146,21 @@ function BottomNav() {
                     <polyline points="10 9 9 9 8 9"></polyline>
                 </svg>
             </a>
+            
+            <div className="nav-separator">|</div>
+            
+            <div 
+                className="nav-time"
+                data-expanded={showDetailedTime}
+                onMouseEnter={!isMobile ? () => setIsClockHovered(true) : undefined}
+                onMouseLeave={!isMobile ? () => setIsClockHovered(false) : undefined}
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>{time} pst</span>
+            </div>
         </nav>
     );
 }
