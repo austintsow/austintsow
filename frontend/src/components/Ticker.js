@@ -103,7 +103,7 @@ function Ticker() {
             {/* Stock Ticker - Fast */}
             <div className="ticker-wrapper ticker-fast">
                 <div className="ticker-track">
-                    {[...stockData, ...stockData, ...stockData, ...stockData].map((stock, index) => (
+                    {[...stockData, ...stockData].map((stock, index) => (
                         <div key={`stock-${index}`} className="ticker-item stock-item">
                             <span className="ticker-symbol">{stock.displaySymbol}</span>
                             <span className="ticker-price">{formatPrice(stock.price)}</span>

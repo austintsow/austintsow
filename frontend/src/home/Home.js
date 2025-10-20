@@ -10,8 +10,8 @@ const emojiOptions = [
     { emoji: "🌲", label: "pine tree", fact: "nothing feels more like home than the pnw outdoors." },
     { emoji: "🥾", label: "hiking boots", fact: "happiest when i'm out on the trails." },
     { emoji: "🏃", label: "running", fact: "love long runs that clear my head." },
-    { emoji: "🍱", label: "bento", fact: "food is joy, and you'll probably find me sharing meals on beli." },
-    { emoji: "🔗", label: "web3", fact: "curious about how blockchain and web3 can reshape how we connect and share value." },
+    { emoji: "🍱", label: "bento", fact: "food is joy, and you'll find me sharing meals on beli." },
+    { emoji: "🔗", label: "web3", fact: "curious about how web3 can reshape how we connect and share value." },
     { emoji: "✈️", label: "travel", fact: "always excited to see new places and cultures." }
 ];
 

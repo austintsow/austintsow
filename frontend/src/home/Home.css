@@ -2,6 +2,7 @@ body {
     background: white;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 .home {
@@ -9,6 +10,8 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background: white;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 main {
