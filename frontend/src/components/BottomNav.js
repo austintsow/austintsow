@@ -10,6 +10,7 @@ function BottomNav() {
     const [isClockHovered, setIsClockHovered] = useState(false);
     const [showDetailedTime, setShowDetailedTime] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const prevPathRef = useRef(location.pathname);
 
     useEffect(() => {
         const checkMobile = () => {
@@ -26,6 +27,9 @@ function BottomNav() {
         if (path === "/") {
             return location.pathname === "/";
         }
+        if (path === "/blog") {
+            return location.pathname.startsWith("/blog");
+        }
         return location.pathname === path;
     };
 
@@ -35,12 +39,26 @@ function BottomNav() {
             if (activeButton) {
                 const navRect = navRef.current.getBoundingClientRect();
                 const buttonRect = activeButton.getBoundingClientRect();
+                
+                // Check if we're staying in the same section (e.g., /blog to /blog/:slug)
+                const prevPath = prevPathRef.current;
+                const currentPath = location.pathname;
+                const isSameSection = 
+                    (prevPath.startsWith('/blog') && currentPath.startsWith('/blog')) ||
+                    (prevPath === '/' && currentPath === '/') ||
+                    (prevPath === '/about' && currentPath === '/about') ||
+                    (prevPath === '/projects' && currentPath === '/projects') ||
+                    (prevPath === '/contact' && currentPath === '/contact');
+                
                 setIndicatorStyle({
                     width: buttonRect.width,
-                    transform: `translateX(${buttonRect.left - navRect.left}px) translateY(-50%)`
+                    transform: `translateX(${buttonRect.left - navRect.left}px) translateY(-50%)`,
+                    transition: isSameSection ? 'none' : 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
                 });
             }
         }
+        
+        prevPathRef.current = location.pathname;
     }, [location.pathname]);
 
     useEffect(() => {

@@ -2,7 +2,6 @@ import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./Projects.css";
-import BottomNav from "../components/BottomNav";
 
 function Projects() {
     const projects = [
@@ -198,7 +197,6 @@ class GonzagaVoiceAssistant:
                     ))}
                 </div>
             </main>
-            <BottomNav />
         </div>
     );
 }

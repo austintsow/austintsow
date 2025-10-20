@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Contact.css";
-import BottomNav from "../components/BottomNav";
 
 function Contact() {
     return (
@@ -31,7 +30,6 @@ function Contact() {
                     </div>
                 </div>
             </main>
-            <BottomNav />
         </div>
     );
 }

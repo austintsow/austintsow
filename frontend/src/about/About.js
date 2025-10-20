@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./About.css";
-import BottomNav from "../components/BottomNav";
 
 function About() {
     const text = [
@@ -174,7 +173,6 @@ print(austin.get_latest_work())
                     </div>
                 </motion.div>
             </main>
-            <BottomNav />
         </div>
     );
 }

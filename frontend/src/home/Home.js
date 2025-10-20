@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
-import BottomNav from "../components/BottomNav";
-import Ticker from "../components/Ticker";
 
 const emojiOptions = [
     { emoji: "🐕", label: "dog", fact: "obi's my best buddy for walks, naps, and everything in between." },
@@ -41,7 +39,6 @@ function Home() {
 
     return (
         <div className="home">
-            <Ticker />
             <main>
                 <div className={mainTextVisible ? "intro-section fade-in visible" : "intro-section fade-in"}>
                     <div className="intro-left">
@@ -90,7 +87,6 @@ function Home() {
                     </div>
                 </div>
             </main>
-            <BottomNav />
         </div>
     );
 }

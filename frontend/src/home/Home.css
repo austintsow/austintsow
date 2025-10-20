@@ -12,6 +12,7 @@ body {
     background: white;
     overflow-x: hidden;
     width: 100%;
+    padding-top: 50px;
 }
 
 main {

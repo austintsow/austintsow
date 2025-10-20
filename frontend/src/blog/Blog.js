@@ -1,7 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Blog.css";
-import BottomNav from "../components/BottomNav";
-import Ticker from "../components/Ticker";
 
 function Blog() {
     const blogEntries = [
@@ -79,7 +78,6 @@ function Blog() {
 
     return (
         <div className="blog-page">
-            <Ticker />
             <main className="blog-content">
                 <div className="blog-container">
                     {blogEntries.map((yearGroup, index) => (
@@ -87,21 +85,20 @@ function Blog() {
                             <h2 className="year-title">{yearGroup.year}</h2>
                             <div className="posts-list">
                                 {yearGroup.posts.map((post, postIndex) => (
-                                    <a 
+                                    <Link 
                                         key={postIndex} 
-                                        href={`/blog/${post.slug}`}
+                                        to={`/blog/${post.slug}`}
                                         className="post-item"
                                     >
                                         <span className="post-title">{post.title}</span>
                                         <span className="post-date">{post.date}</span>
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
                     ))}
                 </div>
             </main>
-            <BottomNav />
         </div>
     );
 }
