@@ -80,6 +80,35 @@ header .logo {
     text-transform: lowercase;
 }
 
+.emoji-fact {
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #999;
+    margin: 1.5rem 0 0 0;
+    padding: 0.75rem 0;
+    text-transform: lowercase;
+    opacity: 0;
+    animation: fadeInFact 0.8s ease-out 1.8s forwards;
+    max-width: 500px;
+}
+
+.emoji-fact-emoji {
+    font-size: 1rem;
+    margin-right: 0.3em;
+}
+
+@keyframes fadeInFact {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .wave-container {
     display: inline-block;
     white-space: nowrap;
@@ -351,6 +380,11 @@ header .logo {
         font-size: 3rem;
     }
     
+    .emoji-fact {
+        font-size: 0.8rem;
+        margin-top: 1.25rem;
+    }
+    
     .pills-section {
         order: 2;
         gap: 0.6rem;
@@ -394,6 +428,12 @@ header .logo {
     
     .intro-subtitle {
         font-size: 1rem;
+    }
+    
+    .emoji-fact {
+        font-size: 0.75rem;
+        margin-top: 1rem;
+        max-width: 100%;
     }
     
     .pills-section {
