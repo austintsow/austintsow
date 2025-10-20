@@ -1,11 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.css";
 import BottomNav from "../components/BottomNav";
 
+const emojiOptions = [
+    { emoji: "👋", label: "wave" },
+    { emoji: "🐕", label: "dog" },
+    { emoji: "🍵", label: "matcha" },
+    { emoji: "💻", label: "laptop" },
+    { emoji: "🌲", label: "pine tree" },
+    { emoji: "🥾", label: "hiking boots" },
+    { emoji: "🏃", label: "running" },
+    { emoji: "🍱", label: "bento" },
+    { emoji: "🤖", label: "AI/ML" },
+    { emoji: "🔗", label: "Web3/blockchain" },
+    { emoji: "✈️", label: "travel" }
+];
+
 function Home() {
     const [mainTextVisible, setMainTextVisible] = useState(false);
+    const [randomEmoji, setRandomEmoji] = useState("👋");
 
     useEffect(() => {
+        // Select random emoji on load
+        const randomIndex = Math.floor(Math.random() * emojiOptions.length);
+        setRandomEmoji(emojiOptions[randomIndex].emoji);
+        
         // Show content immediately
         setTimeout(() => {
             setMainTextVisible(true);
@@ -13,7 +32,7 @@ function Home() {
     }, []);
 
     const pills = [
-        { id: 1, text: "open to work", color: "green", link: null },
+        { id: 1, text: "open to work", color: "green", link: "/resume.pdf" },
         { id: 2, text: "in/tsow", color: "blue", link: "https://www.linkedin.com/in/austintsow/" },
         { id: 3, text: "gh/austintsow", color: "gray", link: "https://github.com/austintsow" },
         { id: 4, text: "beli/tsow", color: "beli", link: "https://app.beliapp.com/lists/tsow" },
@@ -27,7 +46,7 @@ function Home() {
                 <div className={mainTextVisible ? "intro-section fade-in visible" : "intro-section fade-in"}>
                     <div className="intro-left">
                         <h1 className="intro-name">
-                            austin tsow<span className="wave-container">.<span className="wave-emoji">👋</span></span>
+                            austin tsow<span className="wave-container">.<span className="wave-emoji">{randomEmoji}</span></span>
                         </h1>
                         <p className="intro-subtitle">
                             i build, design, and experiment with technology, creating full stack platforms and ai systems while exploring what's next

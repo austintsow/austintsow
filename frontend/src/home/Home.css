@@ -90,44 +90,17 @@ header .logo {
     display: inline-block;
     margin-left: 0.1em;
     opacity: 0;
-    animation: waveHandSlideOut 3s ease-in-out 0.5s forwards;
-    transform-origin: 70% 70%;
+    animation: emojiSlideOut 1s ease-out 0.5s forwards;
 }
 
-@keyframes waveHandSlideOut {
+@keyframes emojiSlideOut {
     0% {
         opacity: 0;
-        transform: translateX(-1.5em) translateY(0);
-    }
-    10% {
-        opacity: 1;
-        transform: translateX(0) translateY(-0.1em);
-    }
-    20% {
-        transform: translateX(0) translateY(-0.1em) rotate(0deg);
-    }
-    30% {
-        transform: translateX(0) translateY(-0.1em) rotate(20deg);
-    }
-    40% {
-        transform: translateX(0) translateY(-0.1em) rotate(-15deg);
-    }
-    50% {
-        transform: translateX(0) translateY(-0.1em) rotate(20deg);
-    }
-    60% {
-        transform: translateX(0) translateY(-0.1em) rotate(-15deg);
-    }
-    70% {
-        transform: translateX(0) translateY(-0.1em) rotate(0deg);
-    }
-    85% {
-        opacity: 1;
-        transform: translateX(0) translateY(-0.1em);
+        transform: translateX(-1.5em);
     }
     100% {
-        opacity: 0;
-        transform: translateX(-1.5em) translateY(0);
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 
