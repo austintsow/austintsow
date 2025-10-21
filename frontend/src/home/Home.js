@@ -65,7 +65,7 @@ function Home() {
                 <nav>
                     <ul>
                         <li>
-                            <a href="/AustinTsow2026.pdf" download="AustinTsow2026.pdf" target="_blank" rel="noopener noreferrer">
+                            <a href="/AustinTsow2026.pdf" target="_blank" rel="noopener noreferrer">
                                 resume
                             </a>
                         </li>
