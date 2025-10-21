@@ -1,202 +1,249 @@
-import React from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import React, { useState, useEffect, useRef } from "react";
 import "./Projects.css";
 
 function Projects() {
+    const TILE_SIZE = 32;
+    const PLAYER_SPEED = 0.08;
+    
+    const [playerPos, setPlayerPos] = useState({ x: 7, y: 10 });
+    const [playerDirection, setPlayerDirection] = useState('down');
+    const [isMoving, setIsMoving] = useState(false);
+    const [nearStation, setNearStation] = useState(null);
+    const [selectedProject, setSelectedProject] = useState(null);
+    const keysPressed = useRef({});
+    const animationFrame = useRef(null);
+
+    // Game stations (buildings/locations for each project)
+    const stations = [
+        { id: 'applyied', x: 3, y: 3, name: 'cozy cottage', type: 'office' },
+        { id: 'web3', x: 11, y: 3, name: 'general store', type: 'bank' },
+        { id: 'voice', x: 7, y: 6, name: 'blacksmith', type: 'studio' }
+    ];
+
     const projects = [
         {
-            title: "applyied",
-            description: "co-founded ai-powered job platform using next.js, firebase, python, and openai's api. developed modular server components with tailwind css, built scalable backend systems, and implemented ai-driven resume parsing with intelligent tracking pipelines. deployed on vercel for secure, high-performance global delivery.",
-            code: `from typing import Dict, List
-from openai import OpenAI
-from firebase_admin import firestore, auth
-
-class ApplyiedPlatform:
-    def __init__(self):
-        self.client = OpenAI()
-        self.db = firestore.client()
-    
-    def parse_resume(self, resume_text: str, job_desc: str) -> Dict:
-        """
-        ai-driven resume parsing and optimization pipeline
-        integrates openai api for intelligent analysis
-        """
-        prompt = f"""
-        analyze resume against job description.
-        extract: skills, experience, education, match score
-        job: {job_desc}
-        resume: {resume_text}
-        """
-        
-        response = self.client.chat.completions.create(
-            model="gpt-4-turbo",
-            messages=[{"role": "user", "content": prompt}]
-        )
-        
-        analysis = self.process_ai_response(response)
-        self.track_application(analysis)
-        
-        return {
-            "match_score": analysis.score,
-            "suggestions": analysis.improvements,
-            "optimized_resume": self.enhance_resume(resume_text, analysis)
-        }
-    
-    def track_application(self, data: Dict) -> None:
-        # firebase firestore for scalable tracking
-        self.db.collection('applications').add(data)
-    
-    def enhance_resume(self, resume: str, analysis: Dict) -> str:
-        # edge-ready optimization
-        return self.apply_suggestions(resume, analysis.improvements)`
+            id: "applyied",
+            name: "applyied",
+            files: [
+                {
+                    name: "about",
+                    content: "ai-powered job application platform helping candidates optimize resumes and track applications using openai's api for intelligent matching and suggestions."
+                },
+                {
+                    name: "tech stack",
+                    content: "next.js • react • tailwind • python • firebase • openai gpt-4"
+                }
+            ]
         },
         {
-            title: "zero-fee blockchain payments",
-            description: "researching blockchain protocols for scalable, instant, zero-fee transfers between web3 wallets and bank accounts. prototyped solidity smart contracts and off-chain settlement flows to reduce costs and latency. designed web3-to-fintech integration supporting exchanges, stablecoins, and defi payments.",
-            code: `from web3 import Web3
-from typing import Optional
-import asyncio
-
-class Web3PaymentBridge:
-    def __init__(self, rpc_url: str):
-        self.w3 = Web3(Web3.HTTPProvider(rpc_url))
-        self.settlement_layer = OffChainSettlement()
-    
-    async def transfer_to_bank(
-        self, 
-        wallet_address: str, 
-        amount: float,
-        bank_account: str
-    ) -> Dict:
-        """
-        zero-fee web3 to fiat bridge
-        uses off-chain settlement to eliminate gas fees
-        supports stablecoins (USDC, USDT) and native tokens
-        """
-        # check wallet balance
-        balance = await self.check_web3_balance(wallet_address)
-        
-        if balance >= amount:
-            # create settlement transaction off-chain
-            tx_hash = await self.settlement_layer.initiate(
-                sender=wallet_address,
-                recipient=bank_account,
-                amount=amount,
-                token="USDC"
-            )
-            
-            # batch settlements for cost reduction
-            await self.settlement_layer.batch_process()
-            
-            return {
-                "status": "success",
-                "tx_hash": tx_hash,
-                "settlement_time": "instant",
-                "fees": 0.00  # zero-fee architecture
-            }
-        
-        return {"status": "insufficient_balance"}
-    
-    async def check_web3_balance(self, address: str) -> float:
-        # query blockchain state
-        return self.w3.eth.get_balance(address) / 10**18`
+            id: "web3",
+            name: "web3-payments",
+            files: [
+                {
+                    name: "about",
+                    content: "blockchain payment system for instant, zero-fee transfers between web3 wallets and bank accounts using off-chain settlement and stablecoin protocols."
+                },
+                {
+                    name: "tech stack",
+                    content: "solidity • web3.py • solana • stablecoins • off-chain settlement"
+                }
+            ]
         },
         {
-            title: "university voice assistant",
-            description: "built nlp-powered voice assistant for gonzaga.edu using python, scrapy, and modern parsing frameworks. indexed and parsed campus-wide content for accurate contextual queries. delivered real-time voice responses with speechrecognition and gtts in responsive web interface.",
-            code: `import speech_recognition as sr
-from gtts import gTTS
-from scrapy import Spider
-import nltk
-from typing import List, Dict
-
-class GonzagaVoiceAssistant:
-    def __init__(self):
-        self.recognizer = sr.Recognizer()
-        self.knowledge_base = self.index_campus_content()
-        self.nlp_engine = nltk.load('en_core_web_sm')
-    
-    def index_campus_content(self) -> Dict:
-        """
-        scrapy-based campus content indexing
-        parses gonzaga.edu for fast contextual retrieval
-        """
-        spider = GonzagaCrawler()
-        indexed_data = spider.crawl_and_parse()
-        
-        return {
-            "courses": indexed_data.courses,
-            "events": indexed_data.events,
-            "faculty": indexed_data.faculty,
-            "facilities": indexed_data.buildings
-        }
-    
-    def process_voice_query(self, audio_input) -> str:
-        """
-        real-time voice processing pipeline
-        speech -> text -> nlp -> contextual search -> response
-        """
-        # speech recognition
-        text = self.recognizer.recognize_google(audio_input)
-        
-        # nlp parsing for intent
-        intent = self.nlp_engine(text)
-        query_type = self.classify_intent(intent)
-        
-        # contextual search
-        results = self.search_knowledge_base(query_type, text)
-        
-        # generate and speak response
-        response = self.format_response(results)
-        audio = gTTS(text=response, lang='en')
-        
-        return response
-    
-    def classify_intent(self, parsed_text) -> str:
-        # accurate contextual query classification
-        return self.nlp_engine.classify(parsed_text)`
+            id: "voice",
+            name: "voice-assistant",
+            files: [
+                {
+                    name: "about",
+                    content: "nlp-powered voice assistant for gonzaga.edu providing real-time voice responses to campus queries with speech recognition and contextual search."
+                },
+                {
+                    name: "tech stack",
+                    content: "python • nltk • spacy • scrapy • speech recognition • google tts"
+                }
+            ]
         }
     ];
 
+    // Movement and collision detection
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (['w', 'a', 's', 'd', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key.toLowerCase())) {
+                e.preventDefault();
+                keysPressed.current[e.key.toLowerCase()] = true;
+            }
+            
+            // Interact with station
+            if ((e.key === ' ' || e.key === 'Enter') && nearStation) {
+                e.preventDefault();
+                const project = projects.find(p => p.id === nearStation);
+                setSelectedProject(project);
+            }
+        };
+
+        const handleKeyUp = (e) => {
+            keysPressed.current[e.key.toLowerCase()] = false;
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        window.addEventListener('keyup', handleKeyUp);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('keyup', handleKeyUp);
+        };
+    }, [nearStation, projects]);
+
+    // Game loop
+    useEffect(() => {
+        const gameLoop = () => {
+            let newX = playerPos.x;
+            let newY = playerPos.y;
+            let moved = false;
+            let newDirection = playerDirection;
+
+            if (keysPressed.current['w'] || keysPressed.current['arrowup']) {
+                newY -= PLAYER_SPEED;
+                newDirection = 'up';
+                moved = true;
+            }
+            if (keysPressed.current['s'] || keysPressed.current['arrowdown']) {
+                newY += PLAYER_SPEED;
+                newDirection = 'down';
+                moved = true;
+            }
+            if (keysPressed.current['a'] || keysPressed.current['arrowleft']) {
+                newX -= PLAYER_SPEED;
+                newDirection = 'left';
+                moved = true;
+            }
+            if (keysPressed.current['d'] || keysPressed.current['arrowright']) {
+                newX += PLAYER_SPEED;
+                newDirection = 'right';
+                moved = true;
+            }
+
+            // Boundaries
+            newX = Math.max(0.5, Math.min(14.5, newX));
+            newY = Math.max(0.5, Math.min(11.5, newY));
+
+            if (moved) {
+                setPlayerPos({ x: newX, y: newY });
+                setPlayerDirection(newDirection);
+                setIsMoving(true);
+            } else {
+                setIsMoving(false);
+            }
+
+            // Check proximity to stations
+            let near = null;
+            stations.forEach(station => {
+                const distance = Math.sqrt(
+                    Math.pow(newX - station.x, 2) + Math.pow(newY - station.y, 2)
+                );
+                if (distance < 1.5) {
+                    near = station.id;
+                }
+            });
+            setNearStation(near);
+
+            animationFrame.current = requestAnimationFrame(gameLoop);
+        };
+
+        animationFrame.current = requestAnimationFrame(gameLoop);
+
+        return () => {
+            if (animationFrame.current) {
+                cancelAnimationFrame(animationFrame.current);
+            }
+        };
+    }, [playerPos, playerDirection, stations, PLAYER_SPEED]);
+
+    const closeProject = () => {
+        setSelectedProject(null);
+    };
+
     return (
-        <div className="projects-page">
-            <main className="projects-container">
-                <h1 className="projects-title">projects</h1>
-                <div className="projects-grid">
-                    {projects.map((project, index) => (
-                        <div key={index} className="project-card">
-                            <div className="project-info">
-                                <h2>{project.title}</h2>
-                                <p>{project.description}</p>
-                            </div>
-                            <div className="ide-container">
-                                <div className="ide-header">
-                                    <span className="ide-dot red"></span>
-                                    <span className="ide-dot yellow"></span>
-                                    <span className="ide-dot green"></span>
-                                </div>
-                                <div className="ide-body">
-                                    <SyntaxHighlighter 
-                                        language="python" 
-                                        style={vscDarkPlus} 
-                                        className="ide-code"
-                                        customStyle={{
-                                            margin: 0,
-                                            padding: '15px',
-                                            background: '#282c34',
-                                            fontSize: '12px',
-                                            lineHeight: '1.5'
-                                        }}
-                                    >
-                                        {project.code}
-                                    </SyntaxHighlighter>
-                                </div>
-                            </div>
+        <div className="game-container">
+            {/* Game World */}
+            <div className="game-world">
+                {/* Map Grid */}
+                <div className="game-map">
+                    {/* Render grass and dirt path */}
+                    {Array.from({ length: 12 }).map((_, row) => (
+                        Array.from({ length: 15 }).map((_, col) => {
+                            const isPath = (row >= 5 && row <= 6) || (col >= 6 && col <= 8 && row <= 6);
+                            return (
+                                <div
+                                    key={`${row}-${col}`}
+                                    className={`tile ${isPath ? 'path' : 'grass'}`}
+                                    style={{
+                                        gridRow: row + 1,
+                                        gridColumn: col + 1
+                                    }}
+                                />
+                            );
+                        })
+                    ))}
+
+                    {/* Stations/Buildings */}
+                    {stations.map((station) => (
+                        <div
+                            key={station.id}
+                            className="station"
+                            style={{
+                                gridRow: station.y + 1,
+                                gridColumn: station.x + 1
+                            }}
+                        >
+                            <div className={`station-building building-${station.type}`}></div>
+                            <div className="station-name">{station.name}</div>
                         </div>
                     ))}
+
+                    {/* Player Character */}
+                    <div
+                        className={`player player-${playerDirection} ${isMoving ? 'moving' : ''}`}
+                        style={{
+                            gridRow: Math.floor(playerPos.y) + 1,
+                            gridColumn: Math.floor(playerPos.x) + 1,
+                            transform: `translate(${(playerPos.x % 1) * TILE_SIZE}px, ${(playerPos.y % 1) * TILE_SIZE}px)`
+                        }}
+                    >
+                        <div className="player-sprite"></div>
+                    </div>
                 </div>
-            </main>
+
+                {/* Interaction Prompt */}
+                {nearStation && !selectedProject && (
+                    <div className="interaction-prompt">
+                        Press <span className="key">SPACE</span> or <span className="key">ENTER</span> to explore
+                    </div>
+                )}
+
+                {/* Controls Help */}
+                <div className="controls-help">
+                    Use <span className="key">WASD</span> or <span className="key">Arrow Keys</span> to move
+                </div>
+            </div>
+
+            {/* Project Details Modal */}
+            {selectedProject && (
+                <div className="project-modal-overlay" onClick={closeProject}>
+                    <div className="project-modal" onClick={(e) => e.stopPropagation()}>
+                        <button className="close-button" onClick={closeProject}>×</button>
+                        <h2>{selectedProject.name}</h2>
+                        <div className="project-files">
+                            {selectedProject.files.map((file, index) => (
+                                <div key={index} className="file-section">
+                                    <h3>{file.name}</h3>
+                                    <pre>{file.content}</pre>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

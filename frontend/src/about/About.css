@@ -4,199 +4,426 @@ body {
     padding: 0;
 }
 
-.about {
+.about-page {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    user-select: none; /* Prevent text selection in the entire about page */
-    background: white;
-}
-
-.about > * {
-    position: relative;
-    z-index: 1;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav li {
-    display: inline;
-    margin-left: 10px;
-}
-
-nav a {
-    text-decoration: none;
-    color: inherit;
-    user-select: text;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1% 5%;
-    user-select: text;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-header .logo {
-    font-size: 1.25rem;
-    font-weight: 200;
-    text-transform: lowercase;
-    user-select: text;
-}
-
-header ul {
-    display: inline;
-    padding: 0;
-    margin: 0;
-}
-
-header li {
-    display: inline;
-    margin-left: 0;
-    font-size: 1.25rem;
-    font-weight: 200;
-    user-select: text;
-}
-
-header li::after {
-    content: ",";
-    margin-right: 5px;
-}
-
-header li:last-child::after {
-    content: "";
-}
-
-nav {
-    user-select: text;
-}
-
-a {
-    user-select: text; /* Make all links selectable */
+    background: #fafafa;
+    overflow-x: hidden;
 }
 
 .about-content {
+    flex: 1;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 85%;
-    margin: auto;
-    margin-top: 5%;
-    user-select: none;
+    justify-content: center;
+    padding: 6rem 2rem 8rem 2rem;
+    padding-top: calc(6rem + 50px);
+    width: 100%;
+}
+
+.about-wrapper {
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    gap: 4rem;
+    animation: fadeInUp 0.6s ease-out;
+    overflow-x: hidden;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Left: Text Content */
+.about-text {
+    flex: 1;
+    max-width: 680px;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    margin-top: 3rem;
+    color: #000;
+    letter-spacing: -0.02em;
+    text-transform: lowercase;
+}
+
+.section-title:first-child {
+    margin-top: 0.15rem;
+}
+
+.about-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    letter-spacing: -0.003em;
+}
+
+/* Right: Timeline */
+.timeline-container {
+    width: 300px;
+    flex-shrink: 0;
+    position: sticky;
+    top: calc(50px + 6rem);
+    align-self: flex-start;
+}
+
+.timeline-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    margin-top: 0.15rem;
+    color: #000;
+    letter-spacing: -0.02em;
+    text-transform: lowercase;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Future Vision */
+.timeline-future {
+    position: relative;
+    display: flex;
+    padding-left: 2.5rem;
+    padding-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.timeline-future-line {
+    position: absolute;
+    left: 7px;
+    top: 20px;
+    bottom: -10px;
+    width: 2px;
+    background: repeating-linear-gradient(
+        to bottom,
+        #d0d0d0 0,
+        #d0d0d0 6px,
+        transparent 6px,
+        transparent 12px
+    );
+    z-index: 1;
+    opacity: 0;
+    animation: drawLineDown 0.8s ease-out 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes drawLineDown {
+    0% {
+        opacity: 1;
+        clip-path: inset(0 0 100% 0);
+    }
+    100% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+.timeline-item {
+    position: relative;
+    display: flex;
+    padding-left: 2.5rem;
+    padding-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Sequential animation delays for each item */
+.timeline-item:nth-child(2) {
+    animation-delay: 1.3s;
+}
+
+.timeline-item:nth-child(3) {
+    animation-delay: 2.6s;
+}
+
+.timeline-item:nth-child(4) {
+    animation-delay: 3.9s;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 3px solid;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.timeline-dot-inner {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 7px;
+    top: 20px;
+    bottom: -10px;
+    width: 2px;
+    background: repeating-linear-gradient(
+        to bottom,
+        #d0d0d0 0,
+        #d0d0d0 6px,
+        transparent 6px,
+        transparent 12px
+    );
+    z-index: 1;
+    opacity: 0;
+    animation: drawLineDown 0.8s ease-out forwards;
+}
+
+/* Line animations after each item appears */
+.timeline-item:nth-child(2) .timeline-line {
+    animation-delay: 1.8s;
+}
+
+.timeline-item:nth-child(3) .timeline-line {
+    animation-delay: 3.1s;
+}
+
+.timeline-item:nth-child(4) .timeline-line {
+    animation-delay: 4.4s;
+}
+
+.timeline-content {
     flex: 1;
 }
 
-.about-text {
-    width: 45%;
-    font-size: 1rem;
-    line-height: 1.5;
-    text-align: left;
-    color: rgb(50, 50, 50);
+.timeline-company {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
 }
 
-.ide-container {
-    width: 50%;
-    background: #282c34;
-    border-radius: 8px;
-    color: white;
-    font-size: 14px;
-    font-family: "Fira Code", monospace;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
-    transition: opacity 1s ease-in-out;
-    border: none;
-    margin-bottom: 40px; /* Ensure space for footer */
-    overflow: hidden; /* To contain the border-radius of children */
+.timeline-role {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
 }
 
-.ide-header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background: #3c4049; /* A slightly lighter shade for the header */
+.timeline-date {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #737373;
 }
 
-.ide-dot {
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
-    margin-right: 8px;
-}
-
-.red {
-    background-color: #ff5f56;
-}
-
-.yellow {
-    background-color: #ffbd2e;
-}
-
-.green {
-    background-color: #27c93f;
-}
-
-.ide-body {
-    position: relative;
-}
-
-.ide-sizer {
-    visibility: hidden;
-    padding: 10px;
-}
-
-.ide-code {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    margin: 0 !important; /* Override default margin from SyntaxHighlighter */
+/* Mobile Responsive */
+@media (max-width: 968px) {
+    .about-wrapper {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .timeline-container {
+        width: 100%;
+        position: static;
+    }
 }
 
 @media (max-width: 768px) {
     .about-content {
-        flex-direction: column;
-        align-items: center;
+        padding: 4rem 1.5rem 7rem 1.5rem;
+        padding-top: calc(4rem + 50px);
+    }
+    
+    .about-wrapper {
+        gap: 2.5rem;
+    }
+    
+    .about-text {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .section-title {
+        font-size: 1.35rem;
+        margin-top: 2.5rem;
+    }
+    
+    .section-title:first-child {
+        margin-top: 0.15rem;
+    }
+    
+    .about-text p {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        margin-bottom: 1.25rem;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+    
+    .timeline-title {
+        font-size: 1.35rem;
+        margin-bottom: 1rem;
+        margin-top: 0.15rem;
+    }
+    
+    .timeline-future {
+        padding-left: 2rem;
+        padding-bottom: 2rem;
+    }
+    
+    .timeline-future-line {
+        left: 6px;
+        top: 18px;
+        bottom: -10px;
+    }
+    
+    .timeline-item {
+        padding-left: 2rem;
+        padding-bottom: 2rem;
+    }
+    
+    .timeline-dot {
+        width: 14px;
+        height: 14px;
+        border-width: 2.5px;
+    }
+    
+    .timeline-dot-inner {
+        width: 7px;
+        height: 7px;
+    }
+    
+    .timeline-line {
+        left: 6px;
+        top: 18px;
+        bottom: -10px;
+    }
+    
+    .timeline-company {
+        font-size: 1rem;
+    }
+    
+    .timeline-role {
+        font-size: 0.85rem;
+    }
+    
+    .timeline-date {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-content {
+        padding: 3rem 1.25rem 6rem 1.25rem;
+        padding-top: calc(3rem + 50px);
+    }
+    
+    .about-wrapper {
+        gap: 2rem;
     }
 
     .about-text {
-        width: 105%;
-        max-width: 600px;
-        text-align: left;
-    }
-
-    .ide-container {
         width: 100%;
-        max-width: 600px;
-        margin-top: 20px;
+        max-width: 100%;
     }
-}
-
-/* Footer styling */
-.contact-footer {
-    display: flex;
-    justify-content: flex-start;
-    padding: 1% 5%;
-    width: 90%;
-    height: 30px; /* Fixed height for footer */
-    margin-top: 40px; /* Add space above the footer */
-    position: relative;
-    bottom: 10px;
-}
-
-.copyright {
-    font-size: 0.75rem;
-    font-weight: 200;
-    color: black;
-    text-transform: lowercase;
-    animation: fadeIn 1s ease-in-out;
-    animation-delay: 1s;
-    animation-fill-mode: both;
+    
+    .section-title {
+        font-size: 1.25rem;
+        margin-top: 2rem;
+    }
+    
+    .section-title:first-child {
+        margin-top: 0.15rem;
+    }
+    
+    .about-text p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+    
+    .timeline-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        margin-top: 0.15rem;
+    }
+    
+    .timeline-future {
+        padding-left: 1.75rem;
+        padding-bottom: 1.75rem;
+    }
+    
+    .timeline-future-line {
+        left: 5px;
+        top: 16px;
+        bottom: -10px;
+    }
+    
+    .timeline-item {
+        padding-left: 1.75rem;
+        padding-bottom: 1.75rem;
+    }
+    
+    .timeline-dot {
+        width: 12px;
+        height: 12px;
+        border-width: 2px;
+    }
+    
+    .timeline-dot-inner {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .timeline-line {
+        left: 5px;
+        top: 16px;
+        bottom: -10px;
+    }
+    
+    .timeline-company {
+        font-size: 0.95rem;
+    }
+    
+    .timeline-role {
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+    
+    .timeline-date {
+        font-size: 0.75rem;
+    }
 }

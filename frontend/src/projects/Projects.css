@@ -1,150 +1,660 @@
-body {
-    background: white;
-    margin: 0;
-    padding: 0;
+/* Retro Game Styling - Scoped to game only */
+.game-container {
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    image-rendering: pixelated;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #87CEEB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
-.projects-page {
+.game-container * {
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+}
+
+.game-world {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: calc(100vh - 150px);
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    background: white;
+    align-items: center;
+    justify-content: center;
 }
 
-.projects-container {
-    flex: 1;
-    padding: 3rem 2rem 6rem 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.projects-title {
-    font-size: 2.25rem;
-    font-weight: 300;
-    text-transform: lowercase;
-    margin-bottom: 3rem;
-    color: #000;
-    margin-top: 0;
-    text-align: left;
-    display: block;
-    width: 100%;
-}
-
-.projects-grid {
+/* Game Map Grid */
+.game-map {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 4rem;
+    grid-template-columns: repeat(15, 32px);
+    grid-template-rows: repeat(12, 32px);
+    gap: 0;
+    border: 4px solid #5a3a1a;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    position: relative;
 }
 
-.project-card {
+/* Tiles */
+.tile {
+    width: 32px;
+    height: 32px;
+    position: relative;
+}
+
+.tile.grass {
+    background: #7ec850;
+    background-image: 
+        linear-gradient(45deg, #6fb841 25%, transparent 25%),
+        linear-gradient(-45deg, #6fb841 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #6fb841 75%),
+        linear-gradient(-45deg, transparent 75%, #6fb841 75%);
+    background-size: 4px 4px;
+    background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
+}
+
+.tile.path {
+    background: #c9976f;
+    background-image:
+        radial-gradient(circle at 30% 30%, #b88960 1px, transparent 1px),
+        radial-gradient(circle at 70% 70%, #a67b52 1px, transparent 1px);
+    background-size: 8px 8px;
+}
+
+/* Stations/Buildings */
+.station {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.station-building {
+    width: 48px;
+    height: 48px;
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.3));
+}
+
+/* Cozy House - Applyied (Stardew Valley style) */
+.building-office {
+    background: linear-gradient(to bottom, #d98c5f 0%, #b86f44 100%);
+    border: 2px solid #8a4a2a;
+    border-radius: 3px 3px 2px 2px;
+    position: relative;
+    box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Roof */
+.building-office::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 26px solid transparent;
+    border-right: 26px solid transparent;
+    border-bottom: 12px solid #8b4513;
+    filter: drop-shadow(0 -1px 0 #5a2d0d);
+}
+
+/* Door and Window */
+.building-office::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 18px;
+    background: #5a3a1a;
+    border: 2px solid #3a2a1a;
+    border-radius: 1px;
+    box-shadow: 
+        inset -6px 6px 0 #6a4a2a,
+        -16px -8px 0 0 #7eb8db,
+        -16px -8px 0 2px #4a7a9a;
+}
+
+/* General Store - Web3 Payments (Stardew Valley style) */
+.building-bank {
+    background: linear-gradient(to bottom, #e8b876 0%, #d4a05a 100%);
+    border: 2px solid #a67c3a;
+    border-radius: 2px;
+    position: relative;
+    box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Roof with chimney effect */
+.building-bank::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 28px solid transparent;
+    border-right: 28px solid transparent;
+    border-bottom: 14px solid #c96543;
+    filter: drop-shadow(0 -1px 0 #9a4523);
+}
+
+/* Shop sign and windows */
+.building-bank::after {
+    content: '';
+    position: absolute;
+    width: 32px;
+    height: 8px;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #7eb8db;
+    border: 2px solid #4a7a9a;
+    border-radius: 1px;
+    box-shadow: 
+        0 12px 0 0 #7eb8db,
+        0 12px 0 2px #4a7a9a,
+        0 26px 0 0 #8a5a3a,
+        0 26px 0 2px #5a3a1a;
+}
+
+/* Blacksmith/Workshop - Voice Assistant (Stardew Valley style) */
+.building-studio {
+    background: linear-gradient(to bottom, #6a6a6a 0%, #4a4a4a 100%);
+    border: 2px solid #2a2a2a;
+    border-radius: 2px;
+    position: relative;
+    box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Chimney */
+.building-studio::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    right: 8px;
+    width: 8px;
+    height: 12px;
+    background: #5a3a3a;
+    border: 2px solid #3a2a2a;
+    border-bottom: none;
+    box-shadow: 0 -4px 0 0 #7a5a5a;
+}
+
+/* Forge glow and door */
+.building-studio::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 20px;
+    background: linear-gradient(to top, #ff6b35 0%, #f7931e 50%, #ffd700 100%);
+    border: 2px solid #8a4a2a;
+    border-radius: 2px 2px 0 0;
+    box-shadow: 
+        0 0 8px rgba(255, 140, 0, 0.6),
+        inset 0 -4px 0 rgba(255, 69, 0, 0.8);
+    animation: forge-glow 2s ease-in-out infinite;
+}
+
+@keyframes forge-glow {
+    0%, 100% { 
+        box-shadow: 
+            0 0 8px rgba(255, 140, 0, 0.6),
+            inset 0 -4px 0 rgba(255, 69, 0, 0.8);
+    }
+    50% { 
+        box-shadow: 
+            0 0 16px rgba(255, 140, 0, 0.9),
+            inset 0 -4px 0 rgba(255, 100, 0, 1);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
+}
+
+.station-name {
+    font-size: 0.35rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2px 4px;
+    border-radius: 2px;
+    margin-top: 4px;
+    white-space: nowrap;
+    text-shadow: 1px 1px 0px #000;
+}
+
+/* Player Character */
+.player {
+    position: relative;
+    z-index: 20;
+    transition: transform 0.02s linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+
+.player-sprite {
+    width: 24px;
+    height: 32px;
+    position: relative;
+    filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.3));
+}
+
+/* Character Body */
+.player-sprite::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 20px;
+    background: #4a90e2;
+    border: 2px solid #2a5a9a;
+    border-radius: 3px;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Character Head */
+.player-sprite::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #ffc896;
+    border: 2px solid #d4a576;
+    border-radius: 50%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.player.moving .player-sprite {
+    animation: walk 0.4s steps(2) infinite;
+}
+
+@keyframes walk {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-2px); }
+}
+
+/* Direction-based styling */
+.player-down .player-sprite::before {
+    background: #4a90e2;
+}
+
+.player-up .player-sprite::before {
+    background: #5aa0f2;
+}
+
+.player-left .player-sprite::before,
+.player-right .player-sprite::before {
+    background: #3a80d2;
+}
+
+/* Interaction Prompt */
+.interaction-prompt {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    animation: bounce 0.6s ease-in-out infinite alternate;
+    z-index: 100;
+}
+
+@keyframes bounce {
+    from { transform: translateX(-50%) translateY(0px); }
+    to { transform: translateX(-50%) translateY(-4px); }
+}
+
+.interaction-prompt .key {
+    background: #fff;
+    color: #000;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+    margin: 0 4px;
+    border: 2px solid #ccc;
+    box-shadow: 0 2px 0 #999;
+}
+
+/* Controls Help */
+.controls-help {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.6rem;
+    z-index: 50;
+}
+
+.controls-help .key {
+    background: #fff;
+    color: #000;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+    margin: 0 4px;
+    border: 2px solid #ccc;
+    box-shadow: 0 2px 0 #999;
+}
+
+/* Project Modal */
+.project-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.project-modal {
+    background: linear-gradient(to bottom, #3d2f26 0%, #2a1f1a 100%);
+    color: #f4e4c1;
+    max-width: 600px;
+    max-height: 70vh;
+    width: 85%;
+    border-radius: 8px;
+    padding: 1.5rem;
+    overflow-y: auto;
+    position: relative;
+    border: 6px solid #8b6f47;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.7),
+        inset 0 0 0 2px #2a1f1a,
+        inset 0 0 0 4px #5a4a3a;
+    animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.close-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: #d94f4f;
+    color: white;
+    border: 2px solid #8a2f2f;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 
+        0 2px 0 #6a1f1f,
+        0 3px 8px rgba(0, 0, 0, 0.4);
+    font-family: monospace;
+    line-height: 1;
+}
+
+.close-button:hover {
+    background: #ff3b30;
+    transform: translateY(-1px);
+    box-shadow: 
+        0 3px 0 #6a1f1f,
+        0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.close-button:active {
+    transform: translateY(1px);
+    box-shadow: 
+        0 1px 0 #6a1f1f,
+        0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.project-modal h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #ffd700;
+    text-transform: lowercase;
+    border-bottom: 2px solid #8b6f47;
+    padding-bottom: 0.5rem;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.05em;
+}
+
+.project-files {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    position: relative;
 }
 
-.project-info h2 {
-    font-size: 1.5rem;
-    font-weight: 300;
-    text-transform: lowercase;
-    margin: 0 0 0.75rem 0;
-    color: #000;
+.file-section {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0.75rem;
+    border-radius: 4px;
+    border: 2px solid #6a5a4a;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.project-info p {
-    font-size: 0.9rem;
-    font-weight: 300;
-    line-height: 1.7;
-    color: #666;
-    margin: 0 0 1rem 0;
-    text-transform: lowercase;
+.file-section h3 {
+    font-size: 0.7rem;
+    color: #e8b876;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid #5a4a3a;
+    padding-bottom: 0.25rem;
 }
 
-.ide-container {
-    background: #282c34;
-    border-radius: 10px;
-    color: white;
-    font-family: "Fira Code", "Consolas", "Monaco", monospace;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 1;
+.file-section pre {
+    font-size: 0.65rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #d4c4a4;
+    margin: 0;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
 }
 
-.ide-header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background: #3c4049;
+/* Scrollbar Styling */
+.project-modal::-webkit-scrollbar {
+    width: 8px;
 }
 
-.ide-dot {
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
-    margin-right: 8px;
+.project-modal::-webkit-scrollbar-track {
+    background: #2a1f1a;
+    border-radius: 4px;
+    border: 1px solid #5a4a3a;
 }
 
-.red {
-    background-color: #ff5f56;
+.project-modal::-webkit-scrollbar-thumb {
+    background: #8b6f47;
+    border-radius: 4px;
+    border: 1px solid #6a5a4a;
 }
 
-.yellow {
-    background-color: #ffbd2e;
+.project-modal::-webkit-scrollbar-thumb:hover {
+    background: #9b7f57;
 }
 
-.green {
-    background-color: #27c93f;
-}
-
-.ide-body {
-    overflow-x: auto;
-    min-height: 200px;
-    max-height: 500px;
-    overflow-y: auto;
-}
-
-.ide-code {
-    margin: 0 !important;
-    display: block !important;
-}
-
-.ide-code pre {
-    margin: 0 !important;
-    background: transparent !important;
-}
-
+/* Mobile Responsive */
 @media (max-width: 768px) {
-    .projects-container {
-        padding: 2rem 1.5rem 5rem 1.5rem;
-        max-width: 100%;
+    .game-map {
+        grid-template-columns: repeat(15, 24px);
+        grid-template-rows: repeat(12, 24px);
+        border-width: 3px;
     }
     
-    .projects-title {
-        font-size: 1.75rem;
-        margin-bottom: 2rem;
-        margin-top: 0.5rem;
+    .tile {
+        width: 24px;
+        height: 24px;
     }
     
-    .projects-grid {
-        gap: 3rem;
+    .station-building {
+        width: 36px;
+        height: 36px;
     }
     
-    .project-info h2 {
-        font-size: 1.25rem;
+    /* House roof */
+    .building-office::before {
+        top: -6px;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 10px solid #8b4513;
     }
     
-    .project-info p {
-        font-size: 0.85rem;
-        line-height: 1.6;
+    .building-office::after {
+        width: 12px;
+        height: 14px;
+        box-shadow: 
+            inset -4px 4px 0 #6a4a2a,
+            -12px -6px 0 0 #7eb8db,
+            -12px -6px 0 2px #4a7a9a;
     }
     
-    .ide-container {
-        font-size: 11px;
+    /* Store roof */
+    .building-bank::before {
+        top: -8px;
+        border-left: 22px solid transparent;
+        border-right: 22px solid transparent;
+        border-bottom: 11px solid #c96543;
+    }
+    
+    .building-bank::after {
+        width: 26px;
+        height: 6px;
+        top: 10px;
+        box-shadow: 
+            0 10px 0 0 #7eb8db,
+            0 10px 0 2px #4a7a9a,
+            0 20px 0 0 #8a5a3a,
+            0 20px 0 2px #5a3a1a;
+    }
+    
+    /* Blacksmith */
+    .building-studio::before {
+        top: -10px;
+        right: 6px;
+        width: 7px;
+        height: 10px;
+    }
+    
+    .building-studio::after {
+        width: 14px;
+        height: 16px;
+    }
+    
+    .station-name {
+        font-size: 0.3rem;
+        padding: 1px 3px;
+    }
+    
+    .player {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .player-sprite {
+        width: 18px;
+        height: 24px;
+    }
+    
+    .player-sprite::before {
+        width: 12px;
+        height: 16px;
+        top: 6px;
+    }
+    
+    .player-sprite::after {
+        width: 11px;
+        height: 11px;
+    }
+    
+    .interaction-prompt {
+        font-size: 0.6rem;
+        padding: 8px 12px;
+        bottom: 60px;
+    }
+    
+    .controls-help {
+        font-size: 0.5rem;
+        padding: 6px 12px;
+        top: 10px;
+    }
+    
+    .project-modal {
+        padding: 1rem;
+        max-height: 80vh;
+        width: 90%;
+    }
+    
+    .project-modal h2 {
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .file-section {
+        padding: 0.6rem;
+    }
+    
+    .file-section h3 {
+        font-size: 0.6rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .file-section pre {
+        font-size: 0.55rem;
+        line-height: 1.4;
+    }
+    
+    .close-button {
+        width: 24px;
+        height: 24px;
+        font-size: 1rem;
     }
 }
-
