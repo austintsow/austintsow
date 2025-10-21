@@ -30,12 +30,13 @@ function About() {
                 <div className="about-wrapper">
                     {/* Left: Text Content */}
                     <div className="about-text">
-                        <h3 className="section-title">building</h3>
+                        <h3 className="section-title">background</h3>
                         <p>
                             i'm a builder at heart, always drawn to the intersection of technology and problem-solving. my journey started in sammamish, just thirty minutes east from seattle, where i grew up surrounded by a mix of innovation and nature. now, i'm an undergraduate student at gonzaga university, studying computer science with a concentration in software security. my passion lies in building ai-driven applications that solve real problems—from optimizing job applications with machine learning to creating voice assistants that understand natural language. i'm currently researching zero-fee blockchain payment systems, exploring how we can bridge web3 wallets with traditional banking through solidity smart contracts and off-chain settlement flows. the potential to rearchitect financial infrastructure using decentralized protocols, especially on solana's high-throughput network, fascinates me daily.
+
                         </p>
                         
-                        <h3 className="section-title">outside</h3>
+                        <h3 className="section-title">hobbies</h3>
                         <p>
                             when i'm not coding or researching blockchain protocols, you'll find me outside living an active life. i spend weekends hiking in the pacific northwest, exploring trails across washington, always chasing new views and elevation gains. running has become a constant, whether training for a race or just clearing my mind on a long stretch of road. but my newest obsession is pickleball! i'm rated a 5.1 DUPR... in my dreams, at least. there's something addictive about the perfect third shot drop or a well-executed kitchen rally — and who knows, if i keep improving, maybe i'll actually earn that 5.1 one day.
                         </p>

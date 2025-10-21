@@ -150,9 +150,10 @@ function BottomNav() {
                 {isActive("/projects") && <span>Projects</span>}
             </Link>
             
-            <a 
-                href="/AustinTsow2026.pdf" 
-                target="_blank" 
+            <a
+                href="/AustinTsow2026.pdf"
+                download="AustinTsow2026.pdf"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="nav-button"
             >
