@@ -152,7 +152,6 @@ function BottomNav() {
             
             <a
                 href="/AustinTsow2026.pdf"
-                download="AustinTsow2026.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="nav-button"
