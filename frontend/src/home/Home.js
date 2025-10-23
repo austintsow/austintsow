@@ -29,12 +29,10 @@ function Home() {
     }, []);
 
     const pills = [
-        { id: 1, text: "open to work", color: "green", link: "/AustinTsow2026.pdf" },
-        { id: 2, text: "in/tsow", color: "blue", link: "https://www.linkedin.com/in/austintsow/" },
-        { id: 3, text: "gh/austintsow", color: "gray", link: "https://github.com/austintsow" },
-        { id: 4, text: "beli/tsow", color: "beli", link: "https://app.beliapp.com/lists/tsow" },
-        { id: 5, text: "austin@tsow.com", color: "yellow", link: "mailto:austin@tsow.com" },
-        { id: 6, text: "ig/a1stn", color: "purple", link: "https://www.instagram.com/a1stn/" }
+        { id: 1, text: "in/tsow", color: "blue", link: "https://www.linkedin.com/in/austintsow/" },
+        { id: 2, text: "gh/austintsow", color: "gray", link: "https://github.com/austintsow" },
+        { id: 3, text: "beli/tsow", color: "beli", link: "https://app.beliapp.com/lists/tsow" },
+        { id: 4, text: "austin@tsow.com", color: "yellow", link: "mailto:austin@tsow.com" }
     ];
 
     return (
@@ -46,7 +44,7 @@ function Home() {
                             austin tsow<span className="wave-container">.<span className="wave-emoji">{randomEmoji.emoji}</span></span>
                         </h1>
                         <p className="intro-subtitle">
-                            i build full stack platforms and ai systems
+                            cs @ gonzaga, looking for new grad swe roles
                         </p>
                         <p className="emoji-fact">
                             <span className="emoji-fact-emoji">{randomEmoji.emoji}</span>{" "}
@@ -95,7 +93,7 @@ function Home() {
                         </div>
                         <div className="intro-description">
                             <p>
-                                i'm passionate about <span className="highlight" style={{ animationDelay: '0.8s' }}>ai</span>, <span className="highlight" style={{ animationDelay: '1.2s' }}>machine learning</span>, <span className="highlight" style={{ animationDelay: '1.6s' }}>web3</span>, and <span className="highlight" style={{ animationDelay: '2s' }}>software engineering</span>. my focus is on building scalable systems and intuitive experiences while exploring how emerging tech can solve real world problems. i enjoy working at the intersection of innovation and impact.
+                                i build full stack platforms and ai systems. currently building <span className="highlight" style={{ animationDelay: '1.6s' }}>ai-powered</span> applications and researching <span className="highlight" style={{ animationDelay: '2s' }}>zero-fee web3</span> payment protocols.
                             </p>
                         </div>
                     </div>
