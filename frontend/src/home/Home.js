@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import Clock from "./Clock";
@@ -65,7 +65,7 @@ function Home() {
                 <nav>
                     <ul>
                         <li>
-                            <a href="/AustinTsow2026.pdf" target="_blank" rel="noopener noreferrer">
+                            <a href="/AustinTsow2026.pdf">
                                 resume
                             </a>
                         </li>
