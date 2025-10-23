@@ -3,12 +3,12 @@ import "./Home.css";
 
 const emojiOptions = [
     { emoji: "🐕", label: "dog", fact: "obi's my best buddy for walks, naps, and everything in between." },
-    { emoji: "🍵", label: "matcha", fact: "my favorite drink, calming and energizing at the same time." },
-    { emoji: "💻", label: "laptop", fact: "where i dive into side projects, playlists, and late-night browsing." },
+    { emoji: "🍵", label: "matcha", fact: "my go to! i promise you i am not performative..." },
+    { emoji: "💻", label: "laptop", fact: "my all-in-one spot for coding, music, and ideas." },
     { emoji: "🌲", label: "pine tree", fact: "nothing feels more like home than the pnw outdoors." },
     { emoji: "🥾", label: "hiking boots", fact: "happiest when i'm out on the trails." },
-    { emoji: "🏃", label: "running", fact: "love long runs that clear my head." },
-    { emoji: "🍱", label: "bento", fact: "food is joy, and you'll find me sharing my meals on beli." },
+    { emoji: "🏃", label: "running", fact: "currently training for a half marathon!" },
+    { emoji: "🍱", label: "bento", fact: "self-proclaimed foodie sharing meals on ", factLink: { text: "beli", url: "https://app.beliapp.com/lists/tsow" }, factEnd: "." },
     { emoji: "🔗", label: "web3", fact: "curious about how web3 can reshape how we connect and share value." },
     { emoji: "✈️", label: "travel", fact: "always excited to see new places and cultures." }
 ];
@@ -46,10 +46,24 @@ function Home() {
                             austin tsow<span className="wave-container">.<span className="wave-emoji">{randomEmoji.emoji}</span></span>
                         </h1>
                         <p className="intro-subtitle">
-                            i build, design, and experiment with technology, creating full stack platforms and ai systems while exploring what's next
+                            i build full stack platforms and ai systems
                         </p>
                         <p className="emoji-fact">
-                            <span className="emoji-fact-emoji">{randomEmoji.emoji}</span> {randomEmoji.fact}
+                            <span className="emoji-fact-emoji">{randomEmoji.emoji}</span>{" "}
+                            {randomEmoji.fact}
+                            {randomEmoji.factLink && (
+                                <>
+                                    <a
+                                        href={randomEmoji.factLink.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="emoji-fact-link"
+                                    >
+                                        {randomEmoji.factLink.text}
+                                    </a>
+                                    {randomEmoji.factEnd}
+                                </>
+                            )}
                         </p>
                     </div>
                     <div className="intro-right">

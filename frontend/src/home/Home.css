@@ -102,6 +102,18 @@ header .logo {
     margin-right: 0.3em;
 }
 
+.emoji-fact-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+}
+
+.emoji-fact-link:hover {
+    color: #000;
+}
+
 @keyframes fadeInFact {
     from {
         opacity: 0;
@@ -249,6 +261,12 @@ header .logo {
 .pill-text {
     text-transform: lowercase;
     opacity: 0.9;
+}
+
+.pill-underline {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
 }
 
 /* Green - Open to work */
