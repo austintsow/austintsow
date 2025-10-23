@@ -39,25 +39,29 @@ function BottomNav() {
             if (activeButton) {
                 const navRect = navRef.current.getBoundingClientRect();
                 const buttonRect = activeButton.getBoundingClientRect();
-                
+
                 // Check if we're staying in the same section (e.g., /blog to /blog/:slug)
                 const prevPath = prevPathRef.current;
                 const currentPath = location.pathname;
-                const isSameSection = 
+                const isSameSection =
                     (prevPath.startsWith('/blog') && currentPath.startsWith('/blog')) ||
                     (prevPath === '/' && currentPath === '/') ||
                     (prevPath === '/about' && currentPath === '/about') ||
                     (prevPath === '/projects' && currentPath === '/projects') ||
                     (prevPath === '/contact' && currentPath === '/contact');
-                
+
+                // Calculate the center position of the button
+                const buttonCenter = buttonRect.left - navRect.left + (buttonRect.width / 2);
+
                 setIndicatorStyle({
                     width: buttonRect.width,
-                    transform: `translateX(${buttonRect.left - navRect.left}px) translateY(-50%)`,
+                    left: `${buttonCenter}px`,
+                    transform: `translateX(-50%) translateY(-50%)`,
                     transition: isSameSection ? 'none' : 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
                 });
             }
         }
-        
+
         prevPathRef.current = location.pathname;
     }, [location.pathname]);
 
@@ -121,8 +125,8 @@ function BottomNav() {
                 className={`nav-button ${isActive("/about") ? "active" : ""}`}
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
                 </svg>
                 {isActive("/about") && <span>About</span>}
             </Link>
@@ -152,8 +156,6 @@ function BottomNav() {
             
             <a
                 href="/AustinTsow2026.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="nav-button"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

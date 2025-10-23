@@ -29,7 +29,7 @@ function Home() {
     }, []);
 
     const pills = [
-        { id: 1, text: "open to work", color: "green", link: "/resume.pdf" },
+        { id: 1, text: "open to work", color: "green", link: "/AustinTsow2026.pdf" },
         { id: 2, text: "in/tsow", color: "blue", link: "https://www.linkedin.com/in/austintsow/" },
         { id: 3, text: "gh/austintsow", color: "gray", link: "https://github.com/austintsow" },
         { id: 4, text: "beli/tsow", color: "beli", link: "https://app.beliapp.com/lists/tsow" },
@@ -59,8 +59,8 @@ function Home() {
                                     <a
                                         key={pill.id}
                                         href={pill.link}
-                                        target={pill.link.startsWith('mailto:') ? '_self' : '_blank'}
-                                        rel={pill.link.startsWith('mailto:') ? '' : 'noopener noreferrer'}
+                                        target={pill.link.startsWith('mailto:') || pill.link.startsWith('/') ? '_self' : '_blank'}
+                                        rel={pill.link.startsWith('mailto:') || pill.link.startsWith('/') ? '' : 'noopener noreferrer'}
                                         className={`pill pill-${pill.color}`}
                                         style={{ animationDelay: `${index * 0.2}s` }}
                                     >

@@ -8,69 +8,9 @@ function Blog() {
             year: "2025",
             posts: [
                 {
-                    title: "building in public",
-                    date: "jan 2025",
-                    slug: "building-in-public"
-                },
-                {
                     title: "hello world",
-                    date: "jan 2025",
-                    slug: "hello-world"
-                }
-            ]
-        },
-        {
-            year: "2024",
-            posts: [
-                {
-                    title: "reflections on 2024",
-                    date: "dec 2024",
-                    slug: "reflections-2024"
-                },
-                {
-                    title: "why i love matcha",
-                    date: "oct 2024",
-                    slug: "why-i-love-matcha"
-                },
-                {
-                    title: "exploring web3",
-                    date: "sep 2024",
-                    slug: "exploring-web3"
-                },
-                {
-                    title: "my favorite running routes",
-                    date: "jul 2024",
-                    slug: "running-routes"
-                },
-                {
-                    title: "building with ai",
-                    date: "apr 2024",
-                    slug: "building-with-ai"
-                },
-                {
-                    title: "adventures with obi",
-                    date: "feb 2024",
-                    slug: "adventures-with-obi"
-                }
-            ]
-        },
-        {
-            year: "2023",
-            posts: [
-                {
-                    title: "favorite beli spots",
-                    date: "nov 2023",
-                    slug: "favorite-beli-spots"
-                },
-                {
-                    title: "learning in public",
-                    date: "aug 2023",
-                    slug: "learning-in-public"
-                },
-                {
-                    title: "pnw hiking guide",
-                    date: "jun 2023",
-                    slug: "pnw-hiking-guide"
+                    date: "oct 2025",
+                    slug: "hello world"
                 }
             ]
         }
