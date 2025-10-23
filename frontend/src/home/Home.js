@@ -81,7 +81,7 @@ function Home() {
                         </div>
                         <div className="intro-description">
                             <p>
-                                i'm passionate about ai, machine learning, web3, and software engineering. my focus is on building scalable systems and intuitive experiences while exploring how emerging tech can solve real world problems. i enjoy working at the intersection of innovation and impact.
+                                i'm passionate about <span className="highlight" style={{ animationDelay: '0.8s' }}>ai</span>, <span className="highlight" style={{ animationDelay: '1.2s' }}>machine learning</span>, <span className="highlight" style={{ animationDelay: '1.6s' }}>web3</span>, and <span className="highlight" style={{ animationDelay: '2s' }}>software engineering</span>. my focus is on building scalable systems and intuitive experiences while exploring how emerging tech can solve real world problems. i enjoy working at the intersection of innovation and impact.
                             </p>
                         </div>
                     </div>

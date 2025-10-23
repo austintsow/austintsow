@@ -157,6 +157,27 @@ header .logo {
     text-transform: lowercase;
 }
 
+.highlight {
+    position: relative;
+    font-weight: 500;
+    color: #000;
+    background: linear-gradient(to right, rgba(255, 235, 59, 0.4) 0%, rgba(255, 235, 59, 0.4) 100%);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    animation: highlightSweep 1.2s ease-out forwards;
+    padding: 0.1em 0.2em;
+    border-radius: 2px;
+}
+
+@keyframes highlightSweep {
+    0% {
+        background-size: 0% 100%;
+    }
+    100% {
+        background-size: 100% 100%;
+    }
+}
+
 .pills-section {
     display: flex;
     flex-direction: row;
