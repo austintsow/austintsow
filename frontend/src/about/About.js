@@ -121,7 +121,7 @@ print(austin.get_latest_work())
                 <nav>
                     <ul>
                         <li>
-                            <a href="/AustinTsow2026.pdf" target="_blank" rel="noopener noreferrer">
+                            <a href="/AustinTsow2026.pdf">
                                 resume
                             </a>
                         </li>
