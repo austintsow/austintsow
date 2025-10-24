@@ -8,7 +8,7 @@ const emojiOptions = [
     { emoji: "🌲", label: "pine tree", fact: "nothing feels more like home than the pnw outdoors." },
     { emoji: "🥾", label: "hiking boots", fact: "happiest when i'm out on the trails." },
     { emoji: "🏃", label: "running", fact: "currently training for a half marathon!" },
-    { emoji: "🍱", label: "bento", fact: "self-proclaimed foodie sharing meals on ", factLink: { text: "beli", url: "https://app.beliapp.com/lists/tsow" }, factEnd: "." },
+    { emoji: "🍱", label: "bento", fact: "i'm a self-proclaimed foodie sharing meals on ", factLink: { text: "beli", url: "https://app.beliapp.com/lists/tsow" }, factEnd: "." },
     { emoji: "🔗", label: "web3", fact: "curious about how web3 can reshape how we connect and share value." },
     { emoji: "✈️", label: "travel", fact: "always excited to see new places and cultures." }
 ];

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import "./Projects.css";
 
 function Projects() {
@@ -14,13 +14,13 @@ function Projects() {
     const animationFrame = useRef(null);
 
     // Game stations (buildings/locations for each project)
-    const stations = [
+    const stations = useMemo(() => [
         { id: 'applyied', x: 3, y: 3, name: 'cozy cottage', type: 'office' },
         { id: 'web3', x: 11, y: 3, name: 'general store', type: 'bank' },
         { id: 'voice', x: 7, y: 6, name: 'blacksmith', type: 'studio' }
-    ];
+    ], []);
 
-    const projects = [
+    const projects = useMemo(() => [
         {
             id: "applyied",
             name: "applyied",
@@ -63,7 +63,7 @@ function Projects() {
                 }
             ]
         }
-    ];
+    ], []);
 
     // Movement and collision detection
     useEffect(() => {
