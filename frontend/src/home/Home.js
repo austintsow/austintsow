@@ -93,7 +93,7 @@ function Home() {
                         </div>
                         <div className="intro-description">
                             <p>
-                                i build full stack platforms and ai systems. currently building <span className="highlight" style={{ animationDelay: '1.6s' }}>ai-powered</span> applications and researching <span className="highlight" style={{ animationDelay: '2s' }}>zero-fee web3</span> payment protocols.
+                                i build full stack platforms and intelligent systems. currently focused on <span className="highlight" style={{ animationDelay: '1.6s' }}>ai automation</span> and <span className="highlight" style={{ animationDelay: '2s' }}>zero-fee web3</span> payment protocols.
                             </p>
                         </div>
                     </div>
