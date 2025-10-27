@@ -33,23 +33,7 @@ function BlogPost() {
                 },
                 {
                     type: "paragraph",
-                    text: "one of the bigger changes is adding live NYSE ticker data at the top of the site. it's a small detail, but it represents something important to me—my interest in markets and how they move."
-                },
-                {
-                    type: "callout",
-                    text: "design is about removing the unnecessary. the best interfaces get out of your way."
-                },
-                {
-                    type: "paragraph",
-                    text: "beyond that, i'm refining the typography, simplifying the navigation, and making the whole experience feel more intentional. every element should have a purpose."
-                },
-                {
-                    type: "heading",
-                    text: "the philosophy"
-                },
-                {
-                    type: "paragraph",
-                    text: "minimalism isn't just an aesthetic choice. it's about clarity of thought. when you remove distractions, what remains becomes more powerful."
+                    text: "one of the bigger changes is adding live nyse ticker data at the top of the site. it's a small detail, but it represents something important to me. my interest in markets and how they move."
                 },
                 {
                     type: "paragraph",
