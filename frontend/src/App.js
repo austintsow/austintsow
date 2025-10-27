@@ -5,7 +5,6 @@ import About from "./about/About";
 import Contact from "./contact/Contact";
 import Blog from "./blog/Blog";
 import BlogPost from "./blog/BlogPost";
-import Projects from "./projects/Projects";
 import Ticker from "./components/Ticker";
 import BottomNav from "./components/BottomNav";
 
@@ -20,7 +19,6 @@ function AppContent() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
-                <Route path="/projects" element={<Projects />} />
             </Routes>
             <BottomNav />
         </>
