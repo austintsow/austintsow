@@ -1,96 +1,104 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import "./Home.css";
-import Clock from "./Clock";
+
+const emojiOptions = [
+    { emoji: "🐕", label: "dog", fact: "obi's my best buddy for walks, naps, and everything in between." },
+    { emoji: "🍵", label: "matcha", fact: "my go to! i promise you i am not performative..." },
+    { emoji: "💻", label: "laptop", fact: "my all-in-one spot for coding, music, and ideas." },
+    { emoji: "🌲", label: "pine tree", fact: "nothing feels more like home than the pnw outdoors." },
+    { emoji: "🥾", label: "hiking boots", fact: "happiest when i'm out on the trails." },
+    { emoji: "🏃", label: "running", fact: "currently training for a half marathon!" },
+    { emoji: "🍱", label: "bento", fact: "i'm a self-proclaimed foodie sharing meals on ", factLink: { text: "beli", url: "https://app.beliapp.com/lists/tsow" }, factEnd: "." },
+    { emoji: "🔗", label: "web3", fact: "curious about how web3 can reshape how we connect and share value." },
+    { emoji: "✈️", label: "travel", fact: "always excited to see new places and cultures." }
+];
 
 function Home() {
-    const [centerText, setCenterText] = useState("");
     const [mainTextVisible, setMainTextVisible] = useState(false);
-    const [showCenterCaret, setShowCenterCaret] = useState(true);
+    const [randomEmoji, setRandomEmoji] = useState({ emoji: "🐕", label: "dog", fact: "" });
 
     useEffect(() => {
-        document.body.classList.add("home-scroll-lock");
-        let isMounted = true;
-
-        const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-        const type = async (text) => {
-            for (let i = 0; i < text.length; i++) {
-                if (!isMounted) return;
-                setCenterText((prev) => prev + text[i]);
-                await sleep(120);
-            }
-        };
-
-        const backspace = async (count) => {
-            for (let i = 0; i < count; i++) {
-                if (!isMounted) return;
-                setCenterText((prev) => prev.slice(0, -1));
-                await sleep(80);
-            }
-        };
-
-        const runAnimation = async () => {
-            await sleep(500); // Initial pause
-            await type("hi...");
-            await sleep(1000);
-            await backspace(5);
-            await sleep(300);
-            await type("my name is austin");
-            await sleep(1000);
-            await backspace(18);
-            await sleep(300);
-            await type("welcome.");
-            await sleep(500);
-            if (isMounted) {
-                setShowCenterCaret(false);
-                setMainTextVisible(true);
-            }
-        };
-
-        runAnimation();
-
-        return () => {
-            isMounted = false;
-            document.body.classList.remove("home-scroll-lock");
-        };
+        // Select random emoji on load
+        const randomIndex = Math.floor(Math.random() * emojiOptions.length);
+        setRandomEmoji(emojiOptions[randomIndex]);
+        
+        // Show content immediately
+        setTimeout(() => {
+            setMainTextVisible(true);
+        }, 100);
     }, []);
+
+    const pills = [
+        { id: 1, text: "in/tsow", color: "blue", link: "https://www.linkedin.com/in/austintsow/" },
+        { id: 2, text: "gh/austintsow", color: "gray", link: "https://github.com/austintsow" },
+        { id: 3, text: "beli/tsow", color: "beli", link: "https://app.beliapp.com/lists/tsow" },
+        { id: 4, text: "austin@tsow.com", color: "yellow", link: "mailto:austin@tsow.com" }
+    ];
 
     return (
         <div className="home">
-            <header className={mainTextVisible ? "fade-in visible" : "fade-in"}>
-                <div className="logo">
-                    <Link to="/">austin tsow</Link>
-                </div>
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="/AustinTsow2026.pdf">
-                                resume
-                            </a>
-                        </li>
-                        <li><Link to="/about">about</Link></li>
-                        <li><Link to="/contact">contact</Link></li>
-                    </ul>
-                </nav>
-            </header>
             <main>
-                <div className="center-text">
-                    {centerText}
-                    {showCenterCaret && <span className="caret">|</span>}
-                </div>
-                <div className={mainTextVisible ? "main-text fade-in visible" : "main-text fade-in"}>
-                    <h1 className="hello">
-                        hi, my<br />name is <span className="highlight">austin</span>
-                    </h1>
+                <div className={mainTextVisible ? "intro-section fade-in visible" : "intro-section fade-in"}>
+                    <div className="intro-left">
+                        <h1 className="intro-name">
+                            austin tsow<span className="wave-container">.<span className="wave-emoji">{randomEmoji.emoji}</span></span>
+                        </h1>
+                        <p className="intro-subtitle">
+                            cs @ gonzaga, looking for new grad swe roles
+                        </p>
+                        <p className="emoji-fact">
+                            <span className="emoji-fact-emoji">{randomEmoji.emoji}</span>{" "}
+                            {randomEmoji.fact}
+                            {randomEmoji.factLink && (
+                                <>
+                                    <a
+                                        href={randomEmoji.factLink.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="emoji-fact-link"
+                                    >
+                                        {randomEmoji.factLink.text}
+                                    </a>
+                                    {randomEmoji.factEnd}
+                                </>
+                            )}
+                        </p>
+                    </div>
+                    <div className="intro-right">
+                        <div className="pills-section">
+                            {pills.map((pill, index) => (
+                                pill.link ? (
+                                    <a
+                                        key={pill.id}
+                                        href={pill.link}
+                                        target={pill.link.startsWith('mailto:') || pill.link.startsWith('/') ? '_self' : '_blank'}
+                                        rel={pill.link.startsWith('mailto:') || pill.link.startsWith('/') ? '' : 'noopener noreferrer'}
+                                        className={`pill pill-${pill.color}`}
+                                        style={{ animationDelay: `${index * 0.2}s` }}
+                                    >
+                                        <span className="pill-dot"></span>
+                                        <span className="pill-text">{pill.text}</span>
+                                    </a>
+                                ) : (
+                                    <div
+                                        key={pill.id}
+                                        className={`pill pill-${pill.color}`}
+                                        style={{ animationDelay: `${index * 0.2}s` }}
+                                    >
+                                        <span className="pill-dot"></span>
+                                        <span className="pill-text">{pill.text}</span>
+                                    </div>
+                                )
+                            ))}
+                        </div>
+                        <div className="intro-description">
+                            <p>
+                                i build full stack platforms and intelligent systems. currently focused on <span className="highlight" style={{ animationDelay: '1.6s' }}>ai automation</span> and <span className="highlight" style={{ animationDelay: '2s' }}>zero-fee web3</span> payment protocols.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </main>
-            <footer className={mainTextVisible ? "fade-in visible" : "fade-in"}>
-                <div className="applyied">
-                    <a href="http://applyied.com" target="_blank" rel="noopener noreferrer">applyied</a>
-                </div>
-                <Clock />
-            </footer>
         </div>
     );
 }
