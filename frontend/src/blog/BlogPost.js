@@ -17,7 +17,7 @@ function BlogPost() {
                 },
                 {
                     type: "paragraph",
-                    text: "graduating in december 2025 felt both close and far away throughout this process. but now, knowing that i'll be stepping into a full-time swe role right after, makes everything feel worth it. the late nights, the leetcode grind, the countless applications—it all led to this."
+                    text: "graduating in december 2025 felt both close and far away throughout this process. but now, knowing that i'll be stepping into a full-time swe role right after, makes everything feel worth it. the late nights, the leetcode grind, the focused applications: it all led to this."
                 },
                 {
                     type: "heading",
