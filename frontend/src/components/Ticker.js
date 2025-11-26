@@ -13,6 +13,7 @@ const symbols = [
     { symbol: 'SHOP', name: 'Shopify' },
     { symbol: 'TSLA', name: 'Tesla' },
     { symbol: 'AAPL', name: 'Apple' },
+    { symbol: 'V', name: 'Visa' },
     { symbol: 'VOO', name: 'Vanguard S&P 500' },
     { symbol: 'QQQ', name: 'Nasdaq 100' }
 ];
