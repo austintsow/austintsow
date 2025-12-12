@@ -6,10 +6,10 @@ const emojiOptions = [
     { emoji: "🍵", label: "matcha", fact: "my go to! i promise you i am not performative..." },
     { emoji: "💻", label: "laptop", fact: "my all-in-one spot for coding, music, and ideas." },
     { emoji: "🌲", label: "pine tree", fact: "nothing feels more like home than the pnw outdoors." },
-    { emoji: "🥾", label: "hiking boots", fact: "happiest when i'm out on the trails." },
-    { emoji: "🏃", label: "running", fact: "currently training for a half marathon!" },
+    { emoji: "🥾", label: "hiking boots", fact: "i love love hiking, love it." },
+    { emoji: "🏃", label: "running", fact: "my goal is to run a half marathon in 2026!" },
     { emoji: "🍱", label: "bento", fact: "i'm a self-proclaimed foodie sharing meals on ", factLink: { text: "beli", url: "https://app.beliapp.com/lists/tsow" }, factEnd: "." },
-    { emoji: "🔗", label: "web3", fact: "curious about how web3 can reshape how we connect and share value." },
+    { emoji: "🔗", label: "web3", fact: "always learning about web3 and on-chain development." },
     { emoji: "✈️", label: "travel", fact: "always excited to see new places and cultures." }
 ];
 
@@ -44,7 +44,7 @@ function Home() {
                             austin tsow<span className="wave-container">.<span className="wave-emoji">{randomEmoji.emoji}</span></span>
                         </h1>
                         <p className="intro-subtitle">
-                            cs @ gonzaga, looking for new grad swe roles
+                            cs @ gonzaga, incoming swe @ visa
                         </p>
                         <p className="emoji-fact">
                             <span className="emoji-fact-emoji">{randomEmoji.emoji}</span>{" "}

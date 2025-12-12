@@ -53,14 +53,14 @@ function About() {
                         <div className="timeline">
                             {/* Future Vision */}
                             <div className="timeline-future">
-                                <div className="timeline-dot" style={{ borderColor: '#999' }}>
-                                    <div className="timeline-dot-inner" style={{ backgroundColor: '#999' }}></div>
+                                <div className="timeline-dot" style={{ borderColor: '#00579F' }}>
+                                    <div className="timeline-dot-inner" style={{ backgroundColor: '#00579F' }}></div>
                                 </div>
                                 <div className="timeline-future-line"></div>
                                 <div className="timeline-content">
-                                    <div className="timeline-company" style={{ color: '#999' }}>where to now?</div>
+                                    <div className="timeline-company" style={{ color: '#00579F' }}>Visa</div>
                                     <div className="timeline-role">Software Engineer</div>
-                                    <div className="timeline-date">Jan. 2026 - ?</div>
+                                    <div className="timeline-date">Jan. 2026 - Present</div>
                                 </div>
                             </div>
                             
