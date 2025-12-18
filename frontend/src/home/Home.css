@@ -366,6 +366,22 @@ header .logo {
     border-color: rgba(36, 41, 46, 0.4);
 }
 
+/* Pastel Pink - Gloria */
+.pill-pink {
+    background: rgba(255, 182, 193, 0.15);
+    color: rgba(219, 112, 147, 0.9);
+    border: 1px solid rgba(255, 182, 193, 0.3);
+}
+
+.pill-pink .pill-dot {
+    background: #FFB6C1;
+}
+
+.pill-pink:hover {
+    background: rgba(255, 182, 193, 0.25);
+    border-color: rgba(255, 182, 193, 0.5);
+}
+
 .center-text {
     position: absolute;
     top: 50%;

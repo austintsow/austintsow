@@ -1,452 +1,649 @@
+* {
+    box-sizing: border-box;
+}
+
 .gloria-page {
     min-height: 100vh;
-    background: #ffffff;
-    color: #2d3748;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background: #fafafa;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-}
-
-.gloria-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    padding: 20px 40px;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    opacity: 0;
-    transition: opacity 0.6s ease;
-}
-
-.gloria-header.fade-in {
-    opacity: 1;
-}
-
-.gloria-nav {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.back-link {
-    color: #6b7280;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 400;
-    transition: color 0.2s ease;
-}
-
-.back-link:hover {
-    color: #374151;
-}
-
-.gloria-main {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 80px 40px 40px;
-    min-height: 100vh;
-    overflow-y: auto;
+    padding-top: 50px;
 }
 
 .gloria-content {
-    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.gloria-container {
+    max-width: 700px;
+    width: 100%;
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Invitation Page Styles */
+.invitation-container {
     max-width: 600px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
 }
 
-.gloria-content.fade-in-up {
-    opacity: 1;
-    transform: translateY(0);
+.invitation-container.fade-out {
+    animation: fadeOut 0.5s ease-out forwards;
 }
 
-.gloria-emoji {
-    font-size: 4rem;
-    margin-bottom: 2rem;
-    animation: heartbeat 2s ease-in-out infinite;
+.invitation-title {
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1.2;
+    color: #1a1a1a;
+    letter-spacing: -0.03em;
+    text-transform: lowercase;
+    margin: 0;
+    animation: fadeInUp 0.8s ease-out;
 }
 
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    14% { transform: scale(1.1); }
-    28% { transform: scale(1); }
-    42% { transform: scale(1.1); }
-    70% { transform: scale(1); }
+.password-form {
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 400px;
+    animation: fadeInUp 0.8s ease-out 0.3s backwards;
+}
+
+.password-input {
+    flex: 1;
+    padding: 0.875rem 1.25rem;
+    border: 2px solid #f0f0f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #1a1a1a;
+    text-transform: lowercase;
+    transition: border-color 0.3s ease;
+    outline: none;
+}
+
+.password-input:focus {
+    border-color: #C41E3A;
+}
+
+.password-input::placeholder {
+    color: #999;
+    text-transform: lowercase;
+}
+
+.password-button {
+    padding: 0.875rem 2rem;
+    background: #C41E3A;
+    border: 2px solid #C41E3A;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    text-transform: lowercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.password-button:hover {
+    background: #A01729;
+    border-color: #A01729;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
+}
+
+.error-message {
+    font-size: 0.95rem;
+    color: #C41E3A;
+    font-weight: 400;
+    text-transform: lowercase;
+    margin: 0;
+    animation: fadeIn 0.3s ease-out;
 }
 
 .gloria-title {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 300;
     line-height: 1.2;
     margin-bottom: 2rem;
-    color: #1a202c;
-    letter-spacing: -0.02em;
-}
-
-.gloria-title .emphasis {
-    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 600;
-    position: relative;
-}
-
-.gloria-subtitle {
-    font-size: 1.25rem;
-    color: #6b7280;
-    font-weight: 400;
-    margin-top: 1rem;
-}
-
-/* Date Options Styling */
-.date-options {
-    margin-top: 3rem;
-    width: 100%;
-    max-width: 500px;
-}
-
-.options-header {
+    color: #1a1a1a;
+    letter-spacing: -0.03em;
+    text-transform: lowercase;
     text-align: center;
-    margin-bottom: 2rem;
 }
 
-.options-header h2 {
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: #1a202c;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.01em;
+.date-info {
+    text-align: center;
+    margin-bottom: 4rem;
 }
 
-.options-header p {
-    font-size: 1rem;
-    color: #6b7280;
-    font-weight: 300;
-}
-
-.option-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.option-card {
-    background: #ffffff;
-    border: 2px solid #f3f4f6;
-    border-radius: 16px;
-    padding: 1.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.option-card:hover {
-    border-color: #ff6b6b;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.15);
-}
-
-.option-card:active {
-    transform: translateY(0);
-}
-
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.75rem;
-}
-
-.card-header h3 {
-    font-size: 1.5rem;
+.date-time {
+    font-size: 1.125rem;
+    color: #C41E3A;
     font-weight: 500;
-    color: #1a202c;
+    letter-spacing: -0.01em;
     margin: 0;
 }
 
-.card-header .time {
-    font-size: 0.9rem;
-    color: #6b7280;
-    background: #f9fafb;
-    padding: 0.25rem 0.75rem;
+.section {
+    margin-bottom: 4rem;
+}
+
+.section-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+    text-transform: lowercase;
+}
+
+.section-subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    text-transform: lowercase;
+}
+
+.restaurants-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+.restaurant-card {
+    background: white;
+    border: 2px solid #f0f0f0;
     border-radius: 12px;
-    font-weight: 500;
+    padding: 1.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
-.card-description {
-    font-size: 1rem;
-    color: #4b5563;
-    line-height: 1.5;
-    margin-bottom: 1rem;
+.restaurant-card:hover {
+    border-color: var(--hover-color, #C41E3A);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--hover-color-shadow, rgba(196, 30, 58, 0.15));
 }
 
-.card-tag {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: #ff6b6b;
-    background: rgba(255, 107, 107, 0.1);
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
+.restaurant-card.selected {
+    border-color: var(--hover-color, #C41E3A);
+    background: var(--hover-color-light, rgba(196, 30, 58, 0.03));
+}
+
+.restaurant-header {
+    margin-bottom: 0.75rem;
+}
+
+.restaurant-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 0.25rem 0;
+    letter-spacing: -0.01em;
+}
+
+.restaurant-type {
+    font-size: 0.85rem;
+    color: #C41E3A;
     font-weight: 500;
     text-transform: lowercase;
 }
 
-/* Itinerary View Styling */
-.itinerary-view {
-    padding: 2rem 0.5rem;
-    align-items: flex-start;
-    min-height: auto;
-    overflow-y: auto;
-}
-
-.itinerary-content {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.itinerary-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #f3f4f6;
-}
-
-.itinerary-header h1 {
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: #1a202c;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
-}
-
-.selected-restaurant {
-    font-size: 1.1rem;
-    color: #ff6b6b;
-    font-weight: 500;
-    margin-bottom: 1rem;
-}
-
-.back-to-options {
-    background: none;
-    border: 1px solid #e5e7eb;
-    color: #6b7280;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.back-to-options:hover {
-    border-color: #ff6b6b;
-    color: #ff6b6b;
-}
-
-.timeline {
-    position: relative;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 1rem;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, #ff6b6b, #ff8e8e);
-}
-
-.timeline-item {
-    display: flex;
-    margin-bottom: 2rem;
-    position: relative;
-}
-
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: 0.75rem;
-    top: 0.5rem;
-    width: 10px;
-    height: 10px;
-    background: #ff6b6b;
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.timeline-time {
-    flex-shrink: 0;
-    width: 120px;
-    font-size: 0.9rem;
-    color: #6b7280;
-    font-weight: 500;
-    padding-top: 0.25rem;
-    text-align: right;
-    padding-right: 2rem;
-}
-
-.timeline-content {
-    flex: 1;
-    padding-left: 1rem;
-}
-
-.timeline-content h3 {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #1a202c;
-    margin: 0 0 0.5rem 0;
-}
-
-.timeline-content p {
-    font-size: 1rem;
-    color: #6b7280;
-    line-height: 1.5;
+.restaurant-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
     margin: 0;
+    font-weight: 300;
+    text-transform: lowercase;
 }
 
-.itinerary-footer {
+.selected-indicator {
+    position: absolute;
+    top: 1.75rem;
+    right: 1.75rem;
+    font-size: 0.85rem;
+    color: #C41E3A;
+    font-weight: 600;
+    text-transform: lowercase;
+}
+
+.activity-card {
+    background: white;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 1.75rem;
+}
+
+.activity-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 0.75rem 0;
+    letter-spacing: -0.01em;
+}
+
+.activity-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 300;
+    text-transform: lowercase;
+}
+
+.closing-note {
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 4rem;
     padding-top: 2rem;
-    border-top: 1px solid #f3f4f6;
+    border-top: 1px solid #f0f0f0;
 }
 
-.itinerary-footer p {
+.closing-note p {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 300;
+    margin: 0.5rem 0;
+    text-transform: lowercase;
+}
+
+.signature {
     font-size: 1.1rem;
-    color: #6b7280;
-    font-style: italic;
+    color: #C41E3A;
+    font-weight: 500;
 }
 
-/* Mobile/Desktop Toggle Classes */
-.mobile-time-activity {
-    display: none;
+/* Christmas Lights */
+.christmas-lights {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+    z-index: 10;
+    pointer-events: none;
 }
 
-.desktop-activity {
-    display: inline;
+.light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #D4AF37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+    animation: twinkle 2s ease-in-out infinite;
 }
 
-/* Responsive design */
+.light:nth-child(2n) {
+    background: #C41E3A;
+    box-shadow: 0 0 10px rgba(196, 30, 58, 0.8);
+}
+
+.light:nth-child(3n) {
+    background: #2D5016;
+    box-shadow: 0 0 10px rgba(45, 80, 22, 0.8);
+}
+
+.light:nth-child(4n) {
+    background: #4169E1;
+    box-shadow: 0 0 10px rgba(65, 105, 225, 0.8);
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+}
+
+/* Falling Snowflakes */
+.snowflakes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10%;
+    color: #B0C4DE;
+    font-size: 1rem;
+    user-select: none;
+    animation: fall linear infinite;
+    opacity: 0.8;
+    text-shadow: 0 0 5px rgba(176, 196, 222, 0.5);
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+.snowflake:nth-child(2n) {
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.snowflake:nth-child(3n) {
+    font-size: 1.2rem;
+    opacity: 0.7;
+}
+
+.snowflake:nth-child(4n) {
+    font-size: 0.9rem;
+}
+
+.snowflake:nth-child(5n) {
+    animation-duration: 15s;
+}
+
+.snowflake:nth-child(7n) {
+    animation-duration: 12s;
+}
+
+.snowflake:nth-child(11n) {
+    animation-duration: 18s;
+}
+
+/* Floating Hearts Animation */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -10%;
+    color: #C41E3A;
+    font-size: 2rem;
+    user-select: none;
+    animation: floatUp 2s ease-out forwards;
+    opacity: 1;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
-    .gloria-main {
-        padding: 2rem 1rem;
+    .gloria-content {
+        padding: 3rem 1.5rem;
     }
-    
-    .gloria-title {
-        font-size: 2.5rem;
+
+    .invitation-title {
+        font-size: 2.25rem;
     }
-    
-    .gloria-emoji {
-        font-size: 3rem;
-        margin-bottom: 1.5rem;
+
+    .password-form {
+        max-width: 350px;
     }
-    
-    .gloria-subtitle {
-        font-size: 1.1rem;
+
+    .password-input {
+        font-size: 0.95rem;
+        padding: 0.75rem 1rem;
     }
-    
-    .options-header h2 {
+
+    .password-button {
+        font-size: 0.95rem;
+        padding: 0.75rem 1.5rem;
+    }
+
+    .error-message {
+        font-size: 0.9rem;
+    }
+
+    .heart {
         font-size: 1.5rem;
     }
-    
-    .option-card {
-        padding: 1.25rem;
+
+    .gloria-title {
+        font-size: 2.25rem;
     }
-    
-    .card-header h3 {
+
+    .date-time {
+        font-size: 1rem;
+    }
+
+    .section-heading {
         font-size: 1.3rem;
     }
-    
-    .itinerary-header h1 {
-        font-size: 2rem;
+
+    .section-subtitle {
+        font-size: 0.9rem;
     }
-    
-    .timeline-time {
+
+    .restaurant-card {
+        padding: 1.5rem;
+    }
+
+    .restaurant-name {
+        font-size: 1.25rem;
+    }
+
+    .restaurant-type {
+        font-size: 0.8rem;
+    }
+
+    .restaurant-description {
+        font-size: 0.9rem;
+    }
+
+    .selected-indicator {
+        top: 1.5rem;
+        right: 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    .activity-card {
+        padding: 1.5rem;
+    }
+
+    .activity-name {
+        font-size: 1.25rem;
+    }
+
+    .activity-description {
+        font-size: 0.9rem;
+    }
+
+    .closing-note p {
+        font-size: 0.95rem;
+    }
+
+    .signature {
+        font-size: 1rem;
+    }
+
+    .christmas-lights {
+        padding: 0 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .light {
+        width: 10px;
+        height: 10px;
+    }
+
+    .light:nth-child(2n+1):nth-child(n+15) {
         display: none;
     }
-    
-    .mobile-time-activity {
-        display: inline;
-    }
-    
-    .desktop-activity {
+
+    .snowflake:nth-child(n+30) {
         display: none;
     }
 }
 
 @media (max-width: 480px) {
-    .gloria-title {
-        font-size: 2rem;
+    .gloria-content {
+        padding: 2.5rem 1.25rem;
     }
-    
-    .gloria-emoji {
-        font-size: 2.5rem;
+
+    .invitation-title {
+        font-size: 1.85rem;
     }
-    
-    .gloria-subtitle {
-        font-size: 1rem;
+
+    .invitation-container {
+        gap: 1.75rem;
+        padding: 1.5rem;
     }
-    
-    .options-header h2 {
-        font-size: 1.3rem;
-    }
-    
-    .option-card {
-        padding: 1rem;
-    }
-    
-    .card-header {
+
+    .password-form {
         flex-direction: column;
-        align-items: flex-start;
+        max-width: 100%;
         gap: 0.5rem;
     }
-    
-    .itinerary-header h1 {
-        font-size: 1.8rem;
-    }
-    
-    .timeline {
-        margin-left: 0;
-    }
-    
-    .timeline::before {
-        display: none;
-    }
-    
-    .timeline-item {
-        flex-direction: column;
-        margin-bottom: 1.5rem;
-        margin-left: 1.5rem;
-        margin-right: 1rem;
-        padding: 1.25rem;
-        background: #f9fafb;
-        border-radius: 12px;
-        border-left: 4px solid #ff6b6b;
-    }
-    
-    .timeline-item::before {
-        display: none;
-    }
-    
-    .timeline-time {
-        width: 100%;
-        padding-right: 0;
-        text-align: left;
+
+    .password-input {
         font-size: 0.9rem;
-        font-weight: 600;
-        color: #ff6b6b;
-        margin-bottom: 0.5rem;
     }
-    
-    .timeline-content {
-        padding-left: 0;
+
+    .password-button {
+        font-size: 0.9rem;
+        width: 100%;
+    }
+
+    .heart {
+        font-size: 1.25rem;
+    }
+
+    .gloria-title {
+        font-size: 1.85rem;
+    }
+
+    .date-time {
+        font-size: 0.95rem;
+    }
+
+    .section {
+        margin-bottom: 3rem;
+    }
+
+    .section-heading {
+        font-size: 1.2rem;
+    }
+
+    .restaurant-card {
+        padding: 1.25rem;
+    }
+
+    .restaurant-name {
+        font-size: 1.15rem;
+    }
+
+    .activity-card {
+        padding: 1.25rem;
+    }
+
+    .activity-name {
+        font-size: 1.15rem;
+    }
+
+    .christmas-lights {
+        padding: 0 0.75rem;
+        margin-bottom: 1rem;
+        height: 30px;
+    }
+
+    .light {
+        width: 8px;
+        height: 8px;
+    }
+
+    .light:nth-child(2n+1):nth-child(n+10) {
+        display: none;
+    }
+
+    .snowflake {
+        font-size: 0.8rem;
+    }
+
+    .snowflake:nth-child(n+20) {
+        display: none;
     }
 }
