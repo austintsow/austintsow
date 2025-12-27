@@ -1,5 +1,23 @@
+:root {
+    --blog-bg: #fafafa;
+    --blog-body-bg: white;
+    --blog-text-primary: #000;
+    --blog-text-secondary: #1a1a1a;
+    --blog-text-muted: #737373;
+    --blog-hover-bg: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] {
+    --blog-bg: #1e1e1e;
+    --blog-body-bg: #1e1e1e;
+    --blog-text-primary: #e0e0e0;
+    --blog-text-secondary: #cccccc;
+    --blog-text-muted: #999999;
+    --blog-hover-bg: rgba(255, 255, 255, 0.08);
+}
+
 body {
-    background: white;
+    background: var(--blog-body-bg);
     margin: 0;
     padding: 0;
 }
@@ -8,7 +26,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: #fafafa;
+    background: var(--blog-bg);
     overflow-x: hidden;
 }
 
@@ -46,7 +64,7 @@ body {
     font-size: 1.75rem;
     font-weight: 700;
     margin-bottom: 2.5rem;
-    color: #000;
+    color: var(--blog-text-primary);
     letter-spacing: -0.02em;
 }
 
@@ -69,18 +87,18 @@ body {
 }
 
 .post-item:hover {
-    background: rgba(0, 0, 0, 0.04);
+    background: var(--blog-hover-bg);
     padding-left: 1.25rem;
 }
 
 .post-item:hover .post-title {
-    color: #000;
+    color: var(--blog-text-primary);
 }
 
 .post-title {
     font-size: 1.05rem;
     font-weight: 600;
-    color: #1a1a1a;
+    color: var(--blog-text-secondary);
     text-transform: lowercase;
     letter-spacing: -0.01em;
     transition: color 0.15s ease;
@@ -89,7 +107,7 @@ body {
 .post-date {
     font-size: 0.9rem;
     font-weight: 400;
-    color: #737373;
+    color: var(--blog-text-muted);
     white-space: nowrap;
     margin-left: 2rem;
     text-transform: lowercase;

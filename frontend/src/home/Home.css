@@ -1,5 +1,25 @@
+:root {
+    --home-bg: white;
+    --text-primary: #000;
+    --text-secondary: #333;
+    --text-tertiary: #666;
+    --text-muted: #999;
+    --highlight-bg: rgba(255, 235, 59, 0.4);
+    --highlight-text: #000;
+}
+
+[data-theme="dark"] {
+    --home-bg: #1e1e1e;
+    --text-primary: #e0e0e0;
+    --text-secondary: #cccccc;
+    --text-tertiary: #999999;
+    --text-muted: #6e6e6e;
+    --highlight-bg: rgba(255, 235, 59, 0.2);
+    --highlight-text: #e0e0e0;
+}
+
 body {
-    background: white;
+    background: var(--home-bg);
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -9,7 +29,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: white;
+    background: var(--home-bg);
     overflow-x: hidden;
     width: 100%;
     padding-top: 50px;
@@ -73,13 +93,14 @@ header .logo {
     margin: 0 0 1.5rem 0;
     text-transform: lowercase;
     letter-spacing: -0.02em;
+    color: var(--text-primary);
 }
 
 .intro-subtitle {
     font-size: 1.125rem;
     font-weight: 300;
     line-height: 1.6;
-    color: #333;
+    color: var(--text-secondary);
     margin: 0;
     text-transform: lowercase;
 }
@@ -88,7 +109,7 @@ header .logo {
     font-size: 0.875rem;
     font-weight: 300;
     line-height: 1.6;
-    color: #999;
+    color: var(--text-muted);
     margin: 1.5rem 0 0 0;
     padding: 0.75rem 0;
     text-transform: lowercase;
@@ -111,7 +132,7 @@ header .logo {
 }
 
 .emoji-fact-link:hover {
-    color: #000;
+    color: var(--text-primary);
 }
 
 @keyframes fadeInFact {
@@ -165,7 +186,7 @@ header .logo {
     font-size: 0.9rem;
     font-weight: 300;
     line-height: 1.7;
-    color: #666;
+    color: var(--text-tertiary);
     margin: 0;
     text-transform: lowercase;
 }
@@ -173,8 +194,8 @@ header .logo {
 .highlight {
     position: relative;
     font-weight: 500;
-    color: #000;
-    background: linear-gradient(to right, rgba(255, 235, 59, 0.4) 0%, rgba(255, 235, 59, 0.4) 100%);
+    color: var(--highlight-text);
+    background: linear-gradient(to right, var(--highlight-bg) 0%, var(--highlight-bg) 100%);
     background-size: 0% 100%;
     background-repeat: no-repeat;
     animation: highlightSweep 1.2s ease-out forwards;
@@ -366,6 +387,21 @@ header .logo {
     border-color: rgba(36, 41, 46, 0.4);
 }
 
+[data-theme="dark"] .pill-gray {
+    background: rgba(139, 148, 158, 0.15);
+    color: rgba(139, 148, 158, 1);
+    border: 1px solid rgba(139, 148, 158, 0.3);
+}
+
+[data-theme="dark"] .pill-gray .pill-dot {
+    background: #8B949E;
+}
+
+[data-theme="dark"] .pill-gray:hover {
+    background: rgba(139, 148, 158, 0.22);
+    border-color: rgba(139, 148, 158, 0.5);
+}
+
 /* Pastel Pink - Gloria */
 .pill-pink {
     background: rgba(255, 182, 193, 0.15);
@@ -380,6 +416,37 @@ header .logo {
 .pill-pink:hover {
     background: rgba(255, 182, 193, 0.25);
     border-color: rgba(255, 182, 193, 0.5);
+}
+
+/* Theme Toggle */
+.pill-theme {
+    background: rgba(147, 51, 234, 0.08);
+    color: rgba(147, 51, 234, 0.9);
+    border: 1px solid rgba(147, 51, 234, 0.2);
+}
+
+.pill-theme .pill-dot {
+    background: #9333EA;
+}
+
+.pill-theme:hover {
+    background: rgba(147, 51, 234, 0.12);
+    border-color: rgba(147, 51, 234, 0.4);
+}
+
+[data-theme="dark"] .pill-theme {
+    background: rgba(168, 85, 247, 0.12);
+    color: rgba(168, 85, 247, 1);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+[data-theme="dark"] .pill-theme .pill-dot {
+    background: #A855F7;
+}
+
+[data-theme="dark"] .pill-theme:hover {
+    background: rgba(168, 85, 247, 0.18);
+    border-color: rgba(168, 85, 247, 0.5);
 }
 
 .center-text {

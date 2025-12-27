@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
+import { useTheme } from "../contexts/ThemeContext";
 
 const emojiOptions = [
     { emoji: "🐕", label: "dog", fact: "obi's my best buddy for walks, naps, and everything in between." },
@@ -16,12 +17,13 @@ const emojiOptions = [
 function Home() {
     const [mainTextVisible, setMainTextVisible] = useState(false);
     const [randomEmoji, setRandomEmoji] = useState({ emoji: "🐕", label: "dog", fact: "" });
+    const { theme, toggleTheme } = useTheme();
 
     useEffect(() => {
         // Select random emoji on load
         const randomIndex = Math.floor(Math.random() * emojiOptions.length);
         setRandomEmoji(emojiOptions[randomIndex]);
-        
+
         // Show content immediately
         setTimeout(() => {
             setMainTextVisible(true);
@@ -32,7 +34,8 @@ function Home() {
         { id: 1, text: "in/tsow", color: "blue", link: "https://www.linkedin.com/in/austintsow/" },
         { id: 2, text: "gh/austintsow", color: "gray", link: "https://github.com/austintsow" },
         { id: 3, text: "beli/tsow", color: "beli", link: "https://app.beliapp.com/lists/tsow" },
-        { id: 4, text: "austin@tsow.com", color: "yellow", link: "mailto:austin@tsow.com" }
+        { id: 4, text: "austin@tsow.com", color: "yellow", link: "mailto:austin@tsow.com" },
+        { id: 5, text: theme === 'light' ? 'dark' : 'light', color: "theme", isToggle: true }
     ];
 
     return (
@@ -67,7 +70,17 @@ function Home() {
                     <div className="intro-right">
                         <div className="pills-section">
                             {pills.map((pill, index) => (
-                                pill.link ? (
+                                pill.isToggle ? (
+                                    <button
+                                        key={pill.id}
+                                        onClick={toggleTheme}
+                                        className={`pill pill-${pill.color}`}
+                                        style={{ animationDelay: `${index * 0.2}s` }}
+                                    >
+                                        <span className="pill-dot"></span>
+                                        <span className="pill-text">{pill.text}</span>
+                                    </button>
+                                ) : pill.link ? (
                                     <a
                                         key={pill.id}
                                         href={pill.link}

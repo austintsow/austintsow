@@ -1,8 +1,26 @@
+:root {
+    --blogpost-bg: #fafafa;
+    --blogpost-text-primary: #000;
+    --blogpost-text-body: #1a1a1a;
+    --blogpost-text-date: #999;
+    --blogpost-text-link: #666;
+    --blogpost-text-callout: #666;
+}
+
+[data-theme="dark"] {
+    --blogpost-bg: #1e1e1e;
+    --blogpost-text-primary: #e0e0e0;
+    --blogpost-text-body: #cccccc;
+    --blogpost-text-date: #6e6e6e;
+    --blogpost-text-link: #999;
+    --blogpost-text-callout: #999;
+}
+
 .blog-post-page {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: #fafafa;
+    background: var(--blogpost-bg);
     overflow-x: hidden;
 }
 
@@ -37,7 +55,7 @@
     align-items: center;
     font-size: 0.9rem;
     font-weight: 400;
-    color: #666;
+    color: var(--blogpost-text-link);
     text-decoration: none;
     margin-bottom: 3rem;
     transition: color 0.15s ease;
@@ -54,13 +72,13 @@
 }
 
 .back-link:hover {
-    color: #000;
+    color: var(--blogpost-text-primary);
 }
 
 .post-main-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #000;
+    color: var(--blogpost-text-primary);
     margin-bottom: 0.75rem;
     line-height: 1.2;
     letter-spacing: -0.03em;
@@ -75,7 +93,7 @@
 .post-main-date {
     font-size: 0.95rem;
     font-weight: 400;
-    color: #999;
+    color: var(--blogpost-text-date);
     margin-bottom: 3rem;
     text-transform: lowercase;
     animation: fadeInUp 0.6s ease-out 0.2s both;
@@ -100,7 +118,7 @@
     font-size: 1.05rem;
     font-weight: 400;
     line-height: 1.75;
-    color: #1a1a1a;
+    color: var(--blogpost-text-body);
     margin: 0;
     text-transform: lowercase;
 }
@@ -108,7 +126,7 @@
 .post-heading {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #000;
+    color: var(--blogpost-text-primary);
     margin: 2rem 0 0.5rem 0;
     letter-spacing: -0.02em;
     text-transform: lowercase;
@@ -133,7 +151,7 @@
     font-size: 1.05rem;
     font-weight: 400;
     line-height: 1.75;
-    color: #666;
+    color: var(--blogpost-text-callout);
     margin: 0;
     font-style: italic;
     text-transform: lowercase;

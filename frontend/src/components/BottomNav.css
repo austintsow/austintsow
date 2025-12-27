@@ -183,40 +183,39 @@
     }
 }
 
-/* Enhanced glass effect for darker backgrounds */
-@media (prefers-color-scheme: dark) {
-    .glass-nav {
-        background: rgba(30, 30, 30, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .nav-indicator {
-        background: rgba(255, 255, 255, 0.15);
-    }
-    
-    .nav-button {
-        color: #999;
-    }
-    
-    .nav-button:hover,
-    .nav-button.active {
-        color: #fff;
-    }
-    
-    .nav-button.active {
-        background: transparent;
-    }
-    
-    .nav-separator {
-        color: rgba(255, 255, 255, 0.2);
-    }
-    
-    .nav-time {
-        color: #999;
-    }
-    
-    .nav-time:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: #fff;
-    }
+/* Dark theme */
+[data-theme="dark"] .glass-nav {
+    background: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .nav-indicator {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .nav-button {
+    color: #999;
+}
+
+[data-theme="dark"] .nav-button:hover,
+[data-theme="dark"] .nav-button.active {
+    color: #fff;
+}
+
+[data-theme="dark"] .nav-button.active {
+    background: transparent;
+}
+
+[data-theme="dark"] .nav-separator {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .nav-time {
+    color: #999;
+}
+
+[data-theme="dark"] .nav-time:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
 }

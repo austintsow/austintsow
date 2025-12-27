@@ -1,9 +1,29 @@
+:root {
+    --about-bg: #fafafa;
+    --about-body-bg: white;
+    --about-text-primary: #000;
+    --about-text-secondary: #1a1a1a;
+    --about-text-muted: #737373;
+    --about-timeline-line: #d0d0d0;
+    --about-timeline-dot-bg: #fafafa;
+}
+
+[data-theme="dark"] {
+    --about-bg: #1e1e1e;
+    --about-body-bg: #1e1e1e;
+    --about-text-primary: #e0e0e0;
+    --about-text-secondary: #cccccc;
+    --about-text-muted: #999999;
+    --about-timeline-line: #3e3e42;
+    --about-timeline-dot-bg: #1e1e1e;
+}
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    background: white;
+    background: var(--about-body-bg);
     margin: 0;
     padding: 0;
 }
@@ -12,7 +32,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: #fafafa;
+    background: var(--about-bg);
     overflow-x: hidden;
     width: 100%;
 }
@@ -62,7 +82,7 @@ body {
     font-weight: 700;
     margin-bottom: 1rem;
     margin-top: 3rem;
-    color: #000;
+    color: var(--about-text-primary);
     letter-spacing: -0.02em;
     text-transform: lowercase;
     line-height: 1;
@@ -75,7 +95,7 @@ body {
 .about-text p {
     font-size: 1rem;
     line-height: 1.7;
-    color: #1a1a1a;
+    color: var(--about-text-secondary);
     margin-bottom: 1.5rem;
     font-weight: 400;
     letter-spacing: -0.003em;
@@ -99,7 +119,7 @@ body {
     font-weight: 700;
     margin-bottom: 1rem;
     margin-top: -0.012rem;
-    color: #000;
+    color: var(--about-text-primary);
     letter-spacing: -0.02em;
     text-transform: lowercase;
     line-height: 1;
@@ -129,8 +149,8 @@ body {
     width: 2px;
     background: repeating-linear-gradient(
         to bottom,
-        #d0d0d0 0,
-        #d0d0d0 6px,
+        var(--about-timeline-line) 0,
+        var(--about-timeline-line) 6px,
         transparent 6px,
         transparent 12px
     );
@@ -190,7 +210,7 @@ body {
     height: 16px;
     border-radius: 50%;
     border: 3px solid;
-    background: #fafafa;
+    background: var(--about-timeline-dot-bg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -211,8 +231,8 @@ body {
     width: 2px;
     background: repeating-linear-gradient(
         to bottom,
-        #d0d0d0 0,
-        #d0d0d0 6px,
+        var(--about-timeline-line) 0,
+        var(--about-timeline-line) 6px,
         transparent 6px,
         transparent 12px
     );
@@ -248,7 +268,7 @@ body {
 .timeline-role {
     font-size: 0.9rem;
     font-weight: 500;
-    color: #1a1a1a;
+    color: var(--about-text-secondary);
     margin-bottom: 0.25rem;
     line-height: 1.4;
 }
@@ -256,7 +276,7 @@ body {
 .timeline-date {
     font-size: 0.85rem;
     font-weight: 400;
-    color: #737373;
+    color: var(--about-text-muted);
 }
 
 /* Mobile Responsive */
