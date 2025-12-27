@@ -32,8 +32,7 @@ function Home() {
         { id: 1, text: "in/tsow", color: "blue", link: "https://www.linkedin.com/in/austintsow/" },
         { id: 2, text: "gh/austintsow", color: "gray", link: "https://github.com/austintsow" },
         { id: 3, text: "beli/tsow", color: "beli", link: "https://app.beliapp.com/lists/tsow" },
-        { id: 4, text: "austin@tsow.com", color: "yellow", link: "mailto:austin@tsow.com" },
-        { id: 5, text: "gloria", color: "pink", link: "/gloria" }
+        { id: 4, text: "austin@tsow.com", color: "yellow", link: "mailto:austin@tsow.com" }
     ];
 
     return (

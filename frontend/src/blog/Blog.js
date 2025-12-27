@@ -8,6 +8,11 @@ function Blog() {
             year: "2025",
             posts: [
                 {
+                    title: "the feeling that hasn't hit yet",
+                    date: "dec 2025",
+                    slug: "the feeling that hasn't hit yet"
+                },
+                {
                     title: "landing a swe role while finishing up my degree",
                     date: "nov 2025",
                     slug: "landing a swe role while finishing up my degree"

@@ -7,6 +7,36 @@ function BlogPost() {
 
     // Dummy blog post data
     const blogPosts = {
+        "the feeling that hasn't hit yet": {
+            title: "the feeling that hasn't hit yet",
+            date: "december 26, 2025",
+            content: [
+                {
+                    type: "paragraph",
+                    text: "so finals are over. college is done. honestly, it's nice not having to pull all-nighters studying anymore. but here's the thing - i thought i'd feel more... something? like this huge weight would lift off my chest or i'd have this moment of pure satisfaction. but nope, nothing."
+                },
+                {
+                    type: "paragraph",
+                    text: "december 11th was my last final. walked out of that exam and honestly just felt... regular? i kept thinking okay, maybe it'll hit me later. maybe tomorrow i'll wake up and be like \"wow i'm done with college!\" but it's been a couple weeks now and still waiting for that feeling."
+                },
+                {
+                    type: "paragraph",
+                    text: "today's december 26th and i figured by now, with the holidays and everything, it would've sunk in. but it hasn't, and i'm trying to figure out why."
+                },
+                {
+                    type: "heading",
+                    text: "expectations vs reality"
+                },
+                {
+                    type: "paragraph",
+                    text: "i think we just build these moments up so much in our heads, you know? graduating college, landing the job, all these big milestones. we expect them to be like movie moments - confetti falling, emotional music playing, the whole thing. but real life is kinda just... normal? maybe i hyped it up too much. i thought finishing my last exam would unlock some crazy sense of accomplishment, but turns out life doesn't really work like that. i'm still trying to understand why it hasn't hit. maybe it's because college ending doesn't really feel like an ending - it's more of a transition. i'm kind of in this weird limbo right now between being a student and starting my actual career. or honestly, maybe the good parts were all the stuff along the way - the late night study sessions with friends, the random moments, the whole journey. and now that it's over it's just like... cool, what's next?"
+                },
+                {
+                    type: "paragraph",
+                    text: "anyway, i don't have it all figured out yet. but i think that's fine. not every big moment has to feel huge right when it happens. sometimes you look back later and realize how much changed. happy holidays everyone! as the holiday season wraps up, i'm starting this whole new chapter. even though the satisfaction of finishing college hasn't really hit yet, i'm genuinely excited for what's coming next."
+                }
+            ]
+        },
         "landing a swe role while finishing up my degree": {
             title: "landing a swe role while finishing up my degree",
             date: "november 26, 2025",
