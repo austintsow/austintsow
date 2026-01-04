@@ -7,6 +7,16 @@ function BlogPost() {
 
     // Dummy blog post data
     const blogPosts = {
+        "happy new year": {
+            title: "happy new year",
+            date: "january 4, 2026",
+            content: [
+                {
+                    type: "paragraph",
+                    text: "happy new year! 2026 is here and i'm genuinely excited to see what this year brings. here's to new beginnings, making the most of every moment, and to employment."
+                }
+            ]
+        },
         "the feeling that hasn't hit yet": {
             title: "the feeling that hasn't hit yet",
             date: "december 26, 2025",

@@ -5,6 +5,16 @@ import "./Blog.css";
 function Blog() {
     const blogEntries = [
         {
+            year: "2026",
+            posts: [
+                {
+                    title: "happy new year",
+                    date: "jan 2026",
+                    slug: "happy new year"
+                }
+            ]
+        },
+        {
             year: "2025",
             posts: [
                 {
