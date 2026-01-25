@@ -2,6 +2,17 @@
   text-align: center;
 }
 
+/* Text selection highlight */
+::selection {
+  background: rgba(0, 0, 0, 0.1);
+  color: #d4a017;
+}
+
+::-moz-selection {
+  background: rgba(0, 0, 0, 0.1);
+  color: #d4a017;
+}
+
 :root {
   --app-bg: white;
   --border-color: #ddd;

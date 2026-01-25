@@ -7,6 +7,20 @@ function BlogPost() {
 
     // Dummy blog post data
     const blogPosts = {
+        "my first week": {
+            title: "my first week",
+            date: "january 24, 2026",
+            content: [
+                {
+                    type: "paragraph",
+                    text: "just wrapped up my first week at visa and honestly, it's been great. the office is amazing (free snacks + gym), the work environment is super chill, and the vibes are just good all around. my team is awesome - everyone's been welcoming and helpful as i get up to speed."
+                },
+                {
+                    type: "paragraph",
+                    text: "what's stood out most is the culture and the people. there's a real sense of collaboration here, and you can tell people genuinely enjoy what they do. i'm excited to keep learning and building. here's to many more weeks like this one!"
+                }
+            ]
+        },
         "happy new year": {
             title: "happy new year",
             date: "january 4, 2026",

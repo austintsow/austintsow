@@ -10,8 +10,7 @@ const emojiOptions = [
     { emoji: "🥾", label: "hiking boots", fact: "i love love hiking, love it." },
     { emoji: "🏃", label: "running", fact: "my goal is to run a half marathon in 2026!" },
     { emoji: "🍱", label: "bento", fact: "i'm a self-proclaimed foodie sharing meals on ", factLink: { text: "beli", url: "https://app.beliapp.com/lists/tsow" }, factEnd: "." },
-    { emoji: "🔗", label: "web3", fact: "always learning about web3 and on-chain development." },
-    { emoji: "✈️", label: "travel", fact: "always excited to see new places and cultures." }
+    { emoji: "🔗", label: "web3", fact: "always learning about web3 and on-chain development." }
 ];
 
 function Home() {
@@ -47,7 +46,7 @@ function Home() {
                             austin tsow<span className="wave-container">.<span className="wave-emoji">{randomEmoji.emoji}</span></span>
                         </h1>
                         <p className="intro-subtitle">
-                            cs @ gonzaga, incoming swe @ visa
+                            software engineer @ visa, gonzaga alumi
                         </p>
                         <p className="emoji-fact">
                             <span className="emoji-fact-emoji">{randomEmoji.emoji}</span>{" "}
