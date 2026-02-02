@@ -46,7 +46,7 @@ function Home() {
                             austin tsow<span className="wave-container">.<span className="wave-emoji">{randomEmoji.emoji}</span></span>
                         </h1>
                         <p className="intro-subtitle">
-                            software engineer @ visa, gonzaga alumi
+                            software engineer @ visa, gonzaga alumni
                         </p>
                         <p className="emoji-fact">
                             <span className="emoji-fact-emoji">{randomEmoji.emoji}</span>{" "}
