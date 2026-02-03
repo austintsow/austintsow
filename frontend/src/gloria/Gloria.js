@@ -1,164 +1,132 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Gloria.css";
 
 function Gloria() {
-    const [selectedRestaurant, setSelectedRestaurant] = useState(null);
-    const [showDetails, setShowDetails] = useState(false);
-    const [password, setPassword] = useState('');
+    const [digits, setDigits] = useState(['', '', '', '', '']);
+    const [isUnlocked, setIsUnlocked] = useState(false);
     const [showError, setShowError] = useState(false);
-    const [showHearts, setShowHearts] = useState(false);
+    const inputRefs = useRef([]);
+    const navigate = useNavigate();
 
-    const handlePasswordSubmit = (e) => {
-        e.preventDefault();
-        if (password.toLowerCase() === 'austinlovesgloria') {
-            setShowError(false);
-            setShowHearts(true);
-            setTimeout(() => {
-                setShowDetails(true);
-                setShowHearts(false);
-            }, 2000);
-        } else {
-            setShowError(true);
-            setShowHearts(false);
+    const correctPassword = "67214";
+
+    const handleDigitChange = (index, value) => {
+        // Only allow single digit
+        if (value.length > 1) {
+            value = value.slice(-1);
+        }
+
+        // Only allow numbers
+        if (value && !/^\d$/.test(value)) {
+            return;
+        }
+
+        const newDigits = [...digits];
+        newDigits[index] = value;
+        setDigits(newDigits);
+        setShowError(false);
+
+        // Auto-advance to next input
+        if (value && index < 4) {
+            inputRefs.current[index + 1].focus();
+        }
+
+        // Check password when all digits entered
+        if (value && index === 4) {
+            const enteredPassword = newDigits.join('');
+            if (enteredPassword === correctPassword) {
+                setIsUnlocked(true);
+            } else {
+                setShowError(true);
+                // Clear after shake animation
+                setTimeout(() => {
+                    setDigits(['', '', '', '', '']);
+                    inputRefs.current[0].focus();
+                }, 600);
+            }
         }
     };
 
-    const restaurants = [
-        {
-            name: "fogo de chão",
-            type: "brazilian steakhouse",
-            description: "where we celebrated our one month anniversary with endless meats",
-            hoverColor: "#8B4513"
-        },
-        {
-            name: "seastar",
-            type: "seafood",
-            description: "seafood's very yum if you're feeling seafood",
-            hoverColor: "#1E90FF"
-        },
-        {
-            name: "el gaucho",
-            type: "steakhouse",
-            description: "looks like a yummy steakhouse and i've seen a lot of tiktoks of people coming here for their anniversaries so it must be good",
-            hoverColor: "#8B0000"
+    const handleKeyDown = (index, e) => {
+        // Handle backspace
+        if (e.key === 'Backspace' && !digits[index] && index > 0) {
+            inputRefs.current[index - 1].focus();
         }
-    ];
+    };
+
+    const handlePaste = (e) => {
+        e.preventDefault();
+        const pastedData = e.clipboardData.getData('text').slice(0, 5);
+        if (/^\d+$/.test(pastedData)) {
+            const newDigits = [...digits];
+            for (let i = 0; i < pastedData.length && i < 5; i++) {
+                newDigits[i] = pastedData[i];
+            }
+            setDigits(newDigits);
+
+            // Check if complete
+            if (pastedData.length === 5) {
+                if (pastedData === correctPassword) {
+                    setIsUnlocked(true);
+                } else {
+                    setShowError(true);
+                    setTimeout(() => {
+                        setDigits(['', '', '', '', '']);
+                        inputRefs.current[0].focus();
+                    }, 600);
+                }
+            } else {
+                inputRefs.current[Math.min(pastedData.length, 4)].focus();
+            }
+        }
+    };
 
     return (
         <div className="gloria-page">
-            {/* Falling Snowflakes */}
-            <div className="snowflakes" aria-hidden="true">
-                {[...Array(50)].map((_, i) => (
-                    <div
-                        key={i}
-                        className="snowflake"
-                        style={{
-                            left: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 10}s`,
-                            animationDuration: `${10 + Math.random() * 10}s`
-                        }}
-                    >
-                        ❄
+            {!isUnlocked ? (
+                <div className={`password-screen ${showError ? 'shake' : ''}`}>
+                    <div className="pin-container">
+                        {digits.map((digit, index) => (
+                            <input
+                                key={index}
+                                ref={el => inputRefs.current[index] = el}
+                                type="text"
+                                inputMode="numeric"
+                                maxLength={1}
+                                value={digit}
+                                onChange={(e) => handleDigitChange(index, e.target.value)}
+                                onKeyDown={(e) => handleKeyDown(index, e)}
+                                onPaste={handlePaste}
+                                className="pin-input"
+                                autoFocus={index === 0}
+                            />
+                        ))}
                     </div>
-                ))}
-            </div>
-
-            {/* Floating Hearts Animation (shown on correct password) */}
-            {showHearts && (
-                <div className="hearts-container" aria-hidden="true">
-                    {[...Array(15)].map((_, i) => (
+                </div>
+            ) : (
+                <div className="selection-screen">
+                    <div className="boxes-container">
                         <div
-                            key={i}
-                            className="heart"
-                            style={{
-                                left: `${Math.random() * 100}%`,
-                                animationDelay: `${Math.random() * 1}s`
-                            }}
+                            className="selection-box active"
+                            onClick={() => navigate('/gloria/7months')}
                         >
-                            ❤
+                            <span className="box-title">7 months</span>
                         </div>
-                    ))}
+
+                        <div className="selection-box locked">
+                            <div className="lock-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <span className="box-title">valentine's day</span>
+                            <span className="unlock-text">unlocks soon...</span>
+                        </div>
+                    </div>
                 </div>
             )}
-
-            <div className="gloria-content">
-                {/* Christmas Lights */}
-                <div className="christmas-lights">
-                    {[...Array(20)].map((_, i) => (
-                        <div key={i} className="light" style={{ animationDelay: `${i * 0.1}s` }}></div>
-                    ))}
-                </div>
-
-                {!showDetails ? (
-                    /* INVITATION LANDING PAGE WITH PASSWORD */
-                    <div className={`invitation-container ${showHearts ? 'fade-out' : ''}`}>
-                        <h1 className="invitation-title">austin invites you to a date!</h1>
-                        <form onSubmit={handlePasswordSubmit} className="password-form">
-                            <input
-                                type="password"
-                                className="password-input"
-                                placeholder="enter password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                            <button type="submit" className="password-button">
-                                enter
-                            </button>
-                        </form>
-                        {showError && (
-                            <p className="error-message">you must not be gloria!</p>
-                        )}
-                    </div>
-                ) : (
-                    /* DATE DETAILS PAGE */
-                    <div className="gloria-container">
-                        <h1 className="gloria-title">a festive evening together</h1>
-
-                    <div className="date-info">
-                        <p className="date-time">december 22 @ 6:45pm</p>
-                    </div>
-
-                    <div className="section">
-                        <h2 className="section-heading">dinner</h2>
-                        <p className="section-subtitle">choose where we'll start our evening</p>
-
-                        <div className="restaurants-grid">
-                            {restaurants.map((restaurant, index) => (
-                                <div
-                                    key={index}
-                                    className={`restaurant-card ${selectedRestaurant === index ? 'selected' : ''}`}
-                                    onClick={() => setSelectedRestaurant(index)}
-                                    style={{
-                                        '--hover-color': restaurant.hoverColor,
-                                        '--hover-color-light': restaurant.hoverColor + '15',
-                                        '--hover-color-shadow': restaurant.hoverColor + '26'
-                                    }}
-                                >
-                                    <div className="restaurant-header">
-                                        <h3 className="restaurant-name">{restaurant.name}</h3>
-                                        <span className="restaurant-type">{restaurant.type}</span>
-                                    </div>
-                                    <p className="restaurant-description">{restaurant.description}</p>
-                                    {selectedRestaurant === index && (
-                                        <div className="selected-indicator">✓ your choice</div>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="section">
-                        <h2 className="section-heading">after dinner</h2>
-                        <div className="activity-card">
-                            <h3 className="activity-name">forum social house</h3>
-                            <p className="activity-description">
-                                since we didnt get to play in sf, we get to do it today!
-                            </p>
-                        </div>
-                    </div>
-                    </div>
-                )}
-            </div>
         </div>
     );
 }

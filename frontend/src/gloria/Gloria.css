@@ -6,644 +6,152 @@
     min-height: 100vh;
     background: #fafafa;
     display: flex;
-    flex-direction: column;
-    padding-top: 50px;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
 }
 
-.gloria-content {
-    flex: 1;
+/* Password Screen */
+.password-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pin-container {
+    display: flex;
+    gap: 12px;
+}
+
+.pin-input {
+    width: 48px;
+    height: 56px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: center;
+    color: #1a1a1a;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    caret-color: transparent;
+}
+
+.pin-input:focus {
+    border-color: #1a1a1a;
+    box-shadow: 0 0 0 1px #1a1a1a;
+}
+
+/* Shake animation for wrong password */
+.password-screen.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+.password-screen.shake .pin-input {
+    border-color: #e53935;
+    box-shadow: 0 0 0 1px #e53935;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-8px); }
+    80% { transform: translateX(8px); }
+}
+
+/* Selection Screen */
+.selection-screen {
+    animation: fadeIn 0.4s ease-out;
+}
+
+.boxes-container {
+    display: flex;
+    gap: 24px;
+}
+
+.selection-box {
+    width: 180px;
+    height: 200px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 4rem 2rem;
-    width: 100%;
-    position: relative;
-    z-index: 2;
+    gap: 12px;
+    transition: all 0.2s ease;
 }
 
-.gloria-container {
-    max-width: 700px;
-    width: 100%;
-    animation: fadeIn 0.6s ease-out;
+.selection-box.active {
+    cursor: pointer;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.selection-box.active:hover {
+    border-color: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.selection-box.locked {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.lock-icon {
+    color: #999;
+}
+
+.box-title {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
+}
+
+.unlock-text {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: #999;
+    letter-spacing: 0.02em;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
+        transform: scale(0.98);
     }
     to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
-}
-
-/* Invitation Page Styles */
-.invitation-container {
-    max-width: 600px;
-    width: 100%;
-    text-align: center;
-    animation: fadeIn 0.8s ease-out;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.invitation-container.fade-out {
-    animation: fadeOut 0.5s ease-out forwards;
-}
-
-.invitation-title {
-    font-size: 3rem;
-    font-weight: 300;
-    line-height: 1.2;
-    color: #1a1a1a;
-    letter-spacing: -0.03em;
-    text-transform: lowercase;
-    margin: 0;
-    animation: fadeInUp 0.8s ease-out;
-}
-
-.password-form {
-    display: flex;
-    gap: 0.75rem;
-    width: 100%;
-    max-width: 400px;
-    animation: fadeInUp 0.8s ease-out 0.3s backwards;
-}
-
-.password-input {
-    flex: 1;
-    padding: 0.875rem 1.25rem;
-    border: 2px solid #f0f0f0;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 300;
-    color: #1a1a1a;
-    text-transform: lowercase;
-    transition: border-color 0.3s ease;
-    outline: none;
-}
-
-.password-input:focus {
-    border-color: #C41E3A;
-}
-
-.password-input::placeholder {
-    color: #999;
-    text-transform: lowercase;
-}
-
-.password-button {
-    padding: 0.875rem 2rem;
-    background: #C41E3A;
-    border: 2px solid #C41E3A;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-    color: white;
-    text-transform: lowercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-}
-
-.password-button:hover {
-    background: #A01729;
-    border-color: #A01729;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
-}
-
-.error-message {
-    font-size: 0.95rem;
-    color: #C41E3A;
-    font-weight: 400;
-    text-transform: lowercase;
-    margin: 0;
-    animation: fadeIn 0.3s ease-out;
-}
-
-.gloria-title {
-    font-size: 3rem;
-    font-weight: 300;
-    line-height: 1.2;
-    margin-bottom: 2rem;
-    color: #1a1a1a;
-    letter-spacing: -0.03em;
-    text-transform: lowercase;
-    text-align: center;
-}
-
-.date-info {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.date-time {
-    font-size: 1.125rem;
-    color: #C41E3A;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    margin: 0;
-}
-
-.section {
-    margin-bottom: 4rem;
-}
-
-.section-heading {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #1a1a1a;
-    letter-spacing: -0.02em;
-    text-transform: lowercase;
-}
-
-.section-subtitle {
-    font-size: 0.95rem;
-    color: #666;
-    font-weight: 300;
-    margin-bottom: 2rem;
-    text-transform: lowercase;
-}
-
-.restaurants-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-}
-
-.restaurant-card {
-    background: white;
-    border: 2px solid #f0f0f0;
-    border-radius: 12px;
-    padding: 1.75rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.restaurant-card:hover {
-    border-color: var(--hover-color, #C41E3A);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px var(--hover-color-shadow, rgba(196, 30, 58, 0.15));
-}
-
-.restaurant-card.selected {
-    border-color: var(--hover-color, #C41E3A);
-    background: var(--hover-color-light, rgba(196, 30, 58, 0.03));
-}
-
-.restaurant-header {
-    margin-bottom: 0.75rem;
-}
-
-.restaurant-name {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin: 0 0 0.25rem 0;
-    letter-spacing: -0.01em;
-}
-
-.restaurant-type {
-    font-size: 0.85rem;
-    color: #C41E3A;
-    font-weight: 500;
-    text-transform: lowercase;
-}
-
-.restaurant-description {
-    font-size: 0.95rem;
-    color: #666;
-    line-height: 1.6;
-    margin: 0;
-    font-weight: 300;
-    text-transform: lowercase;
-}
-
-.selected-indicator {
-    position: absolute;
-    top: 1.75rem;
-    right: 1.75rem;
-    font-size: 0.85rem;
-    color: #C41E3A;
-    font-weight: 600;
-    text-transform: lowercase;
-}
-
-.activity-card {
-    background: white;
-    border: 2px solid #f0f0f0;
-    border-radius: 12px;
-    padding: 1.75rem;
-}
-
-.activity-name {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin: 0 0 0.75rem 0;
-    letter-spacing: -0.01em;
-}
-
-.activity-description {
-    font-size: 0.95rem;
-    color: #666;
-    line-height: 1.6;
-    margin: 0;
-    font-weight: 300;
-    text-transform: lowercase;
-}
-
-.closing-note {
-    text-align: center;
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid #f0f0f0;
-}
-
-.closing-note p {
-    font-size: 1rem;
-    color: #666;
-    font-weight: 300;
-    margin: 0.5rem 0;
-    text-transform: lowercase;
-}
-
-.signature {
-    font-size: 1.1rem;
-    color: #C41E3A;
-    font-weight: 500;
-}
-
-/* Christmas Lights */
-.christmas-lights {
-    position: relative;
-    width: 100%;
-    max-width: 900px;
-    height: 40px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0 2rem;
-    margin-bottom: 2rem;
-    z-index: 10;
-    pointer-events: none;
-}
-
-.light {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #D4AF37;
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
-    animation: twinkle 2s ease-in-out infinite;
-}
-
-.light:nth-child(2n) {
-    background: #C41E3A;
-    box-shadow: 0 0 10px rgba(196, 30, 58, 0.8);
-}
-
-.light:nth-child(3n) {
-    background: #2D5016;
-    box-shadow: 0 0 10px rgba(45, 80, 22, 0.8);
-}
-
-.light:nth-child(4n) {
-    background: #4169E1;
-    box-shadow: 0 0 10px rgba(65, 105, 225, 0.8);
-}
-
-@keyframes twinkle {
-    0%, 100% {
         opacity: 1;
         transform: scale(1);
-    }
-    50% {
-        opacity: 0.3;
-        transform: scale(0.8);
-    }
-}
-
-/* Falling Snowflakes */
-.snowflakes {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.snowflake {
-    position: absolute;
-    top: -10%;
-    color: #B0C4DE;
-    font-size: 1rem;
-    user-select: none;
-    animation: fall linear infinite;
-    opacity: 0.8;
-    text-shadow: 0 0 5px rgba(176, 196, 222, 0.5);
-}
-
-@keyframes fall {
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-    100% {
-        transform: translateY(110vh) rotate(360deg);
-    }
-}
-
-.snowflake:nth-child(2n) {
-    font-size: 0.8rem;
-    opacity: 0.6;
-}
-
-.snowflake:nth-child(3n) {
-    font-size: 1.2rem;
-    opacity: 0.7;
-}
-
-.snowflake:nth-child(4n) {
-    font-size: 0.9rem;
-}
-
-.snowflake:nth-child(5n) {
-    animation-duration: 15s;
-}
-
-.snowflake:nth-child(7n) {
-    animation-duration: 12s;
-}
-
-.snowflake:nth-child(11n) {
-    animation-duration: 18s;
-}
-
-/* Floating Hearts Animation */
-.hearts-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 100;
-    overflow: hidden;
-}
-
-.heart {
-    position: absolute;
-    bottom: -10%;
-    color: #C41E3A;
-    font-size: 2rem;
-    user-select: none;
-    animation: floatUp 2s ease-out forwards;
-    opacity: 1;
-}
-
-@keyframes floatUp {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-120vh) scale(1.2);
-        opacity: 0;
     }
 }
 
 /* Mobile Responsive */
-@media (max-width: 768px) {
-    .gloria-content {
-        padding: 3rem 1.5rem;
-    }
-
-    .invitation-title {
-        font-size: 2.25rem;
-    }
-
-    .password-form {
-        max-width: 350px;
-    }
-
-    .password-input {
-        font-size: 0.95rem;
-        padding: 0.75rem 1rem;
-    }
-
-    .password-button {
-        font-size: 0.95rem;
-        padding: 0.75rem 1.5rem;
-    }
-
-    .error-message {
-        font-size: 0.9rem;
-    }
-
-    .heart {
-        font-size: 1.5rem;
-    }
-
-    .gloria-title {
-        font-size: 2.25rem;
-    }
-
-    .date-time {
-        font-size: 1rem;
-    }
-
-    .section-heading {
-        font-size: 1.3rem;
-    }
-
-    .section-subtitle {
-        font-size: 0.9rem;
-    }
-
-    .restaurant-card {
-        padding: 1.5rem;
-    }
-
-    .restaurant-name {
-        font-size: 1.25rem;
-    }
-
-    .restaurant-type {
-        font-size: 0.8rem;
-    }
-
-    .restaurant-description {
-        font-size: 0.9rem;
-    }
-
-    .selected-indicator {
-        top: 1.5rem;
-        right: 1.5rem;
-        font-size: 0.8rem;
-    }
-
-    .activity-card {
-        padding: 1.5rem;
-    }
-
-    .activity-name {
-        font-size: 1.25rem;
-    }
-
-    .activity-description {
-        font-size: 0.9rem;
-    }
-
-    .closing-note p {
-        font-size: 0.95rem;
-    }
-
-    .signature {
-        font-size: 1rem;
-    }
-
-    .christmas-lights {
-        padding: 0 1rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .light {
-        width: 10px;
-        height: 10px;
-    }
-
-    .light:nth-child(2n+1):nth-child(n+15) {
-        display: none;
-    }
-
-    .snowflake:nth-child(n+30) {
-        display: none;
-    }
-}
-
 @media (max-width: 480px) {
-    .gloria-content {
-        padding: 2.5rem 1.25rem;
-    }
-
-    .invitation-title {
-        font-size: 1.85rem;
-    }
-
-    .invitation-container {
-        gap: 1.75rem;
+    .gloria-page {
         padding: 1.5rem;
     }
 
-    .password-form {
-        flex-direction: column;
-        max-width: 100%;
-        gap: 0.5rem;
+    .pin-container {
+        gap: 8px;
     }
 
-    .password-input {
-        font-size: 0.9rem;
-    }
-
-    .password-button {
-        font-size: 0.9rem;
-        width: 100%;
-    }
-
-    .heart {
+    .pin-input {
+        width: 44px;
+        height: 52px;
         font-size: 1.25rem;
     }
 
-    .gloria-title {
-        font-size: 1.85rem;
+    .boxes-container {
+        flex-direction: column;
+        gap: 16px;
     }
 
-    .date-time {
-        font-size: 0.95rem;
-    }
-
-    .section {
-        margin-bottom: 3rem;
-    }
-
-    .section-heading {
-        font-size: 1.2rem;
-    }
-
-    .restaurant-card {
-        padding: 1.25rem;
-    }
-
-    .restaurant-name {
-        font-size: 1.15rem;
-    }
-
-    .activity-card {
-        padding: 1.25rem;
-    }
-
-    .activity-name {
-        font-size: 1.15rem;
-    }
-
-    .christmas-lights {
-        padding: 0 0.75rem;
-        margin-bottom: 1rem;
-        height: 30px;
-    }
-
-    .light {
-        width: 8px;
-        height: 8px;
-    }
-
-    .light:nth-child(2n+1):nth-child(n+10) {
-        display: none;
-    }
-
-    .snowflake {
-        font-size: 0.8rem;
-    }
-
-    .snowflake:nth-child(n+20) {
-        display: none;
+    .selection-box {
+        width: 200px;
+        height: 160px;
     }
 }

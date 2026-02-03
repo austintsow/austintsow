@@ -1,0 +1,115 @@
+.seven-months-page {
+    min-height: 100vh;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* ASCII Canvas */
+.ascii-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* Note Overlay */
+.note-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.85);
+    animation: fadeIn 0.8s ease-out;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.note-box {
+    max-width: 650px;
+    width: 100%;
+    text-align: center;
+    padding: 40px 30px;
+}
+
+.note-decoration {
+    color: #FFB6C1;
+    font-size: 1.3rem;
+    letter-spacing: 0.8rem;
+    margin: 25px 0;
+    opacity: 0.85;
+}
+
+.note-text {
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    text-align: left;
+    margin: 0;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .note-overlay {
+        padding: 15px;
+    }
+
+    .note-box {
+        padding: 30px 20px;
+    }
+
+    .note-text {
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+
+    .note-decoration {
+        font-size: 1.1rem;
+        letter-spacing: 0.6rem;
+        margin: 20px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .note-overlay {
+        padding: 12px;
+    }
+
+    .note-box {
+        padding: 25px 18px;
+    }
+
+    .note-text {
+        font-size: 0.9rem;
+        line-height: 1.75;
+    }
+
+    .note-decoration {
+        font-size: 1rem;
+        margin: 18px 0;
+    }
+}
