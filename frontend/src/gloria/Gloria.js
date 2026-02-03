@@ -121,7 +121,6 @@ function Gloria() {
                                     <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                                 </svg>
                             </div>
-                            <span className="box-title">valentine's day</span>
                             <span className="unlock-text">unlocks soon...</span>
                         </div>
                     </div>
