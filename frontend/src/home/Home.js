@@ -3,12 +3,12 @@ import "./Home.css";
 import { useTheme } from "../contexts/ThemeContext";
 
 const emojiOptions = [
-    { emoji: "🐕", label: "dog", fact: "obi's my best buddy for walks, naps, and everything in between." },
+    { emoji: "🐕", label: "dog", fact: "obi's my best buddy for walks, naps, and eating snacks" },
     { emoji: "🍵", label: "matcha", fact: "my go to! i promise you i am not performative..." },
     { emoji: "💻", label: "laptop", fact: "my all-in-one spot for coding, music, and ideas." },
-    { emoji: "🌲", label: "pine tree", fact: "nothing feels more like home than the pnw outdoors." },
+    { emoji: "🏓", label: "pickle ball", fact: "there's nothing better than pickleball!" },
     { emoji: "🥾", label: "hiking boots", fact: "i love love hiking, love it." },
-    { emoji: "🏃", label: "running", fact: "my goal is to run a half marathon in 2026!" },
+    { emoji: "🏃", label: "running", fact: "currently training for the seattle half!" },
     { emoji: "🍱", label: "bento", fact: "i'm a self-proclaimed foodie sharing meals on ", factLink: { text: "beli", url: "https://app.beliapp.com/lists/tsow" }, factEnd: "." },
     { emoji: "🔗", label: "web3", fact: "always learning about web3 and on-chain development." }
 ];

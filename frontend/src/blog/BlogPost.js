@@ -7,6 +7,28 @@ function BlogPost() {
 
     // Dummy blog post data
     const blogPosts = {
+        "first month at visa and other updates": {
+            title: "first month at visa and other updates",
+            date: "february 23, 2026",
+            content: [
+                {
+                    type: "paragraph",
+                    text: "just finished my first month at visa and honestly, i've been enjoying it a ton. the team is great, the work is engaging, and i've been learning so many new tools and technologies. it's been a great onboarding experience and i'm excited to keep building and contributing to the team. every day brings something new to learn, and i'm grateful to be surrounded by such talented people who are always willing to help and share their knowledge."
+                },
+                {
+                    type: "heading",
+                    text: "other updates"
+                },
+                {
+                    type: "paragraph",
+                    text: "happy late lunar new year! 新年快乐! hope everyone had a great celebration and here's to a prosperous year of the horse. i spent some quality time with family and enjoyed some amazing food over the holiday."
+                },
+                {
+                    type: "paragraph",
+                    text: "also, huge personal milestone - i got my first car! it's a 2019 bmw 530e, old but still great with only 33k miles on it. just wanted to throw that out too lol"
+                }
+            ]
+        },
         "my first week": {
             title: "my first week",
             date: "january 24, 2026",

@@ -1,0 +1,332 @@
+.valentine-page {
+    min-height: 100vh;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Heading */
+.valentine-heading {
+    font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 32px;
+    color: #FFB6C1;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: normal;
+}
+
+/* Video Container */
+.video-container {
+    width: 90%;
+    max-width: 500px;
+    margin-bottom: 40px;
+}
+
+.minion-video {
+    width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* Buttons Container */
+.buttons-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 90%;
+    max-width: 600px;
+}
+
+/* YES Button */
+.yes-button {
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+    padding: 16px 40px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 0;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* NO Button */
+.no-button {
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+    padding: 16px 40px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 0;
+    cursor: pointer;
+    transition: left 0.6s ease-in-out, top 0.6s ease-in-out;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Celebration Overlay */
+.celebration-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Valentine Content Wrapper */
+.valentine-content {
+    display: contents; /* Maintain original layout */
+}
+
+/* Thanos Snap Animation */
+.valentine-content.thanos-snap > * {
+    animation: thanosSnap 2s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes thanosSnap {
+    0% {
+        opacity: 1;
+        filter: blur(0px) brightness(1);
+    }
+    50% {
+        opacity: 0.6;
+        filter: blur(2px) brightness(0.9);
+    }
+    100% {
+        opacity: 0;
+        filter: blur(15px) brightness(0.7);
+        transform: scale(0.9);
+    }
+}
+
+/* Folder Celebration */
+.folder-celebration {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    animation: folderFadeIn 1s ease-out 2s forwards;
+    opacity: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.folder-celebration:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.folder-celebration:active {
+    transform: translate(-50%, -50%) scale(0.98);
+}
+
+.folder-icon {
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.folder-label {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+    letter-spacing: 0.2px;
+    font-weight: 400;
+}
+
+@keyframes folderFadeIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Hearts Animation */
+.heart {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    user-select: none;
+}
+
+.heart.float {
+    animation: floatUp 4s ease-out forwards;
+}
+
+.heart.fall {
+    animation: fallDown 4s ease-in forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        bottom: -10%;
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        bottom: 110%;
+        opacity: 0;
+        transform: translateX(calc(-50px + 100px * var(--random))) rotate(360deg);
+    }
+}
+
+@keyframes fallDown {
+    0% {
+        top: -10%;
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        top: 110%;
+        opacity: 0;
+        transform: translateX(calc(-50px + 100px * var(--random))) rotate(-360deg);
+    }
+}
+
+/* YES Streak Animation */
+.yes-streak-container {
+    position: fixed;
+    top: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1002;
+    pointer-events: none;
+}
+
+.yes-streak-image {
+    width: 250px;
+    height: auto;
+    animation: yesStreak 4s ease-in forwards;
+    filter: drop-shadow(0 8px 20px rgba(255, 215, 0, 0.5));
+}
+
+@keyframes yesStreak {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(calc(100vh + 400px)) rotate(20deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .video-container {
+        width: 95%;
+        margin-bottom: 30px;
+    }
+
+    .minion-video {
+        max-height: 50vh;
+    }
+
+    .buttons-container {
+        gap: 20px;
+    }
+
+    .yes-button,
+    .no-button {
+        padding: 14px 32px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-container {
+        margin-bottom: 25px;
+    }
+
+    .minion-video {
+        max-height: 45vh;
+    }
+
+    .buttons-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .yes-button,
+    .no-button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+
+/* Ensure buttons are always visible and tappable */
+@media (hover: none) and (pointer: coarse) {
+    .no-button {
+        min-width: 80px;
+        min-height: 50px;
+    }
+
+    .yes-button {
+        min-width: 80px;
+        min-height: 50px;
+    }
+}
+
+/* Mobile Responsive - YES Streak */
+@media (max-width: 768px) {
+    .yes-streak-image {
+        width: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .yes-streak-image {
+        width: 200px;
+    }
+}
