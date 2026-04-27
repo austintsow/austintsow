@@ -13,7 +13,7 @@ function BlogPost() {
             content: [
                 {
                     type: "paragraph",
-                    text: "it has been a while since i last created a blog. i keep telling myself to create a blog but then i just keep forgetting... sorry about that chat. but there have been a few things updates since the last time i updated the blog."
+                    text: "it has been a while since i last created a blog. i keep telling myself to create a blog but then i just keep forgetting... sorry about that chat. but there have been a few updates since the last time i updated the blog."
                 },
                 {
                     type: "list",
