@@ -8,6 +8,11 @@ function Blog() {
             year: "2026",
             posts: [
                 {
+                    title: "catching up",
+                    date: "apr 2026",
+                    slug: "catching up"
+                },
+                {
                     title: "first month at visa and other updates",
                     date: "feb 2026",
                     slug: "first month at visa and other updates"

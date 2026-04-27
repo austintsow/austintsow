@@ -7,6 +7,41 @@ function BlogPost() {
 
     // Dummy blog post data
     const blogPosts = {
+        "catching up": {
+            title: "catching up",
+            date: "april 26, 2026",
+            content: [
+                {
+                    type: "paragraph",
+                    text: "it has been a while since i last created a blog. i keep telling myself to create a blog but then i just keep forgetting... sorry about that chat. but there have been a few things updates since the last time i updated the blog."
+                },
+                {
+                    type: "list",
+                    items: [
+                        "i've been eating good (while still on a cut)",
+                        "discovered weighted crunches",
+                        "it snowed in march",
+                        "started playing badminton",
+                        "gonzaga was upset in march madness",
+                        "michigan won march madness",
+                        "there's nothing better than pickleball! (rip no pickleball emoji)",
+                        "still cycling",
+                        "celebrated my birthday!",
+                        "had good matcha",
+                        "had okay matcha",
+                        "went to boston",
+                        "had an allergic reaction in boston",
+                        "i'm probably gluten free",
+                        "had cava in boston",
+                        "went to spokane the next weekend",
+                        "saw gonzaga friends",
+                        "took grad photos",
+                        "drove back to the westside",
+                        "that's pretty much it"
+                    ]
+                }
+            ]
+        },
         "first month at visa and other updates": {
             title: "first month at visa and other updates",
             date: "february 23, 2026",
@@ -204,6 +239,14 @@ function BlogPost() {
                                 return <p key={index} className="post-paragraph">{block.text}</p>;
                             } else if (block.type === "heading") {
                                 return <h2 key={index} className="post-heading">{block.text}</h2>;
+                            } else if (block.type === "list") {
+                                return (
+                                    <ul key={index} className="post-list">
+                                        {block.items.map((item, i) => (
+                                            <li key={i} className="post-list-item">{item}</li>
+                                        ))}
+                                    </ul>
+                                );
                             } else if (block.type === "callout") {
                                 return (
                                     <div key={index} className="post-callout">
