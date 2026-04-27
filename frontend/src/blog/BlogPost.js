@@ -24,7 +24,7 @@ function BlogPost() {
                         "started playing badminton",
                         "gonzaga was upset in march madness",
                         "michigan won march madness",
-                        "there's nothing better than pickleball! (rip no pickleball emoji)",
+                        "i've been pickleballing",
                         "still cycling",
                         "celebrated my birthday!",
                         "had good matcha",
