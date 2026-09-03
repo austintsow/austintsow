@@ -57,7 +57,7 @@ const BARS = [
         name: "the nest rooftop bar",
         rating: 7.8,
         reviews: 762,
-        tags: ["rooftop", "city views", "the crowd pleaser"],
+        tags: ["rooftop", "view of the pier"],
         blurb: "great view, but rainy, but also good reviews.",
     },
     {
@@ -65,7 +65,7 @@ const BARS = [
         name: "rosebay bar",
         rating: 7.2,
         reviews: 18,
-        tags: ["quiet", "under the radar", "our secret"],
+        tags: ["vibey", "under the radar"],
         blurb: "looks very vibey based off of the tiktok you sent me.",
     },
 ];
