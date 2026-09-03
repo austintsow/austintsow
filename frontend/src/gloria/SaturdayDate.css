@@ -1,0 +1,882 @@
+/* ==========================================================================
+   A Saturday, Just for Us
+   warm paper, soft ink, colored-pencil doodles in the margins
+   ========================================================================== */
+
+.saturday-page {
+    --paper: #fbf6ee;
+    --paper-2: #f4ecdf;
+    --card: #fffcf7;
+    --ink: #322e28;
+    --ink-soft: #5b544a;
+    --muted: #8d8377;
+    --line: #e6dbc9;
+
+    --rose: #d98c85;
+    --terracotta: #dfa277;
+    --sage: #9db495;
+    --blue: #93aec4;
+    --mustard: #e0ba6c;
+    --plum: #b48aa4;
+    --honey: #e0ac3f;
+
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+        Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+    --hand: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    padding: clamp(48px, 9vw, 96px) 20px clamp(56px, 8vw, 96px);
+    color: var(--ink);
+    font-family: var(--sans);
+    cursor: default;
+    background:
+        radial-gradient(1100px 640px at 10% -10%, rgba(217, 140, 133, 0.15), transparent 62%),
+        radial-gradient(880px 560px at 102% 4%, rgba(157, 180, 149, 0.16), transparent 60%),
+        radial-gradient(900px 820px at 46% 112%, rgba(224, 186, 108, 0.13), transparent 62%),
+        var(--paper);
+}
+
+.saturday-page,
+.saturday-page *,
+.saturday-page *::before,
+.saturday-page *::after {
+    box-sizing: border-box;
+}
+
+.saturday-page ::selection {
+    background: rgba(217, 140, 133, 0.24);
+}
+
+/* Home.css and Contact.css declare bare `header {display:flex}` / `main {display:flex}`,
+   and CRA bundles every stylesheet globally, so they reach this page too.
+   These class-scoped rules outrank them. */
+.saturday-page .sat-header,
+.saturday-page .sat-main {
+    display: block;
+    flex: none;
+    width: 100%;
+    padding: 0;
+    align-items: initial;
+    justify-content: initial;
+    position: relative;
+}
+
+
+/* paper tooth */
+.paper-grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.32'/%3E%3C/svg%3E");
+}
+
+.doodle-defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* --------------------------------------------------------- doodle styling */
+
+.doodle {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.doodle .ink {
+    fill: none;
+    stroke: var(--ink-soft);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.doodle .ink .faint {
+    opacity: 0.4;
+    stroke-width: 1.7;
+}
+
+.doodle .patches {
+    stroke: none;
+    opacity: 0.92;
+}
+
+.doodle .c-rose { fill: var(--rose); }
+.doodle .c-terracotta { fill: var(--terracotta); }
+.doodle .c-sage { fill: var(--sage); }
+.doodle .c-blue { fill: var(--blue); }
+.doodle .c-mustard { fill: var(--mustard); }
+.doodle .c-canvas { fill: var(--paper-2); }
+.doodle .c-honey { fill: var(--honey); }
+.doodle .c-hair { fill: var(--ink-soft); opacity: 0.42; }
+
+/* the "me (austin)" / "you (gloria)" annotations on the header drawing */
+.doodle-label {
+    font-family: var(--hand);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    fill: var(--ink-soft);
+    stroke: none;
+    opacity: 0.85;
+}
+
+.small-heart {
+    width: 18px;
+    height: 18px;
+    fill: var(--rose);
+    stroke: none;
+    flex: none;
+}
+
+/* ---------------------------------------------------------------- header */
+
+.sat-header {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto clamp(52px, 9vw, 96px);
+    text-align: center;
+}
+
+.sat-header-art {
+    width: min(400px, 92vw);
+    margin: 0 auto clamp(10px, 2.4vw, 20px);
+}
+
+.sat-kicker {
+    margin: 0 0 6px;
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    text-transform: lowercase;
+    color: var(--muted);
+}
+
+.sat-from {
+    margin: 0 0 16px;
+    font-family: var(--hand);
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--rose);
+}
+
+.sat-title {
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.5rem, 10vw, 4.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+}
+
+.sat-sub {
+    margin: clamp(18px, 3vw, 26px) auto 0;
+    max-width: 34rem;
+    font-size: clamp(0.95rem, 2.6vw, 1.06rem);
+    line-height: 1.65;
+    color: var(--ink-soft);
+}
+
+.sat-rule {
+    display: block;
+    width: 54px;
+    height: 1px;
+    margin: clamp(26px, 5vw, 40px) auto 0;
+    background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+
+/* -------------------------------------------------------------- timeline */
+
+.sat-main {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tl-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 0 18px;
+    padding-bottom: clamp(30px, 5vw, 44px);
+}
+
+.tl-item:last-child {
+    padding-bottom: 0;
+}
+
+/* the rail: one continuous line down the page with a crayon dot per stop.
+   absolutely positioned, so it does not become an extra grid cell */
+.tl-item::before {
+    content: "";
+    position: absolute;
+    top: 22px;
+    bottom: -10px;
+    left: 13px;
+    width: 1px;
+    background: var(--line);
+}
+
+.tl-item:last-child::before {
+    display: none;
+}
+
+.tl-rail {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 7px;
+}
+
+.tl-dot {
+    position: relative;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--accent, var(--rose));
+    box-shadow: 0 0 0 5px rgba(255, 252, 247, 0.9);
+}
+
+.tl-dot--open {
+    background: var(--card);
+    border: 2px solid var(--accent, var(--plum));
+    width: 13px;
+    height: 13px;
+}
+
+/* card */
+.tl-card {
+    position: relative;
+    padding: 2px 0 0;
+}
+
+.tl-time {
+    margin: 0 0 6px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: lowercase;
+    color: var(--accent, var(--muted));
+}
+
+.tl-title {
+    margin: 0 0 8px;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.35rem, 4.6vw, 1.72rem);
+    line-height: 1.2;
+    letter-spacing: -0.012em;
+    color: var(--ink);
+}
+
+.tl-note {
+    margin: 0;
+    max-width: 34rem;
+    font-size: 0.95rem;
+    line-height: 1.62;
+    color: var(--ink-soft);
+}
+
+/* margin doodles, wide screens only */
+.tl-art {
+    position: absolute;
+    top: 50%;
+    width: 136px;
+    transform: translateY(-52%);
+    pointer-events: none;
+}
+
+.tl-item--a .tl-art { right: -172px; transform: translateY(-52%) rotate(-3deg); }
+.tl-item--b .tl-art { left: -178px; transform: translateY(-52%) rotate(3.5deg); }
+.tl-item--choice .tl-art { top: 88px; right: -176px; transform: rotate(-4deg); }
+
+/* ------------------------------------------------------- the one choice */
+
+.choice-card {
+    margin-top: 2px;
+}
+
+.choice-card .tl-note {
+    margin-bottom: 22px;
+}
+
+/* "drinks" and its hint button, side by side */
+.tl-title-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    margin: 0 0 8px;
+}
+
+.tl-title-row .tl-title {
+    margin: 0;
+}
+
+.hint-btn {
+    position: relative;
+    margin: 0;
+    padding: 8px 17px 9px;
+    font-family: var(--hand);
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    color: var(--plum);
+    background: none;
+    border: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.3, 1), color 0.25s ease;
+}
+
+.hint-btn > span {
+    position: relative;
+}
+
+.sketch-box {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    fill: none;
+    stroke: var(--plum);
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.55;
+    transition: opacity 0.25s ease;
+}
+
+@media (hover: hover) {
+    .hint-btn:hover {
+        transform: translateY(-1px) rotate(-0.6deg);
+    }
+
+    .hint-btn:hover .sketch-box {
+        opacity: 0.95;
+    }
+}
+
+.hint-btn:focus-visible {
+    outline: 2px solid var(--plum);
+    outline-offset: 4px;
+    border-radius: 12px;
+}
+
+.hint-btn.is-open .sketch-box {
+    opacity: 1;
+}
+
+.hint-btn.is-open {
+    color: var(--ink-soft);
+}
+
+.hint-text {
+    margin: -8px 0 22px;
+    padding: 13px 17px;
+    font-family: var(--hand);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    background: rgba(224, 172, 63, 0.13);
+    border: 1px solid rgba(224, 172, 63, 0.3);
+    border-radius: 13px;
+    animation: confirm-in 0.4s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+.bar-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.bar-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 20px 18px 18px;
+    text-align: left;
+    font-family: inherit;
+    color: inherit;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 1px 2px rgba(80, 66, 48, 0.04);
+    transition: transform 0.32s cubic-bezier(0.2, 0.7, 0.3, 1),
+        box-shadow 0.32s ease, border-color 0.32s ease, opacity 0.32s ease,
+        background 0.32s ease;
+}
+
+@media (hover: hover) {
+    .bar-card:hover {
+        transform: translateY(-2px);
+        border-color: #dccbb2;
+        box-shadow: 0 10px 26px rgba(96, 76, 52, 0.09);
+    }
+}
+
+.bar-card:active {
+    transform: translateY(0);
+}
+
+.bar-card:focus-visible {
+    outline: 2px solid var(--plum);
+    outline-offset: 3px;
+}
+
+.bar-card.is-selected {
+    background: #fffdf9;
+    border-color: rgba(180, 138, 164, 0.42);
+    box-shadow: 0 12px 30px rgba(120, 84, 108, 0.11);
+}
+
+.bar-card.is-dimmed {
+    opacity: 0.42;
+    box-shadow: none;
+}
+
+@media (hover: hover) {
+    .bar-card.is-dimmed:hover {
+        opacity: 0.72;
+    }
+}
+
+/* the sketched loop */
+.scribble {
+    position: absolute;
+    inset: -9px -7px;
+    width: calc(100% + 14px);
+    height: calc(100% + 18px);
+    overflow: visible;
+    pointer-events: none;
+    fill: none;
+    stroke: var(--plum);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    opacity: 0.75;
+    stroke-dasharray: 1400;
+    stroke-dashoffset: 1400;
+    animation: draw-loop 0.85s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes draw-loop {
+    to { stroke-dashoffset: 0; }
+}
+
+.bar-check {
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--plum);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.24s ease, transform 0.34s cubic-bezier(0.2, 1.3, 0.4, 1);
+}
+
+.bar-check svg {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: #fffcf7;
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    overflow: visible;
+}
+
+.bar-card.is-selected .bar-check {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.bar-name {
+    font-family: var(--serif);
+    font-size: 1.14rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+
+.bar-score {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-top: 12px;
+}
+
+.bar-score-num {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--plum);
+}
+
+.bar-score-den {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.bar-meter {
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin-top: 9px;
+    border-radius: 2px;
+    background: var(--paper-2);
+    overflow: hidden;
+}
+
+.bar-meter-fill {
+    display: block;
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--rose), var(--plum));
+}
+
+.bar-reviews {
+    margin-top: 8px;
+    font-size: 11.5px;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+}
+
+.bar-blurb {
+    margin-top: 12px;
+    font-size: 0.86rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+}
+
+.bar-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 13px;
+}
+
+.bar-tag {
+    padding: 3px 9px;
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    color: var(--ink-soft);
+    background: var(--paper-2);
+    border-radius: 999px;
+}
+
+.bar-cta {
+    margin-top: 15px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: lowercase;
+    color: var(--plum);
+}
+
+.bar-card.is-selected .bar-cta {
+    color: var(--sage);
+}
+
+/* confirmation */
+.choice-status {
+    min-height: 30px;
+    margin-top: 20px;
+}
+
+.choice-waiting {
+    margin: 0;
+    font-size: 12.5px;
+    letter-spacing: 0.11em;
+    text-transform: lowercase;
+    color: var(--muted);
+}
+
+.choice-waiting::after {
+    content: " ";
+    display: inline-block;
+    width: 22px;
+    border-bottom: 1px solid var(--line);
+    margin-left: 6px;
+    vertical-align: middle;
+    animation: nudge 2.4s ease-in-out infinite;
+}
+
+@keyframes nudge {
+    0%, 100% { width: 22px; opacity: 0.6; }
+    50% { width: 34px; opacity: 1; }
+}
+
+.confirm {
+    position: relative;
+    padding: 18px 20px 16px;
+    background: linear-gradient(180deg, rgba(180, 138, 164, 0.09), rgba(180, 138, 164, 0.04));
+    border: 1px solid rgba(180, 138, 164, 0.24);
+    border-radius: 14px;
+    animation: confirm-in 0.5s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+@keyframes confirm-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+}
+
+.confirm .small-heart {
+    position: absolute;
+    top: -9px;
+    left: 18px;
+    width: 20px;
+    height: 20px;
+}
+
+.confirm.is-fresh .small-heart {
+    animation: heart-pop 1.1s cubic-bezier(0.2, 1.2, 0.4, 1);
+}
+
+@keyframes heart-pop {
+    0% { transform: scale(0.4); }
+    35% { transform: scale(1.28); }
+    60% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+.confirm-line {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 1.14rem;
+    line-height: 1.4;
+    color: var(--ink);
+}
+
+.confirm-line strong {
+    font-weight: 400;
+    color: var(--plum);
+}
+
+.confirm-sub {
+    margin: 6px 0 0;
+    font-size: 0.87rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+}
+
+.confirm-reset {
+    margin: 12px 0 0;
+    padding: 0;
+    font-family: inherit;
+    font-size: 11.5px;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.confirm-reset:hover {
+    color: var(--ink-soft);
+    border-color: var(--muted);
+}
+
+/* --------------------------------------------------------------- summary */
+
+.summary {
+    margin-top: clamp(48px, 8vw, 76px);
+    padding: clamp(24px, 5vw, 34px) clamp(22px, 5vw, 34px);
+    background: rgba(255, 252, 247, 0.7);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    transition: border-color 0.4s ease, background 0.4s ease;
+}
+
+.summary.is-complete {
+    border-color: rgba(157, 180, 149, 0.45);
+    background: rgba(255, 253, 248, 0.9);
+}
+
+.summary-title {
+    margin: 0 0 12px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: lowercase;
+    color: var(--muted);
+}
+
+.summary-line {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(1.08rem, 3.4vw, 1.3rem);
+    line-height: 1.62;
+    color: var(--ink);
+}
+
+.summary-slot {
+    color: var(--muted);
+    letter-spacing: 0.04em;
+}
+
+.summary-slot.is-filled {
+    color: var(--plum);
+    letter-spacing: 0;
+    box-shadow: inset 0 -0.42em 0 rgba(180, 138, 164, 0.16);
+}
+
+.summary-hint {
+    margin: 14px 0 0;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+}
+
+/* ----------------------------------------------------------- reveal-in */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ------------------------------------------------------------ responsive */
+
+/* no room in the margins, so the drawings step into the card corner */
+@media (max-width: 1080px) {
+    .tl-art,
+    .tl-item--a .tl-art,
+    .tl-item--b .tl-art,
+    .tl-item--choice .tl-art {
+        position: absolute;
+        top: -4px;
+        right: 0;
+        left: auto;
+        width: 88px;
+        transform: rotate(-3deg);
+        opacity: 0.92;
+    }
+
+    .tl-card {
+        padding-right: 96px;
+    }
+
+    .choice-card {
+        padding-right: 0;
+    }
+
+    .choice-card .tl-time,
+    .choice-card .tl-title-row,
+    .choice-card .tl-note {
+        padding-right: 96px;
+    }
+}
+
+@media (max-width: 620px) {
+    .bar-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .scribble {
+        inset: -7px -6px;
+        width: calc(100% + 12px);
+        height: calc(100% + 14px);
+    }
+}
+
+@media (max-width: 480px) {
+    .saturday-page {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .tl-item {
+        grid-template-columns: 20px 1fr;
+        gap: 0 14px;
+    }
+
+    .tl-item::before {
+        left: 10px;
+    }
+
+    .tl-art,
+    .tl-item--a .tl-art,
+    .tl-item--b .tl-art,
+    .tl-item--choice .tl-art {
+        width: 62px;
+        top: -2px;
+    }
+
+    /* the doodle only occupies the top ~55px of the card, and the note always
+       starts below that, so only the time and title need to keep clear of it.
+       Reserving the gutter on the note too made every line pointlessly short. */
+    .tl-card,
+    .choice-card .tl-note {
+        padding-right: 0;
+    }
+
+    .tl-time,
+    .tl-title,
+    .tl-title-row {
+        padding-right: 70px;
+    }
+
+    .bar-card {
+        padding: 18px 16px 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .saturday-page *,
+    .saturday-page *::before,
+    .saturday-page *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+
+    .scribble {
+        stroke-dashoffset: 0;
+    }
+}

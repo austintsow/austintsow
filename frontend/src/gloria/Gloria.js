@@ -1,129 +1,151 @@
-import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "./Gloria.css";
+import "./SaturdayDate.css";
+import SaturdayDate from "./SaturdayDate";
+import { DoodleDefs, EnvelopeDoodle, SketchBox, SmallHeart } from "./SaturdayDoodles";
+
+/* both phrasings open it, so she cannot get it "nearly right" and be told no */
+const ANSWERS = ["austin is the best", "austin is the best ever"];
+const UNLOCK_KEY = "gloria-gate-open";
+
+const HINTS = [
+    "who is the best ever?",
+    "four words. the first one is a name you say a lot.",
+    "austin is the ____",
+];
+
+/* forgiving match: case, stray spaces and end punctuation all get ignored */
+function normalize(value) {
+    return value
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, " ")
+        .replace(/[.!?,]+$/, "");
+}
+
+function readUnlocked() {
+    try {
+        return window.sessionStorage.getItem(UNLOCK_KEY) === "1";
+    } catch {
+        return false;
+    }
+}
 
 function Gloria() {
-    const [digits, setDigits] = useState(['', '', '', '', '']);
-    const [isUnlocked, setIsUnlocked] = useState(false);
-    const [showError, setShowError] = useState(false);
-    const inputRefs = useRef([]);
-    const navigate = useNavigate();
+    // gate -> loveNote -> plan. Coming back within the session skips to the plan
+    // so she does not sit through the note every refresh.
+    const [stage, setStage] = useState(() => (readUnlocked() ? "plan" : "gate"));
+    const [value, setValue] = useState("");
+    const [wrong, setWrong] = useState(false);
+    const [hintsShown, setHintsShown] = useState(0);
 
-    const correctPassword = "67214";
-
-    const handleDigitChange = (index, value) => {
-        // Only allow single digit
-        if (value.length > 1) {
-            value = value.slice(-1);
-        }
-
-        // Only allow numbers
-        if (value && !/^\d$/.test(value)) {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (ANSWERS.includes(normalize(value))) {
+            try {
+                window.sessionStorage.setItem(UNLOCK_KEY, "1");
+            } catch {
+                /* private browsing, she just retypes it */
+            }
+            setStage("loveNote");
             return;
         }
-
-        const newDigits = [...digits];
-        newDigits[index] = value;
-        setDigits(newDigits);
-        setShowError(false);
-
-        // Auto-advance to next input
-        if (value && index < 4) {
-            inputRefs.current[index + 1].focus();
-        }
-
-        // Check password when all digits entered
-        if (value && index === 4) {
-            const enteredPassword = newDigits.join('');
-            if (enteredPassword === correctPassword) {
-                setIsUnlocked(true);
-            } else {
-                setShowError(true);
-                // Clear after shake animation
-                setTimeout(() => {
-                    setDigits(['', '', '', '', '']);
-                    inputRefs.current[0].focus();
-                }, 600);
-            }
-        }
+        setWrong(true);
+        setTimeout(() => setWrong(false), 600);
     };
 
-    const handleKeyDown = (index, e) => {
-        // Handle backspace
-        if (e.key === 'Backspace' && !digits[index] && index > 0) {
-            inputRefs.current[index - 1].focus();
-        }
-    };
+    if (stage === "plan") {
+        return <SaturdayDate />;
+    }
 
-    const handlePaste = (e) => {
-        e.preventDefault();
-        const pastedData = e.clipboardData.getData('text').slice(0, 5);
-        if (/^\d+$/.test(pastedData)) {
-            const newDigits = [...digits];
-            for (let i = 0; i < pastedData.length && i < 5; i++) {
-                newDigits[i] = pastedData[i];
-            }
-            setDigits(newDigits);
+    if (stage === "loveNote") {
+        return (
+            <div className="gloria-page gate-page">
+                <DoodleDefs />
+                <div className="gate-card love-note">
+                    <SmallHeart className="love-note-heart" />
+                    <p className="love-note-line">
+                        i'm so grateful that you think i'm the best 🥹 i love you!!!!!
+                    </p>
+                    <button
+                        type="button"
+                        className="gate-go love-note-go"
+                        onClick={() => setStage("plan")}
+                        autoFocus
+                    >
+                        "of course because you're the goat!" said gloria (okay now click here)
+                    </button>
+                </div>
+            </div>
+        );
+    }
 
-            // Check if complete
-            if (pastedData.length === 5) {
-                if (pastedData === correctPassword) {
-                    setIsUnlocked(true);
-                } else {
-                    setShowError(true);
-                    setTimeout(() => {
-                        setDigits(['', '', '', '', '']);
-                        inputRefs.current[0].focus();
-                    }, 600);
-                }
-            } else {
-                inputRefs.current[Math.min(pastedData.length, 4)].focus();
-            }
-        }
-    };
+    const outOfHints = hintsShown >= HINTS.length;
 
     return (
-        <div className="gloria-page">
-            {!isUnlocked ? (
-                <div className={`password-screen ${showError ? 'shake' : ''}`}>
-                    <div className="pin-container">
-                        {digits.map((digit, index) => (
-                            <input
-                                key={index}
-                                ref={el => inputRefs.current[index] = el}
-                                type="text"
-                                inputMode="numeric"
-                                maxLength={1}
-                                value={digit}
-                                onChange={(e) => handleDigitChange(index, e.target.value)}
-                                onKeyDown={(e) => handleKeyDown(index, e)}
-                                onPaste={handlePaste}
-                                className="pin-input"
-                                autoFocus={index === 0}
-                            />
-                        ))}
-                    </div>
-                </div>
-            ) : (
-                <div className="selection-screen">
-                    <div className="boxes-container">
-                        <div className="selection-box archived">
-                            <span className="box-title">7 months</span>
-                            <svg className="lock-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
-                        </div>
+        <div className="gloria-page gate-page">
+            <DoodleDefs />
 
-                        <div
-                            className="selection-box active"
-                            onClick={() => navigate('/gloria/valentine')}
-                        >
-                            <span className="box-title">important question</span>
-                        </div>
-                    </div>
+            <div className={`gate-card${wrong ? " is-wrong" : ""}`}>
+                <div className="gate-art" aria-hidden="true">
+                    <EnvelopeDoodle />
                 </div>
-            )}
+
+                <p className="gate-kicker">one small thing first</p>
+                <h1 className="gate-title">password, please</h1>
+
+                <form className="gate-form" onSubmit={handleSubmit}>
+                    <input
+                        className="gate-input"
+                        type="text"
+                        value={value}
+                        onChange={(e) => {
+                            setValue(e.target.value);
+                            setWrong(false);
+                        }}
+                        placeholder="type it here"
+                        aria-label="password"
+                        autoFocus
+                        autoComplete="off"
+                        autoCapitalize="none"
+                        autoCorrect="off"
+                        spellCheck="false"
+                    />
+                    <button type="submit" className="gate-go">
+                        go
+                    </button>
+                </form>
+
+                <p className="gate-status" role="status">
+                    {wrong ? "nope, not it. try again" : " "}
+                </p>
+
+                {hintsShown > 0 && (
+                    <ul className="gate-hints">
+                        {HINTS.slice(0, hintsShown).map((hint) => (
+                            <li className="gate-hint" key={hint}>
+                                {hint}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+
+                <button
+                    type="button"
+                    className="hint-btn gate-hint-btn"
+                    disabled={outOfHints}
+                    onClick={() => setHintsShown((n) => Math.min(n + 1, HINTS.length))}
+                >
+                    <SketchBox />
+                    <span>
+                        {outOfHints
+                            ? "that's all i've got"
+                            : hintsShown === 0
+                            ? "hint"
+                            : "another hint"}
+                    </span>
+                </button>
+            </div>
         </div>
     );
 }
