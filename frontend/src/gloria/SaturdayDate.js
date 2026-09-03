@@ -58,7 +58,7 @@ const BARS = [
         rating: 7.8,
         reviews: 762,
         tags: ["rooftop", "city views", "the crowd pleaser"],
-        blurb: "up high, lights on, everyone already knows about it.",
+        blurb: "great view, but rainy, but also good reviews.",
     },
     {
         id: "rosebay",
@@ -66,7 +66,7 @@ const BARS = [
         rating: 7.2,
         reviews: 18,
         tags: ["quiet", "under the radar", "our secret"],
-        blurb: "barely anyone has reviewed it, which is kind of the appeal.",
+        blurb: "looks very vibey based off of the tiktok you sent me.",
     },
 ];
 
@@ -74,7 +74,7 @@ const FINALE = {
     id: "icecream",
     time: "after drinks",
     title: "salt & straw",
-    note: "one scoop each, and we both know we are trading bites.",
+    note: "molly moons two times in a row means we must go to salt & straw!",
     accent: "mustard",
     Doodle: IceCreamDoodle,
 };
@@ -369,7 +369,7 @@ function SaturdayDate() {
                     </p>
                     {!chosen && (
                         <p className="summary-hint">
-                            one blank left. scroll up and fill it in.
+                            one blank left. scroll up and fill it in. and lmk what you choose!
                         </p>
                     )}
                 </Reveal>
