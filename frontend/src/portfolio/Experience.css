@@ -1,0 +1,144 @@
+.exp {
+    width: 100%;
+    padding: 0;
+}
+
+/* small quiet section label, full-bleed band */
+.exp-mast {
+    border-top: 1px solid #edf1f5;
+    padding: 18px clamp(24px, 5vw, 64px);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: #5c7288;
+}
+
+/* full-bleed square cards separated by hairlines */
+.exp-card {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid #edf1f5;
+    background: #ffffff;
+}
+
+.exp-card:last-child {
+    border-bottom: 1px solid #edf1f5;
+}
+
+.exp-bloom {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    display: block;
+}
+
+/* desktop: reveal on hover only */
+@media (hover: hover) {
+    .exp-card:hover .exp-bloom {
+        opacity: 1;
+    }
+}
+
+/* touch devices: reveal via the tapped/active card */
+.exp-card.active .exp-bloom {
+    opacity: 1;
+}
+
+.exp-card-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: clamp(40px, 5vw, 64px) clamp(24px, 5vw, 64px);
+    display: grid;
+    grid-template-columns: 0.9fr 1fr 1.3fr;
+    gap: clamp(24px, 4vw, 56px);
+}
+
+.exp-col-company h3 {
+    margin: 0 0 8px;
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #0a2540;
+    line-height: 1.2;
+}
+
+.exp-tagline {
+    margin: 0 0 10px;
+    font-size: 13px;
+    color: #5b7189;
+    line-height: 1.5;
+}
+
+.exp-period {
+    font-size: 12px;
+    color: #64788d;
+    white-space: nowrap;
+}
+
+.exp-prop {
+    display: grid;
+    grid-template-columns: 76px 1fr;
+    gap: 14px;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+.exp-prop-label {
+    font-size: 12px;
+    color: #64788d;
+}
+
+.exp-prop-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: #0a2540;
+    line-height: 1.5;
+}
+
+.exp-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    color: #0a2540;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(10, 37, 64, 0.3);
+    transition: border-color 0.2s ease;
+}
+
+.exp-link:hover {
+    border-color: #0a2540;
+}
+
+.exp-link svg {
+    width: 12px;
+    height: 12px;
+}
+
+.exp-link.plain {
+    border-bottom: none;
+}
+
+.exp-col-desc p {
+    margin: 0 0 14px;
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: #46617d;
+}
+
+.exp-col-desc p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+    .exp-card-inner {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+}

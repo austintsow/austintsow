@@ -1,0 +1,52 @@
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.45s ease;
+}
+
+.loader-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-box {
+    width: min(420px, 78vw);
+}
+
+.loader-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.loader-label {
+    color: #0a2540;
+    font-weight: 500;
+}
+
+.loader-pct {
+    color: #6b8199;
+    font-variant-numeric: tabular-nums;
+}
+
+.loader-track {
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(10, 37, 64, 0.1);
+    overflow: hidden;
+}
+
+.loader-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    background: #1b9ffe;
+}
