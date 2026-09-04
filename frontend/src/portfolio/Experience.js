@@ -9,7 +9,7 @@ const EXPERIENCE = [
         company: "visa",
         tagline: "device intelligence for global payments",
         period: "jan 2026 - present",
-        position: "software engineer, device intelligence",
+        position: "software engineer",
         location: "bellevue, wa",
         industry: "payments / fintech",
         bloom: "#1434cb",
