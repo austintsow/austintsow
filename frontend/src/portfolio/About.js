@@ -26,13 +26,13 @@ export default function About() {
                         <p>
                             i enjoy building systems that hold up at scale and interfaces
                             that feel good to use, and i'm big on ai: multi-agent
-                            orchestration, llm tooling, and letting agents do the boring
-                            parts.
+                            orchestration, llm tooling, and letting agents handle the
+                            boring parts... and some of the fun ones too.
                         </p>
                         <p>
                             outside of work you'll usually find me on a pickleball court,
                             training for the seattle half marathon (my first!), or
-                            hunting down my next favorite restaurant. i rate everything i
+                            hunting down new restaurants to expand my culinary horizons. i rate everything i
                             eat on beli, 615+ restaurants and growing, so come find me
                             @tsow.
                         </p>

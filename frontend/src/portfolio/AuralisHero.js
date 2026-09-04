@@ -92,6 +92,22 @@ function compile(gl, type, src) {
 export default function AuralisHero() {
     const heroRef = useRef(null);
     const canvasRef = useRef(null);
+    const hintRef = useRef(null);
+
+    // the scroll cue fades out as the about section arrives and fades back
+    // in when you return to the landing view
+    useEffect(() => {
+        const hint = hintRef.current;
+        if (!hint) return;
+        const onScroll = () => {
+            const p = Math.min(window.scrollY / (window.innerHeight * 0.35), 1);
+            hint.style.opacity = String(1 - p);
+            hint.style.pointerEvents = p >= 1 ? "none" : "auto";
+        };
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
 
     useEffect(() => {
         const hero = heroRef.current;
@@ -199,7 +215,8 @@ export default function AuralisHero() {
                     </a>
                 </div>
             </div>
-            <a className="hero-hint" href="#about" aria-label="scroll down">
+            <a className="hero-hint" href="#about" ref={hintRef}>
+                more below
                 <FiArrowDown />
             </a>
         </section>

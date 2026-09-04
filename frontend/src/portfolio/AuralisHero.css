@@ -74,18 +74,46 @@
     bottom: 36px;
     left: 50%;
     transform: translateX(-50%);
-    color: rgba(10, 37, 64, 0.45);
-    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(10, 37, 64, 0.7);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgba(10, 37, 64, 0.3);
+    transition: color 0.2s ease, border-color 0.2s ease;
+    animation: hint-nudge 2s ease-in-out 1.2s 3;
 }
 
 .hero-hint:hover {
     color: #0a2540;
+    border-color: #0a2540;
+}
+
+.hero-hint:focus-visible {
+    outline: 2px solid #0a2540;
+    outline-offset: 4px;
+    border-radius: 2px;
 }
 
 .hero-hint svg {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
     display: block;
+}
+
+/* a few gentle nudges on load, then still */
+@keyframes hint-nudge {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-hint {
+        animation: none;
+    }
 }
 
 @media (max-width: 520px) {
