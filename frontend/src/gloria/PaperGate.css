@@ -1,0 +1,200 @@
+/* =========================================================================
+   the warm paper gate. Lifted out of Gloria.css when the front door went
+   white, so the envelope / serif / plum look could keep guarding the pages
+   whose palette it already matches (sweet saturday).
+
+   Every class here is .pg-* because CRA bundles css globally. The paper
+   variables are re-declared on .pg-page so the shared .doodle, .hint-btn and
+   .sketch-box rules in SaturdayDate.css resolve on this screen too.
+   ========================================================================= */
+
+.pg-page {
+    --paper: #fbf6ee;
+    --paper-2: #f4ecdf;
+    --card: #fffcf7;
+    --ink: #322e28;
+    --ink-soft: #5b544a;
+    --muted: #8d8377;
+    --line: #e6dbc9;
+    --rose: #d98c85;
+    --plum: #b48aa4;
+    --honey: #e0ac3f;
+    --sage: #9db495;
+
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+        Georgia, "Times New Roman", serif;
+    --hand: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: clamp(28px, 7vw, 64px) 20px;
+    cursor: default;
+    font-family: var(--hand);
+    color: var(--ink);
+    background:
+        radial-gradient(900px 560px at 12% -10%, rgba(217, 140, 133, 0.16), transparent 62%),
+        radial-gradient(760px 520px at 100% 6%, rgba(157, 180, 149, 0.16), transparent 60%),
+        var(--paper);
+}
+
+.pg-page *,
+.pg-page *::before,
+.pg-page *::after {
+    box-sizing: border-box;
+}
+
+.pg-card {
+    width: 100%;
+    max-width: 420px;
+    padding: clamp(28px, 6vw, 40px) clamp(22px, 5vw, 34px) clamp(24px, 5vw, 32px);
+    text-align: center;
+    background: rgba(255, 252, 247, 0.72);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 14px 40px rgba(96, 76, 52, 0.07);
+    animation: pg-in 0.55s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+@keyframes pg-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: none; }
+}
+
+.pg-art {
+    width: 92px;
+    margin: 0 auto 14px;
+}
+
+.pg-kicker {
+    margin: 0 0 6px;
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+}
+
+.pg-title {
+    margin: 0 0 22px;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.7rem, 6vw, 2.1rem);
+    letter-spacing: -0.015em;
+    color: var(--ink);
+}
+
+.pg-form {
+    display: flex;
+    gap: 8px;
+}
+
+.pg-input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px 15px;
+    font-family: inherit;
+    font-size: 16px; /* keeps ios from zooming the page on focus */
+    color: var(--ink);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pg-input::placeholder {
+    color: #b9ac9b;
+}
+
+.pg-input:focus {
+    border-color: var(--plum);
+    box-shadow: 0 0 0 3px rgba(180, 138, 164, 0.15);
+}
+
+.pg-go {
+    margin: 0;
+    padding: 13px 20px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #fffcf7;
+    background: var(--plum);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.pg-go:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
+}
+
+.pg-go:focus-visible {
+    outline: 2px solid var(--plum);
+    outline-offset: 3px;
+}
+
+.pg-status {
+    min-height: 1.2em;
+    margin: 10px 0 0;
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+    color: var(--rose);
+}
+
+.pg-hints {
+    margin: 4px 0 14px;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+}
+
+.pg-hint {
+    margin-top: 8px;
+    padding: 11px 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    background: rgba(224, 172, 63, 0.13);
+    border: 1px solid rgba(224, 172, 63, 0.3);
+    border-radius: 12px;
+    animation: pg-in 0.4s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+.pg-card .pg-hint-btn {
+    margin-top: 6px;
+}
+
+.pg-hint-btn:disabled {
+    cursor: default;
+    opacity: 0.5;
+}
+
+/* wrong answer */
+.pg-card.is-wrong {
+    animation: pg-shake 0.5s ease-in-out;
+}
+
+.pg-card.is-wrong .pg-input {
+    border-color: var(--rose);
+    box-shadow: 0 0 0 3px rgba(217, 140, 133, 0.18);
+}
+
+@keyframes pg-shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-8px); }
+    80% { transform: translateX(8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pg-card,
+    .pg-hint,
+    .pg-card.is-wrong {
+        animation: none;
+    }
+}

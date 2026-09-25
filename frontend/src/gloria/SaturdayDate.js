@@ -13,8 +13,24 @@ import {
     SketchBox,
     SmallHeart,
 } from "./SaturdayDoodles";
+import ArchiveBack from "./ArchiveBack";
+import PaperGate from "./PaperGate";
 
 const STORAGE_KEY = "gloria-saturday-bar";
+
+/* both phrasings open it, so she cannot get it "nearly right" and be told no.
+   The passwords page imports this rather than keeping its own copy. */
+export const SATURDAY_ANSWERS = ["austin is the best", "austin is the best ever"];
+
+/* its own key, so unlocking the front door does not unlock this page and
+   vice versa */
+const SATURDAY_UNLOCK_KEY = "gloria-saturday-open";
+
+const SATURDAY_HINTS = [
+    "who is the best ever?",
+    "four words. the first one is a name you say a lot.",
+    "austin is the ____",
+];
 
 const SCHEDULE = [
     {
@@ -253,128 +269,135 @@ function SaturdayDate() {
     }, []);
 
     return (
-        <div className="saturday-page">
-            <DoodleDefs />
-            <div className="paper-grain" aria-hidden="true" />
+        <PaperGate
+            answers={SATURDAY_ANSWERS}
+            hints={SATURDAY_HINTS}
+            storageKey={SATURDAY_UNLOCK_KEY}
+        >
+            <div className="saturday-page">
+                <ArchiveBack tone="light" />
+                <DoodleDefs />
+                <div className="paper-grain" aria-hidden="true" />
 
-            <Reveal tag="header" className="sat-header">
-                <div className="sat-header-art" aria-hidden="true">
-                    <CoupleDoodle />
-                </div>
-                <p className="sat-kicker">an itinerary for one person only!</p>
-                <p className="sat-from">to gloria, from austin</p>
-                <h1 className="sat-title">sweet saturday!!!!!</h1>
-                <p className="sat-sub">
-                    the entire day planned by me, i'm so hyped and i hope you are too😁
-                </p>
-                <span className="sat-rule" aria-hidden="true" />
-            </Reveal>
-
-            <main className="sat-main">
-                <ol className="timeline">
-                    {SCHEDULE.map((item, i) => (
-                        <TimelineItem key={item.id} item={item} index={i} />
-                    ))}
-
-                    {/* the one part of the day she gets to write */}
-                    <Reveal
-                        tag="li"
-                        className="tl-item tl-item--choice"
-                        style={{ "--accent": "var(--plum)" }}
-                    >
-                        <div className="tl-rail" aria-hidden="true">
-                            <span className="tl-dot tl-dot--open" />
-                        </div>
-
-                        <div className="tl-card choice-card">
-                            <p className="tl-time">8:45 pm</p>
-
-                            <div className="tl-title-row">
-                                <h3 className="tl-title">drinks</h3>
-                                <button
-                                    type="button"
-                                    className={`hint-btn${showHint ? " is-open" : ""}`}
-                                    aria-expanded={showHint}
-                                    onClick={() => setShowHint((h) => !h)}
-                                >
-                                    <SketchBox />
-                                    <span>{showHint ? "hide hint" : "hint"}</span>
-                                </button>
-                            </div>
-
-                            <p className="tl-note">
-                                this is where you decide! but if you can't decide click on hint next
-                                to drinks! but two options, pick whichever one sounds right to you
-                            </p>
-
-                            {showHint && (
-                                <p className="hint-text">
-                                    austin is leaning towards a rooftop bar...
-                                </p>
-                            )}
-
-                            <div
-                                className="bar-grid"
-                                role="radiogroup"
-                                aria-label="pick where we go for drinks"
-                            >
-                                {BARS.map((bar) => (
-                                    <BarCard
-                                        key={bar.id}
-                                        bar={bar}
-                                        selected={pick === bar.id}
-                                        dimmed={pick !== null && pick !== bar.id}
-                                        onSelect={select}
-                                    />
-                                ))}
-                            </div>
-
-                            <div className="choice-status" aria-live="polite">
-                                {chosen ? (
-                                    <div className={`confirm${justPicked ? " is-fresh" : ""}`}>
-                                        <SmallHeart />
-                                        <p className="confirm-line">
-                                            great choice. <strong>{chosen.name}</strong> it is.
-                                        </p>
-                                        <p className="confirm-sub">
-                                            locked in for 8:45. i will handle getting us there.
-                                        </p>
-                                        <button type="button" className="confirm-reset" onClick={reset}>
-                                            actually, let me change my mind
-                                        </button>
-                                    </div>
-                                ) : (
-                                    <p className="choice-waiting">waiting on you</p>
-                                )}
-                            </div>
-                        </div>
-
-                        <div className="tl-art" aria-hidden="true">
-                            <DrinksDoodle />
-                        </div>
-                    </Reveal>
-
-                    <TimelineItem item={FINALE} index={5} />
-                </ol>
-
-                <Reveal tag="section" className={`summary${chosen ? " is-complete" : ""}`}>
-                    <h2 className="summary-title">the day, in one line</h2>
-                    <p className="summary-line">
-                        gym + run, ikea and whole foods, paint something super amazing, eat at
-                        kokkaku, then drinks at{" "}
-                        <span className={`summary-slot${chosen ? " is-filled" : ""}`}>
-                            {chosen ? chosen.name : "_____"}
-                        </span>
-                        , then ice cream to fulfill the sweet saturday
+                <Reveal tag="header" className="sat-header">
+                    <div className="sat-header-art" aria-hidden="true">
+                        <CoupleDoodle />
+                    </div>
+                    <p className="sat-kicker">an itinerary for one person only!</p>
+                    <p className="sat-from">to gloria, from austin</p>
+                    <h1 className="sat-title">sweet saturday!!!!!</h1>
+                    <p className="sat-sub">
+                        the entire day planned by me, i'm so hyped and i hope you are too😁
                     </p>
-                    {!chosen && (
-                        <p className="summary-hint">
-                            one blank left. scroll up and fill it in. and lmk what you choose!
-                        </p>
-                    )}
+                    <span className="sat-rule" aria-hidden="true" />
                 </Reveal>
-            </main>
-        </div>
+
+                <main className="sat-main">
+                    <ol className="timeline">
+                        {SCHEDULE.map((item, i) => (
+                            <TimelineItem key={item.id} item={item} index={i} />
+                        ))}
+
+                        {/* the one part of the day she gets to write */}
+                        <Reveal
+                            tag="li"
+                            className="tl-item tl-item--choice"
+                            style={{ "--accent": "var(--plum)" }}
+                        >
+                            <div className="tl-rail" aria-hidden="true">
+                                <span className="tl-dot tl-dot--open" />
+                            </div>
+
+                            <div className="tl-card choice-card">
+                                <p className="tl-time">8:45 pm</p>
+
+                                <div className="tl-title-row">
+                                    <h3 className="tl-title">drinks</h3>
+                                    <button
+                                        type="button"
+                                        className={`hint-btn${showHint ? " is-open" : ""}`}
+                                        aria-expanded={showHint}
+                                        onClick={() => setShowHint((h) => !h)}
+                                    >
+                                        <SketchBox />
+                                        <span>{showHint ? "hide hint" : "hint"}</span>
+                                    </button>
+                                </div>
+
+                                <p className="tl-note">
+                                    this is where you decide! but if you can't decide click on hint next
+                                    to drinks! but two options, pick whichever one sounds right to you
+                                </p>
+
+                                {showHint && (
+                                    <p className="hint-text">
+                                        austin is leaning towards a rooftop bar...
+                                    </p>
+                                )}
+
+                                <div
+                                    className="bar-grid"
+                                    role="radiogroup"
+                                    aria-label="pick where we go for drinks"
+                                >
+                                    {BARS.map((bar) => (
+                                        <BarCard
+                                            key={bar.id}
+                                            bar={bar}
+                                            selected={pick === bar.id}
+                                            dimmed={pick !== null && pick !== bar.id}
+                                            onSelect={select}
+                                        />
+                                    ))}
+                                </div>
+
+                                <div className="choice-status" aria-live="polite">
+                                    {chosen ? (
+                                        <div className={`confirm${justPicked ? " is-fresh" : ""}`}>
+                                            <SmallHeart />
+                                            <p className="confirm-line">
+                                                great choice. <strong>{chosen.name}</strong> it is.
+                                            </p>
+                                            <p className="confirm-sub">
+                                                locked in for 8:45. i will handle getting us there.
+                                            </p>
+                                            <button type="button" className="confirm-reset" onClick={reset}>
+                                                actually, let me change my mind
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        <p className="choice-waiting">waiting on you</p>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="tl-art" aria-hidden="true">
+                                <DrinksDoodle />
+                            </div>
+                        </Reveal>
+
+                        <TimelineItem item={FINALE} index={5} />
+                    </ol>
+
+                    <Reveal tag="section" className={`summary${chosen ? " is-complete" : ""}`}>
+                        <h2 className="summary-title">the day, in one line</h2>
+                        <p className="summary-line">
+                            gym + run, ikea and whole foods, paint something super amazing, eat at
+                            kokkaku, then drinks at{" "}
+                            <span className={`summary-slot${chosen ? " is-filled" : ""}`}>
+                                {chosen ? chosen.name : "_____"}
+                            </span>
+                            , then ice cream to fulfill the sweet saturday
+                        </p>
+                        {!chosen && (
+                            <p className="summary-hint">
+                                one blank left. scroll up and fill it in. and lmk what you choose!
+                            </p>
+                        )}
+                    </Reveal>
+                </main>
+            </div>
+        </PaperGate>
     );
 }
 

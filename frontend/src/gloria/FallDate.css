@@ -1,0 +1,533 @@
+/* =========================================================================
+   remlinger farms punch card. washington fall, cartoon shapes, modern edges.
+   phone first: one column of fat tap targets, nothing depends on hover.
+   ========================================================================= */
+
+.fall-page {
+    --ink: #22402f;
+    --ink-2: #4c6555;
+    --ink-3: #85977f;
+    --page: #f6efdf;
+    --paper: #fffbf2;
+    --cream: #fdf6e6;
+
+    --rust: #c2502a;
+    --orange: #e8813c;
+    --gold: #efb63f;
+    --green: #3f6b4e;
+    --sage: #93b394;
+    --sky: #bcd2d4;
+    --caramel: #b5732e;
+    --red: #c8452f;
+    --brown: #7a5230;
+
+    --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+
+    position: relative;
+    min-height: 100vh;
+    padding: 0 0 clamp(52px, 9vw, 90px);
+    cursor: default;
+    font-family: var(--sans);
+    color: var(--ink);
+    background: linear-gradient(180deg, #dce7e4 0%, #eae4d3 34%, var(--page) 62%);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.fall-page *,
+.fall-page *::before,
+.fall-page *::after {
+    box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------------- sky */
+
+.fall-sky {
+    position: relative;
+    height: clamp(120px, 26vw, 190px);
+    overflow: hidden;
+}
+
+.fall-scene {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* mist at the treeline, so the scene dissolves into the page */
+.fall-sky::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 46px;
+    background: linear-gradient(180deg, rgba(246, 239, 223, 0), var(--page));
+    pointer-events: none;
+}
+
+.s-ridge-far  { fill: #bfd0c8; }
+.s-mtn        { fill: #a9bfc6; }
+.s-snow       { fill: #f1f6f4; }
+.s-ridge-near { fill: #86a68c; }
+.s-trees path { fill: var(--green); }
+
+.fall-leaf {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    fill: var(--rust);
+    animation: leaf-fall 9s linear infinite;
+}
+
+.fall-leaf .vein {
+    stroke: rgba(255, 250, 240, 0.5);
+    stroke-width: 1.4;
+    fill: none;
+}
+
+.fall-leaf.l1 { left: 14%; fill: var(--gold); animation-duration: 11s; }
+.fall-leaf.l2 { left: 52%; fill: var(--rust); animation-duration: 8.5s; animation-delay: -3s; }
+.fall-leaf.l3 { left: 81%; fill: var(--orange); animation-duration: 12s; animation-delay: -6s; }
+
+@keyframes leaf-fall {
+    0%   { transform: translateY(-30px) rotate(0deg); opacity: 0; }
+    12%  { opacity: 0.9; }
+    88%  { opacity: 0.9; }
+    100% { transform: translateY(210px) translateX(34px) rotate(320deg); opacity: 0; }
+}
+
+/* ------------------------------------------------------------- header */
+
+.fall-header {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: clamp(20px, 5vw, 30px) 20px clamp(22px, 5vw, 30px);
+    text-align: center;
+}
+
+.fall-kicker {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rust);
+}
+
+.fall-title {
+    margin: 0;
+    font-size: clamp(2.6rem, 13vw, 4rem);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.042em;
+    color: var(--ink);
+}
+
+.fall-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7px;
+    margin: 14px 0 0;
+    font-size: 12.5px;
+    color: var(--ink-2);
+}
+
+.fall-meta i {
+    font-style: normal;
+    color: var(--ink-3);
+}
+
+/* --------------------------------------------------------- punch card */
+
+.fall-card {
+    position: relative;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: clamp(18px, 5vw, 26px);
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    border-radius: 20px;
+    box-shadow: 6px 7px 0 rgba(34, 64, 47, 0.16);
+}
+
+@media (max-width: 599px) {
+    .fall-card {
+        margin: 0 14px;
+    }
+}
+
+.fall-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.fall-card-label {
+    margin: 0 0 3px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+
+.fall-card-name {
+    margin: 0;
+    font-size: clamp(1.3rem, 5.4vw, 1.6rem);
+    font-weight: 750;
+    letter-spacing: -0.028em;
+}
+
+.fall-count {
+    flex: none;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    padding: 7px 13px;
+    background: var(--cream);
+    border: 2.5px solid var(--ink);
+    border-radius: 999px;
+}
+
+.fall-count-num {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--rust);
+}
+
+.fall-count-of {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--ink-2);
+}
+
+.fall-track {
+    height: 9px;
+    margin-top: 15px;
+    background: var(--cream);
+    border: 2.5px solid var(--ink);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.fall-track-fill {
+    display: block;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--orange) 0 7px,
+        var(--gold) 7px 14px
+    );
+    transition: width 0.45s cubic-bezier(0.2, 0.85, 0.3, 1);
+}
+
+.fall-howto {
+    margin: 13px 0 0;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink-2);
+}
+
+/* -------------------------------------------------------------- stops */
+
+.fall-stops {
+    display: grid;
+    gap: 11px;
+    margin: 15px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.fall-stop[data-tone="gold"]    { --tone: var(--gold); }
+.fall-stop[data-tone="green"]   { --tone: var(--green); }
+.fall-stop[data-tone="caramel"] { --tone: var(--caramel); }
+.fall-stop[data-tone="orange"]  { --tone: var(--orange); }
+.fall-stop[data-tone="rust"]    { --tone: var(--rust); }
+.fall-stop[data-tone="sky"]     { --tone: #6f9aa0; }
+
+.fall-slot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    width: 100%;
+    margin: 0;
+    padding: 13px 14px 13px 13px;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    background: var(--cream);
+    border: 2.5px solid var(--ink);
+    border-radius: 15px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 3px 4px 0 rgba(34, 64, 47, 0.14);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.3s ease;
+}
+
+.fall-slot:active {
+    transform: translate(3px, 4px);
+    box-shadow: 0 0 0 rgba(34, 64, 47, 0);
+}
+
+.fall-slot:focus-visible {
+    outline: 3px solid var(--tone);
+    outline-offset: 3px;
+}
+
+.fall-slot.is-punched {
+    background: #f2ece0;
+}
+
+/* the punched hole */
+.fall-hole {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 2.5px dashed var(--ink-3);
+    border-radius: 50%;
+    transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.fall-hole-num {
+    font-size: 13px;
+    font-weight: 750;
+    color: var(--ink-3);
+    transition: opacity 0.2s ease;
+}
+
+.fall-slot.is-punched .fall-hole {
+    background: var(--ink);
+    border-style: solid;
+    border-color: var(--ink);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.45);
+}
+
+.fall-slot.is-punched .fall-hole-num {
+    opacity: 0;
+}
+
+.fall-slot.is-fresh .fall-hole {
+    animation: punch 0.42s cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+
+@keyframes punch {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(0.72); }
+    100% { transform: scale(1); }
+}
+
+/* drawing */
+.fall-art {
+    position: relative;
+    flex: none;
+    width: clamp(50px, 14vw, 60px);
+}
+
+.fa-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.fa-ink {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.fa-ink .thin {
+    stroke-width: 3.4;
+    opacity: 0.75;
+}
+
+.fa-ink .dot {
+    fill: var(--ink);
+    stroke: none;
+}
+
+.fa-fills .f-gold    { fill: var(--gold); }
+.fa-fills .f-orange  { fill: var(--orange); }
+.fa-fills .f-rust    { fill: var(--rust); }
+.fa-fills .f-red     { fill: var(--red); }
+.fa-fills .f-green   { fill: var(--sage); }
+.fa-fills .f-brown   { fill: var(--brown); }
+.fa-fills .f-caramel { fill: var(--caramel); }
+.fa-fills .f-cream   { fill: #fdf3df; }
+.fa-fills .f-sky     { fill: var(--sky); }
+.fa-fills .f-glow    { fill: var(--gold); opacity: 0.45; }
+
+.fall-slot.is-punched .fa-svg {
+    opacity: 0.42;
+}
+
+/* the rubber stamp that lands on a finished stop */
+.fall-stamp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 2px 9px 3px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--rust);
+    border: 2.5px solid var(--rust);
+    border-radius: 5px;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-14deg) scale(1.9);
+    transition: opacity 0.2s ease, transform 0.34s cubic-bezier(0.2, 1.3, 0.4, 1);
+    pointer-events: none;
+}
+
+.fall-slot.is-punched .fall-stamp {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(-14deg) scale(1);
+}
+
+/* copy */
+.fall-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.fall-name {
+    font-size: clamp(1rem, 4.3vw, 1.08rem);
+    font-weight: 750;
+    letter-spacing: -0.022em;
+    line-height: 1.2;
+}
+
+.fall-slot.is-punched .fall-name {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--ink-3);
+    color: var(--ink-2);
+}
+
+.fall-note {
+    font-size: 0.835rem;
+    line-height: 1.45;
+    letter-spacing: -0.008em;
+    color: var(--ink-2);
+}
+
+/* --------------------------------------------------------------- stub */
+
+.fall-stub {
+    position: relative;
+    margin: 20px -4px 0;
+    padding: 18px 4px 2px;
+    text-align: center;
+    border-top: 2.5px dashed var(--ink-3);
+}
+
+/* the punched-out notches either side of the tear line */
+.fall-stub::before,
+.fall-stub::after {
+    content: "";
+    position: absolute;
+    top: -14px;
+    width: 24px;
+    height: 24px;
+    background: var(--page);
+    border: 2.5px solid var(--ink);
+    border-radius: 50%;
+}
+
+.fall-stub::before { left: -33px; }
+.fall-stub::after  { right: -33px; }
+
+.fall-stub-line {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 550;
+    color: var(--ink-2);
+}
+
+.fall-prize {
+    animation: prize-in 0.5s cubic-bezier(0.2, 0.85, 0.3, 1) both;
+}
+
+@keyframes prize-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+}
+
+.fall-prize-line {
+    margin: 0;
+    font-size: clamp(1.4rem, 6vw, 1.7rem);
+    font-weight: 800;
+    letter-spacing: -0.032em;
+    color: var(--rust);
+}
+
+.fall-prize-sub {
+    margin: 8px auto 0;
+    max-width: 34ch;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--ink-2);
+}
+
+.fall-reset {
+    margin: 16px 0 0;
+    padding: 8px 15px;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-2);
+    background: var(--cream);
+    border: 2.5px solid var(--ink-3);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.fall-reset:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+}
+
+/* --------------------------------------------------------- responsive */
+
+@media (hover: hover) {
+    .fall-slot:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: 5px 6px 0 rgba(34, 64, 47, 0.16);
+    }
+}
+
+@media (min-width: 600px) {
+    .fall-card {
+        padding: 28px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fall-leaf {
+        display: none;
+    }
+
+    .fall-slot,
+    .fall-stamp,
+    .fall-track-fill,
+    .fall-prize,
+    .fall-hole {
+        animation: none !important;
+        transition: none !important;
+    }
+}

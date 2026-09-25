@@ -1,0 +1,589 @@
+/* =========================================================================
+   a festive evening together, dec 2025
+   Restored from git (3fe3ad5, 2025-12-18). The original lived in Gloria.css and
+   was overwritten when that file became the passcode gate, so every selector
+   here is namespaced under .festive-page and the keyframes are renamed: the current
+   Gloria.css still defines .gloria-page globally and CRA bundles all css
+   together.
+   ========================================================================= */
+
+/* the live Gloria.css centres .gloria-page in a flex box; undo that first */
+.festive-page .gloria-page {
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 0;
+}
+
+.festive-page,
+.festive-page * {
+    box-sizing: border-box;
+}
+.festive-page .gloria-page {
+    min-height: 100vh;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+}
+.festive-page .gloria-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+.festive-page .gloria-container {
+    max-width: 700px;
+    width: 100%;
+    animation: fes-fadeIn 0.6s ease-out;
+}
+@keyframes fes-fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes fes-fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fes-fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@keyframes fes-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+.festive-page /* Invitation Page Styles */
+.invitation-container {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    animation: fes-fadeIn 0.8s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+.festive-page .invitation-container.fade-out {
+    animation: fes-fadeOut 0.5s ease-out forwards;
+}
+.festive-page .invitation-title {
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1.2;
+    color: #1a1a1a;
+    letter-spacing: -0.03em;
+    text-transform: lowercase;
+    margin: 0;
+    animation: fes-fadeInUp 0.8s ease-out;
+}
+.festive-page .password-form {
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 400px;
+    animation: fes-fadeInUp 0.8s ease-out 0.3s backwards;
+}
+.festive-page .password-input {
+    flex: 1;
+    padding: 0.875rem 1.25rem;
+    border: 2px solid #f0f0f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #1a1a1a;
+    text-transform: lowercase;
+    transition: border-color 0.3s ease;
+    outline: none;
+}
+.festive-page .password-input:focus {
+    border-color: #C41E3A;
+}
+.festive-page .password-input::placeholder {
+    color: #999;
+    text-transform: lowercase;
+}
+.festive-page .password-button {
+    padding: 0.875rem 2rem;
+    background: #C41E3A;
+    border: 2px solid #C41E3A;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    text-transform: lowercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+.festive-page .password-button:hover {
+    background: #A01729;
+    border-color: #A01729;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
+}
+.festive-page .error-message {
+    font-size: 0.95rem;
+    color: #C41E3A;
+    font-weight: 400;
+    text-transform: lowercase;
+    margin: 0;
+    animation: fes-fadeIn 0.3s ease-out;
+}
+.festive-page .gloria-title {
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    color: #1a1a1a;
+    letter-spacing: -0.03em;
+    text-transform: lowercase;
+    text-align: center;
+}
+.festive-page .date-info {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.festive-page .date-time {
+    font-size: 1.125rem;
+    color: #C41E3A;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+.festive-page .section {
+    margin-bottom: 4rem;
+}
+.festive-page .section-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+    text-transform: lowercase;
+}
+.festive-page .section-subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    text-transform: lowercase;
+}
+.festive-page .restaurants-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+.festive-page .restaurant-card {
+    background: white;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 1.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+.festive-page .restaurant-card:hover {
+    border-color: var(--hover-color, #C41E3A);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--hover-color-shadow, rgba(196, 30, 58, 0.15));
+}
+.festive-page .restaurant-card.selected {
+    border-color: var(--hover-color, #C41E3A);
+    background: var(--hover-color-light, rgba(196, 30, 58, 0.03));
+}
+.festive-page .restaurant-header {
+    margin-bottom: 0.75rem;
+}
+.festive-page .restaurant-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 0.25rem 0;
+    letter-spacing: -0.01em;
+}
+.festive-page .restaurant-type {
+    font-size: 0.85rem;
+    color: #C41E3A;
+    font-weight: 500;
+    text-transform: lowercase;
+}
+.festive-page .restaurant-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 300;
+    text-transform: lowercase;
+}
+.festive-page .selected-indicator {
+    position: absolute;
+    top: 1.75rem;
+    right: 1.75rem;
+    font-size: 0.85rem;
+    color: #C41E3A;
+    font-weight: 600;
+    text-transform: lowercase;
+}
+.festive-page .activity-card {
+    background: white;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 1.75rem;
+}
+.festive-page .activity-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 0.75rem 0;
+    letter-spacing: -0.01em;
+}
+.festive-page .activity-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 300;
+    text-transform: lowercase;
+}
+.festive-page .closing-note {
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #f0f0f0;
+}
+.festive-page .closing-note p {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 300;
+    margin: 0.5rem 0;
+    text-transform: lowercase;
+}
+.festive-page .signature {
+    font-size: 1.1rem;
+    color: #C41E3A;
+    font-weight: 500;
+}
+.festive-page /* Christmas Lights */
+.christmas-lights {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+    z-index: 10;
+    pointer-events: none;
+}
+.festive-page .light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #D4AF37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+    animation: fes-twinkle 2s ease-in-out infinite;
+}
+.festive-page .light:nth-child(2n) {
+    background: #C41E3A;
+    box-shadow: 0 0 10px rgba(196, 30, 58, 0.8);
+}
+.festive-page .light:nth-child(3n) {
+    background: #2D5016;
+    box-shadow: 0 0 10px rgba(45, 80, 22, 0.8);
+}
+.festive-page .light:nth-child(4n) {
+    background: #4169E1;
+    box-shadow: 0 0 10px rgba(65, 105, 225, 0.8);
+}
+@keyframes fes-twinkle {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+}
+.festive-page /* Falling Snowflakes */
+.snowflakes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+.festive-page .snowflake {
+    position: absolute;
+    top: -10%;
+    color: #B0C4DE;
+    font-size: 1rem;
+    user-select: none;
+    animation: fes-fall linear infinite;
+    opacity: 0.8;
+    text-shadow: 0 0 5px rgba(176, 196, 222, 0.5);
+}
+@keyframes fes-fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+.festive-page .snowflake:nth-child(2n) {
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+.festive-page .snowflake:nth-child(3n) {
+    font-size: 1.2rem;
+    opacity: 0.7;
+}
+.festive-page .snowflake:nth-child(4n) {
+    font-size: 0.9rem;
+}
+.festive-page .snowflake:nth-child(5n) {
+    animation-duration: 15s;
+}
+.festive-page .snowflake:nth-child(7n) {
+    animation-duration: 12s;
+}
+.festive-page .snowflake:nth-child(11n) {
+    animation-duration: 18s;
+}
+.festive-page /* Floating Hearts Animation */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    overflow: hidden;
+}
+.festive-page .heart {
+    position: absolute;
+    bottom: -10%;
+    color: #C41E3A;
+    font-size: 2rem;
+    user-select: none;
+    animation: fes-floatUp 2s ease-out forwards;
+    opacity: 1;
+}
+@keyframes fes-floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+    }
+}
+.festive-page /* Mobile Responsive */
+@media (max-width: 768px) {
+    .gloria-content {
+        padding: 3rem 1.5rem;
+    }
+
+    .invitation-title {
+        font-size: 2.25rem;
+    }
+
+    .password-form {
+        max-width: 350px;
+    }
+
+    .password-input {
+        font-size: 0.95rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .password-button {
+        font-size: 0.95rem;
+        padding: 0.75rem 1.5rem;
+    }
+
+    .error-message {
+        font-size: 0.9rem;
+    }
+
+    .heart {
+        font-size: 1.5rem;
+    }
+
+    .gloria-title {
+        font-size: 2.25rem;
+    }
+
+    .date-time {
+        font-size: 1rem;
+    }
+
+    .section-heading {
+        font-size: 1.3rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .restaurant-card {
+        padding: 1.5rem;
+    }
+
+    .restaurant-name {
+        font-size: 1.25rem;
+    }
+
+    .restaurant-type {
+        font-size: 0.8rem;
+    }
+
+    .restaurant-description {
+        font-size: 0.9rem;
+    }
+
+    .selected-indicator {
+        top: 1.5rem;
+        right: 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    .activity-card {
+        padding: 1.5rem;
+    }
+
+    .activity-name {
+        font-size: 1.25rem;
+    }
+
+    .activity-description {
+        font-size: 0.9rem;
+    }
+
+    .closing-note p {
+        font-size: 0.95rem;
+    }
+
+    .signature {
+        font-size: 1rem;
+    }
+
+    .christmas-lights {
+        padding: 0 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .light {
+        width: 10px;
+        height: 10px;
+    }
+
+    .light:nth-child(2n+1):nth-child(n+15) {
+        display: none;
+    }
+
+    .snowflake:nth-child(n+30) {
+        display: none;
+    }
+}
+@media (max-width: 480px) {
+.festive-page .gloria-content {
+        padding: 2.5rem 1.25rem;
+    }
+.festive-page .invitation-title {
+        font-size: 1.85rem;
+    }
+.festive-page .invitation-container {
+        gap: 1.75rem;
+        padding: 1.5rem;
+    }
+.festive-page .password-form {
+        flex-direction: column;
+        max-width: 100%;
+        gap: 0.5rem;
+    }
+.festive-page .password-input {
+        font-size: 0.9rem;
+    }
+.festive-page .password-button {
+        font-size: 0.9rem;
+        width: 100%;
+    }
+.festive-page .heart {
+        font-size: 1.25rem;
+    }
+.festive-page .gloria-title {
+        font-size: 1.85rem;
+    }
+.festive-page .date-time {
+        font-size: 0.95rem;
+    }
+.festive-page .section {
+        margin-bottom: 3rem;
+    }
+.festive-page .section-heading {
+        font-size: 1.2rem;
+    }
+.festive-page .restaurant-card {
+        padding: 1.25rem;
+    }
+.festive-page .restaurant-name {
+        font-size: 1.15rem;
+    }
+.festive-page .activity-card {
+        padding: 1.25rem;
+    }
+.festive-page .activity-name {
+        font-size: 1.15rem;
+    }
+.festive-page .christmas-lights {
+        padding: 0 0.75rem;
+        margin-bottom: 1rem;
+        height: 30px;
+    }
+.festive-page .light {
+        width: 8px;
+        height: 8px;
+    }
+.festive-page .light:nth-child(2n+1):nth-child(n+10) {
+        display: none;
+    }
+.festive-page .snowflake {
+        font-size: 0.8rem;
+    }
+.festive-page .snowflake:nth-child(n+20) {
+        display: none;
+    }
+}

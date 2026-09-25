@@ -1,0 +1,257 @@
+/* =========================================================================
+   the archive as a file tree. white, hairlines, one indent step.
+   ========================================================================= */
+
+.tr-page {
+    --surface: #ffffff;
+    --hover: #f4f4f5;
+    --line: #ececef;
+    --guide: #e4e4e8;
+    --t1: #18181b;
+    --t2: #52525b;
+    --t3: #a1a1aa;
+
+    /* one place to change the geometry: the rows and their guide lines are
+       both derived from these two numbers */
+    --pad: 8px;
+    --step: 18px;
+
+    --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+
+    min-height: 100vh;
+    padding: clamp(52px, 9vw, 96px) 20px clamp(72px, 10vw, 120px);
+    cursor: default;
+    font-family: var(--sans);
+    color: var(--t1);
+    background: var(--surface);
+    -webkit-font-smoothing: antialiased;
+}
+
+.tr-page *,
+.tr-page *::before,
+.tr-page *::after {
+    box-sizing: border-box;
+}
+
+/* ------------------------------------------------------------- header */
+
+.tr-header {
+    max-width: 520px;
+    margin: 0 auto clamp(28px, 5vw, 40px);
+}
+
+.tr-title {
+    margin: 0;
+    font-size: clamp(1.8rem, 5vw, 2.15rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.028em;
+}
+
+.tr-sub {
+    margin: 10px 0 0;
+    font-size: 0.94rem;
+    line-height: 1.6;
+    color: var(--t2);
+}
+
+/* -------------------------------------------------------------- panel */
+
+.tr-panel {
+    max-width: 520px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 26px rgba(16, 24, 40, 0.05);
+    overflow: hidden;
+}
+
+.tr-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 42px;
+    padding: 0 14px;
+    border-bottom: 1px solid var(--line);
+}
+
+.tr-bar-name {
+    font-size: 13px;
+    font-weight: 550;
+    letter-spacing: -0.006em;
+}
+
+.tr-bar-count {
+    font-size: 12px;
+    color: var(--t3);
+}
+
+.tr-tree {
+    padding: 8px;
+}
+
+/* --------------------------------------------------------------- rows */
+
+.tr-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: 100%;
+    height: 34px;
+    margin: 0;
+    padding-left: calc(var(--pad) + var(--d) * var(--step));
+    padding-right: 10px;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    background: none;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.13s ease;
+}
+
+.tr-row:hover {
+    background: var(--hover);
+}
+
+.tr-row:focus-visible {
+    outline: 2px solid #0d99ff;
+    outline-offset: -2px;
+}
+
+.tr-chevron,
+.tr-gap {
+    flex: none;
+    width: 16px;
+    height: 16px;
+}
+
+.tr-chevron {
+    fill: none;
+    stroke: var(--t3);
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+.tr-row.is-open .tr-chevron {
+    transform: rotate(90deg);
+}
+
+.tr-icon {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: var(--t2);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.tr-file .tr-icon {
+    stroke: var(--t3);
+}
+
+.tr-name {
+    flex: 1;
+    min-width: 0;
+    font-size: 14px;
+    font-weight: 450;
+    letter-spacing: -0.011em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tr-dir .tr-name {
+    font-weight: 500;
+}
+
+.tr-meta {
+    flex: none;
+    font-size: 12px;
+    letter-spacing: -0.002em;
+    color: var(--t3);
+}
+
+/* ------------------------------------------------------- indent guide */
+
+/* 0fr -> 1fr animates to the content's natural height, which max-height cannot
+   do without guessing a number that breaks on deeper folders */
+.tr-children {
+    position: relative;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.26s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+.tr-children.is-open {
+    grid-template-rows: 1fr;
+}
+
+.tr-children-inner {
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    /* held visible for the length of the collapse, then hidden so the rows
+       stop being tabbable */
+    visibility: hidden;
+    transition: visibility 0s linear 0.26s;
+}
+
+.tr-children.is-open > .tr-children-inner {
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+/* lines up with the centre of the parent row's chevron */
+.tr-children::before {
+    content: "";
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--pad) + var(--d) * var(--step) + 8px);
+    width: 1px;
+    background: var(--guide);
+}
+
+.tr-children.is-open::before {
+    opacity: 1;
+}
+
+/* --------------------------------------------------------- responsive */
+
+@media (max-width: 560px) {
+    .tr-page {
+        --step: 16px;
+    }
+
+    .tr-row {
+        height: 42px;
+    }
+
+    .tr-name {
+        font-size: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tr-chevron,
+    .tr-row,
+    .tr-children,
+    .tr-children::before {
+        transition: none;
+    }
+
+    .tr-children-inner {
+        transition: none;
+    }
+}

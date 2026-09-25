@@ -4,10 +4,10 @@ import FileIcon from './components/FileIcon';
 import PhotoLightbox from './components/PhotoLightbox';
 import ReadmeModal from './components/ReadmeModal';
 
-const FinderBrowser = ({ onClose }) => {
+const FinderBrowser = ({ onClose, initialView = null }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [viewingPhoto, setViewingPhoto] = useState(null);
-  const [viewingReadme, setViewingReadme] = useState(false);
+  const [viewingReadme, setViewingReadme] = useState(initialView === 'readme');
   const [sortBy, setSortBy] = useState('name');
   const [sortOrder, setSortOrder] = useState('asc');
   const [isExiting, setIsExiting] = useState(false);

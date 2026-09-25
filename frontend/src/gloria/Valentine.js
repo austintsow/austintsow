@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Valentine.css";
 import FinderBrowser from './FinderBrowser';
+import ArchiveBack from "./ArchiveBack";
 
 function Valentine() {
     const [noClickCount, setNoClickCount] = useState(0);
@@ -56,6 +57,7 @@ function Valentine() {
 
     return (
         <div className="valentine-page">
+            <ArchiveBack tone="light" />
             <div className={showCelebration ? "valentine-content thanos-snap" : "valentine-content"}>
                 <h1 className="valentine-heading">gloria, will you be my valentine</h1>
 

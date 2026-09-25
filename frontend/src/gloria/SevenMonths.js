@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import "./SevenMonths.css";
+import ArchiveBack from "./ArchiveBack";
 
 const ASCII_CHARS = "@#$%&*+=?!<>{}[]|~abcdefghijklmnopqrstuvwxyz0123456789";
 const SPARKLE_CHARS = ["*", "+", "✦", "✧", "°", "•", "·"];
@@ -436,6 +437,7 @@ function SevenMonths() {
 
     return (
         <div className="seven-months-page">
+            <ArchiveBack tone="dark" />
             <canvas
                 ref={canvasRef}
                 className="ascii-canvas"
