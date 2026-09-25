@@ -152,45 +152,6 @@
     color: var(--bad);
 }
 
-/* ------------------------------------------------------------ love note */
-
-/* the beat between getting it right and seeing the archive */
-.ag-note {
-    padding: 24px 18px 20px;
-}
-
-.ag-heart {
-    display: block;
-    width: 24px;
-    height: 24px;
-    margin: 0 0 14px;
-    fill: none;
-    stroke: var(--t3);
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    animation: ag-in 0.5s cubic-bezier(0.2, 0.8, 0.3, 1) both;
-}
-
-.ag-note-line {
-    margin: 0 0 18px;
-    font-size: 15px;
-    font-weight: 450;
-    line-height: 1.55;
-    letter-spacing: -0.014em;
-    color: var(--t1);
-    animation: ag-in 0.5s 0.1s cubic-bezier(0.2, 0.8, 0.3, 1) both;
-}
-
-.ag-note-go {
-    display: block;
-    width: 100%;
-    padding: 11px 14px;
-    line-height: 1.45;
-    text-align: left;
-    animation: ag-in 0.5s 0.28s cubic-bezier(0.2, 0.8, 0.3, 1) both;
-}
-
 /* ---------------------------------------------------------- wrong answer */
 
 .ag-card.is-wrong {
@@ -220,9 +181,6 @@
 
 @media (prefers-reduced-motion: reduce) {
     .ag-card,
-    .ag-heart,
-    .ag-note-line,
-    .ag-note-go,
     .ag-card.is-wrong {
         animation: none;
     }
