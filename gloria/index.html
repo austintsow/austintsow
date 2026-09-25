@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>gloria's stuff!</title>
+    <meta name="description" content="gloria's stuff!" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="/favicon.ico" />
+
+    <!-- per-route link preview: crawlers stop here, browsers fall through to the redirect below -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="austin tsow" />
+    <meta property="og:title" content="gloria's stuff!" />
+    <meta property="og:description" content="gloria's stuff!" />
+    <meta property="og:url" content="https://austintsow.com/gloria" />
+    <meta property="og:image" content="https://austintsow.com/gloria-og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="gloria's stuff!" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="gloria's stuff!" />
+    <meta name="twitter:description" content="gloria's stuff!" />
+    <meta name="twitter:image" content="https://austintsow.com/gloria-og.png" />
+
+    <link rel="canonical" href="https://austintsow.com/gloria" />
+
+    <script type="text/javascript">
+      // This static file exists only so GitHub Pages returns a 200 with gloria's
+      // own og tags for /gloria (crawlers don't run JS, so React can't do it).
+      // A real browser gets bounced straight into the SPA using the same
+      // `/?/<path>` query form that 404.html produces and index.html decodes.
+      (function (l) {
+        l.replace(
+          '/?/gloria' +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash
+        );
+      })(window.location);
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <p>you need javascript for this one. <a href="/?/gloria">gloria's stuff!</a></p>
+    </noscript>
+  </body>
+</html>
