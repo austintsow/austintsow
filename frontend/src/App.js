@@ -8,6 +8,7 @@ import SaturdayDate from "./gloria/SaturdayDate";
 import FilingCabinet from "./gloria/FilingCabinet";
 import FinderPage from "./gloria/FinderPage";
 import FallDate from "./gloria/FallDate";
+import TenTen from "./gloria/TenTen";
 import GfDay from "./gloria/GfDay";
 import FestiveEvening from "./gloria/FestiveEvening";
 import PasswordsPage from "./gloria/PasswordsPage";
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/gloria/valentine" element={<Valentine />} />
                 <Route path="/gloria/saturday" element={<SaturdayDate />} />
                 <Route path="/gloria/fall" element={<FallDate />} />
+                <Route path="/gloria/1010" element={<TenTen />} />
                 <Route path="/gloria/archive" element={<FilingCabinet />} />
                 <Route path="/gloria/passwords" element={<PasswordsPage />} />
                 <Route path="/gloria/photos" element={<FinderPage />} />

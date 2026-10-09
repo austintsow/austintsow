@@ -1,0 +1,454 @@
+/* =========================================================================
+   a 10/10 chilly day.
+   a planner page: printed structure, written-in plans, coloured pencil.
+   ========================================================================= */
+
+.jr-page {
+    --paper: #fcf9f2;
+    --desk: #efe9de;
+    --graphite: #433e49;
+    --print: #3b352f;
+    --muted: #a0958a;
+    --rule: rgba(110, 95, 80, 0.17);
+    --mark: #cf4f6d;
+
+    --serif: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --hand: "Nanum Pen Script", "Bradley Hand", "Segoe Print", cursive;
+
+    min-height: 100vh;
+    padding: 36px 16px 72px;
+    cursor: default;
+    background: var(--desk);
+    /* cormorant defaults to old-style figures, which turn "10" into "IO" */
+    font-variant-numeric: lining-nums;
+    -webkit-font-smoothing: antialiased;
+}
+
+.jr-page *,
+.jr-page *::before,
+.jr-page *::after {
+    box-sizing: border-box;
+}
+
+.jr-defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* ------------------------------------------------------------- paper */
+
+.jr-paper {
+    position: relative;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 34px 24px 44px;
+    background-color: var(--paper);
+    /* dot grid, like a bullet journal */
+    background-image: radial-gradient(circle, rgba(120, 104, 88, 0.2) 0.9px, transparent 1.2px);
+    background-size: 18px 18px;
+    background-position: 9px 9px;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(60, 45, 30, 0.06), 0 14px 34px rgba(60, 45, 30, 0.1);
+}
+
+/* ------------------------------------------------------------ header */
+
+.jr-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.jr-date {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--serif);
+    color: var(--print);
+}
+
+.jr-dow,
+.jr-month {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    font-variant: all-small-caps;
+}
+
+.jr-num {
+    margin: 2px 0 4px -3px;
+    font-size: 96px;
+    font-weight: 500;
+    line-height: 0.86;
+    letter-spacing: -0.02em;
+}
+
+/* the bouquet is a little card taped into the page */
+.jr-pinned {
+    position: relative;
+    flex: none;
+    width: 128px;
+    margin: -4px -2px 0 0;
+    padding: 10px 8px 6px;
+    background: #fffdf8;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(60, 45, 30, 0.08), 0 6px 14px rgba(60, 45, 30, 0.08);
+    transform: rotate(2.5deg);
+}
+
+.jr-bouquet {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.jr-washi {
+    display: block;
+    overflow: visible;
+}
+
+.jr-washi--top {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 82px;
+    height: auto;
+    mix-blend-mode: multiply;
+    transform: translateX(-50%) rotate(-5deg);
+}
+
+/* ----------------------------------------------------------- pencil */
+
+.jr-ink {
+    fill: none;
+    stroke: #5b5048;
+    stroke-width: 1.3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.jr-ink--thin {
+    stroke-width: 1;
+}
+
+.jr-ink--stem,
+.jr-ink .jr-stem-end {
+    stroke: #6c8c5c;
+    stroke-width: 1.5;
+}
+
+.jr-ink .jr-faint {
+    opacity: 0.45;
+}
+
+/* the pink stripe down the middle of each lily petal */
+.jr-lily-stripe {
+    fill: none;
+    stroke: #e2849a;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    opacity: 0.75;
+}
+
+.jr-ink.jr-lily-filament {
+    stroke: #9bb38a;
+    stroke-width: 0.8;
+}
+
+/* baby's breath is white petals, not hollow rings */
+.jr-bouquet .jr-ink circle {
+    fill: #fffdf8;
+}
+
+.jr-blossom {
+    display: block;
+    width: 24px;
+    height: 24px;
+    overflow: visible;
+}
+
+/* ------------------------------------------------------------- title */
+
+.jr-title {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    margin: 26px 0 0;
+    font-family: var(--hand);
+    font-size: clamp(42px, 12.5vw, 56px);
+    font-weight: 400;
+    line-height: 0.95;
+    color: var(--graphite);
+    transform: rotate(-1.5deg);
+    transform-origin: left center;
+}
+
+.jr-swash {
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 12px;
+    overflow: visible;
+    fill: none;
+    stroke: var(--mark);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    opacity: 0.7;
+}
+
+.jr-blossom--title {
+    position: absolute;
+    top: -16px;
+    right: -14px;
+    width: 26px;
+    height: 26px;
+    transform: rotate(12deg);
+}
+
+/* ---------------------------------------------------------- schedule */
+
+.jr-sched {
+    margin-top: 40px;
+}
+
+.jr-label {
+    margin: 0 0 14px;
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    font-variant: all-small-caps;
+    color: var(--print);
+}
+
+.jr-grid {
+    --hour: 64px;
+    position: relative;
+}
+
+/* the margin line down the hour column, like a notebook's */
+.jr-grid::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 32px;
+    border-left: 1px solid rgba(207, 79, 109, 0.32);
+}
+
+.jr-hour {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0;
+    border-top: 1px solid var(--rule);
+}
+
+/* half-hour line, lighter */
+.jr-hour::after {
+    content: "";
+    position: absolute;
+    left: 40px;
+    right: 0;
+    top: calc(var(--hour) / 2);
+    border-top: 1px dashed rgba(110, 95, 80, 0.1);
+}
+
+.jr-hour--last::after {
+    display: none;
+}
+
+.jr-hour span {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 26px;
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: right;
+    color: var(--muted);
+}
+
+.jr-block {
+    position: absolute;
+    left: 40px;
+    right: 0;
+    overflow: hidden;
+    border-radius: 3px 6px 6px 3px;
+}
+
+.jr-block-fill {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* the last block has no end time, so the pencil just trails off */
+.jr-block.is-open .jr-block-fill {
+    -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 50%, transparent 100%);
+}
+
+.jr-block-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    height: 100%;
+    padding: 5px 10px 6px 13px;
+}
+
+.jr-line1 {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.jr-entry {
+    min-width: 0;
+    font-family: var(--hand);
+    text-wrap: balance;
+    font-size: 27px;
+    line-height: 1;
+    color: var(--graphite);
+}
+
+.jr-when {
+    flex: none;
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--muted);
+}
+
+.jr-hint {
+    font-size: 21px;
+    white-space: nowrap;
+    color: var(--mark);
+}
+
+/* the long entry gets the nudge on its own line instead of orphaning "day!" */
+.jr-block--after .jr-hint {
+    display: block;
+    margin-top: 4px;
+}
+
+.jr-now {
+    flex: none;
+    font-family: var(--hand);
+    font-size: 24px;
+    line-height: 1;
+    color: var(--mark);
+}
+
+.jr-sub {
+    font-family: var(--hand);
+    font-size: 23px;
+    line-height: 1;
+    color: var(--graphite);
+}
+
+/* ------------------------------------------------------------ checks */
+
+.jr-checks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 18px;
+    margin-top: 3px;
+}
+
+.jr-block--after .jr-checks {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.jr-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+    padding: 2px 0;
+    font-family: var(--hand);
+    font-size: 24px;
+    line-height: 1;
+    color: var(--graphite);
+    background: none;
+    border: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.jr-check:focus-visible {
+    outline: 2px dashed var(--mark);
+    outline-offset: 2px;
+}
+
+.jr-tick {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    overflow: visible;
+}
+
+.jr-tick-box {
+    fill: rgba(255, 253, 248, 0.6);
+    stroke: var(--graphite);
+    stroke-width: 1.4;
+    stroke-linejoin: round;
+}
+
+.jr-tick-mark {
+    fill: none;
+    stroke: var(--mark);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 0.35s ease;
+}
+
+.jr-tick.is-on .jr-tick-mark {
+    stroke-dashoffset: 0;
+}
+
+.jr-blossom--low {
+    position: absolute;
+    right: 16px;
+    bottom: 22px;
+    width: 34px;
+    height: 34px;
+    transform: rotate(-14deg);
+}
+
+/* --------------------------------------------------------- responsive */
+
+/* on her phone the page is the whole screen, no desk around it */
+@media (max-width: 520px) {
+    .jr-page {
+        padding: 0;
+    }
+
+    .jr-paper {
+        min-height: 100vh;
+        padding: 64px 20px 48px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .jr-tick-mark {
+        transition: none;
+    }
+}

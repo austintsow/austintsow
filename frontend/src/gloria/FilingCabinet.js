@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "./FilingCabinet.css";
+import { DRAWER_SHOWS_AT } from "./tenTenPlan";
 
 /*
  * gloria's archive as a file tree. Folders expand, files open the page.
@@ -13,7 +14,9 @@ import "./FilingCabinet.css";
 /* Every date here is the commit that first added the card, checked against
    git rather than guessed. The valentine, the letter and the photos all
    landed together in 569abfe on feb 23, so they are one card, not three.
-   The two 2025 cards were overwritten in Gloria.js and restored from history. */
+   The two 2025 cards were overwritten in Gloria.js and restored from history.
+   A file with showsAt stays out of the drawer until then, so a date isn't
+   filed away before it's happened. */
 const TREE = [
     {
         type: "folder",
@@ -74,6 +77,21 @@ const TREE = [
                             { type: "file", id: "remlinger", name: "remlinger farms", meta: "sep 25", to: "/gloria/fall" },
                         ],
                     },
+                    {
+                        type: "folder",
+                        id: "oct26",
+                        name: "october",
+                        children: [
+                            {
+                                type: "file",
+                                id: "tenten",
+                                name: "a 10/10 chilly day",
+                                meta: "oct 9",
+                                to: "/gloria/1010",
+                                showsAt: DRAWER_SHOWS_AT,
+                            },
+                        ],
+                    },
                 ],
             },
         ],
@@ -87,7 +105,14 @@ function countFiles(nodes) {
     );
 }
 
-const TOTAL = countFiles(TREE);
+/* drop files that aren't due yet, and any folder that leaves empty */
+function filed(nodes, now) {
+    return nodes.flatMap((node) => {
+        if (node.type === "file") return node.showsAt > now ? [] : [node];
+        const children = filed(node.children, now);
+        return children.length ? [{ ...node, children }] : [];
+    });
+}
 
 function Chevron() {
     return (
@@ -193,6 +218,8 @@ function FilingCabinet() {
         };
     }, []);
 
+    const tree = filed(TREE, Date.now());
+
     const toggle = useCallback((id) => {
         setOpenIds((prev) =>
             prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
@@ -209,11 +236,11 @@ function FilingCabinet() {
             <div className="tr-panel">
                 <div className="tr-bar">
                     <span className="tr-bar-name">archive</span>
-                    <span className="tr-bar-count">{TOTAL} files</span>
+                    <span className="tr-bar-count">{countFiles(tree)} files</span>
                 </div>
 
                 <div className="tr-tree" role="tree">
-                    {TREE.map((node) => (
+                    {tree.map((node) => (
                         <Node
                             key={node.id}
                             node={node}
