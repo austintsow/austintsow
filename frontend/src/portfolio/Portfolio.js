@@ -14,7 +14,7 @@ export default function Portfolio() {
             <About />
             <Experience />
             <footer className="footer">
-                <span>© {new Date().getFullYear()} austin tsow. all rights reserved.</span>
+                <span>© {new Date().getFullYear()} austin tsow</span>
             </footer>
         </div>
     );

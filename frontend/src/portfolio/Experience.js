@@ -5,18 +5,29 @@ import "./Experience.css";
 
 const EXPERIENCE = [
     {
+        id: "temu",
+        company: "temu",
+        tagline: "global ecommerce at scale",
+        period: "oct 2026 - present",
+        position: "software engineer",
+        location: "remote",
+        bloom: "#fb7701",
+        seed: 2.2,
+        desc: [
+            "building temu's paid search platform, with backend services and api integrations that run ad campaigns across google and bing, automate keyword management, and create ads at scale.",
+        ],
+    },
+    {
         id: "visa",
         company: "visa",
         tagline: "device intelligence for global payments",
-        period: "jan 2026 - present",
+        period: "jan 2026 - oct 2026",
         position: "software engineer",
         location: "bellevue, wa",
-        industry: "payments / fintech",
         bloom: "#1434cb",
         seed: 0.0,
         desc: [
-            "i work on visa's device-intelligence platform, building the backend services and internal tooling that keep device profiling fast, reliable, and secure at a global scale.",
-            "lately that includes ai tooling that helps the team diagnose incidents faster and self-serve apis that make partner onboarding painless.",
+            "i worked on visa's device intelligence platform, the system that profiles devices behind payments around the world. i got to touch a bit of everything, from backend services and apis to data migrations and ai tooling.",
         ],
     },
     {
@@ -24,15 +35,13 @@ const EXPERIENCE = [
         company: "applyied",
         tagline: "ai-powered job applications",
         period: "sep 2024 - jun 2026",
-        position: "co-founder, software engineer",
+        position: "software engineer",
         location: "seattle, wa",
-        industry: "ai / career tech",
         website: { label: "applyied.com", url: "https://applyied.com" },
         bloom: "#e9a13b",
         seed: 4.3,
         desc: [
             "co-founded an ai-powered job platform and built it end to end, an easier way to keep track of all your job applications in one place.",
-            "wore every hat along the way: product, engineering, and growth. follow us on tiktok @applyied!",
         ],
     },
     {
@@ -42,7 +51,6 @@ const EXPERIENCE = [
         period: "may 2025 - aug 2025",
         position: "software engineer intern",
         location: "renton, wa",
-        industry: "manufacturing tech",
         bloom: "#002f6c",
         seed: 9.1,
         desc: [
@@ -54,13 +62,12 @@ const EXPERIENCE = [
         company: "independent pharmacy cooperative",
         tagline: "taking pharmacies from desktop to mobile",
         period: "sep 2024 - may 2025",
-        position: "software engineer, full stack lead",
+        position: "software engineer",
         location: "spokane, wa",
-        industry: "healthcare / pharmacy",
         bloom: "#159f57",
         seed: 14.7,
         desc: [
-            "ipc sponsored our team to bring their desktop-only platform to mobile. i led the build of a cross-platform app from scratch for thousands of independent pharmacies, running the team's agile process along the way.",
+            "ipc sponsored our team to take their desktop-only platform mobile, so we built them a cross-platform app from scratch. i led the build, shipping to thousands of independent pharmacies.",
         ],
     },
 ];
@@ -125,10 +132,6 @@ export default function Experience() {
                             <div className="exp-prop">
                                 <span className="exp-prop-label">location</span>
                                 <span className="exp-prop-value">{job.location}</span>
-                            </div>
-                            <div className="exp-prop">
-                                <span className="exp-prop-label">industry</span>
-                                <span className="exp-prop-value">{job.industry}</span>
                             </div>
                             {job.website && (
                                 <div className="exp-prop">

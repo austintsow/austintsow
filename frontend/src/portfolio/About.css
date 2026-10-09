@@ -6,6 +6,8 @@
 .about-mast {
     border-top: 1px solid #edf1f5;
     padding: 18px clamp(24px, 5vw, 64px);
+    /* align the label with the centered content column on wide screens */
+    padding-left: max(clamp(24px, 5vw, 64px), calc(50% - 620px + clamp(24px, 5vw, 64px)));
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.06em;
@@ -39,22 +41,6 @@
     font-size: 13.5px;
     line-height: 1.8;
     color: #46617d;
-}
-
-.about-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 20px;
-}
-
-.about-tag {
-    padding: 6px 12px;
-    border-radius: 6px;
-    background: #f4f6f8;
-    border: 1px solid #edf1f5;
-    color: #2c4763;
-    font-size: 12.5px;
 }
 
 .about-photo {
